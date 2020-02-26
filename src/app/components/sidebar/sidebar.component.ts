@@ -11,11 +11,15 @@ export const ROUTES: RouteInfo[] = [
   { path: '/hojaSalida', title: 'Hoja de Salida', icon: 'dashboard', class: '' },
   { path: '/matriculaPac', title: 'Matrícula PAC', icon: 'person', class: '' },
   { path: '/matriculaUte', title: 'Matrícula Titulación', icon: 'content_paste', class: '' },
+  { path: '/reforzamiento', title: 'Matrícula Titulación', icon: 'content_paste', class: '' },
+  { path: '/acompanamiento', title: 'Solicitud acompanamiento', icon: 'content_paste', class: '' }
+
   /*{ path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
   { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '' },
   { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
   { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
   { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },*/
+
 ];
 
 @Component({

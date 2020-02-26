@@ -9,7 +9,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { PacComponent } from 'app/pages/pac/pac.component';
-
+import { SolicitudReforzamientoComponent } from '../../pages/estudiantes/solicitud-reforzamiento/solicitud-reforzamiento.component';
+import { SolicitudAcompanamientosComponent } from '../../pages/estudiantes/solicitud-acompanamientos/solicitud-acompanamientos.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -61,4 +62,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'reforzamiento',  component: SolicitudReforzamientoComponent},
+    { path: 'acompanamiento', component: SolicitudAcompanamientosComponent}
 ];

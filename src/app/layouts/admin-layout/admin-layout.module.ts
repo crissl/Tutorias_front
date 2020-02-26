@@ -11,6 +11,8 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { SolicitudReforzamientoComponent } from '../../pages/estudiantes/solicitud-reforzamiento/solicitud-reforzamiento.component';
+import { SolicitudAcompanamientosComponent } from '../../pages/estudiantes/solicitud-acompanamientos/solicitud-acompanamientos.component';
 
 import {
   MatButtonModule,
@@ -23,6 +25,7 @@ import {
 import { PacComponent } from 'app/pages/pac/pac.component';
 import { DatosPersonalesComponent } from 'app/pages/secciones/datos-personales/datos-personales.component';
 import { DatosAcademicosComponent } from 'app/pages/secciones/datos-academicos/datos-academicos.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -48,6 +51,8 @@ import { DatosAcademicosComponent } from 'app/pages/secciones/datos-academicos/d
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    SolicitudReforzamientoComponent,
+    SolicitudAcompanamientosComponent
   ]
 })
 
