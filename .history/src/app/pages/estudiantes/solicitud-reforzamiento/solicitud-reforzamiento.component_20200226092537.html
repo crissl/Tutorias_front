@@ -1,0 +1,80 @@
+<button style='display:scroll; position:fixed; bottom:30px; right:0px;' class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Volver"> 
+    <a href="mostrarFormulario.jsp" >
+        <i class='fa fa-angle-double-left' style='font-size:40px;color:white;'></i></a>
+</button>
+<div class="container">
+    <h3>SOLICITUD DE TUTORIA DE REFORZAMIENTO<span class="label label-default"></span></h3>
+    <h6>*SOLICITUD DE TUTORIA POR PARTE DEL ESTUDIANTE<span class="label label-default"></span></h6>
+    <form action="/action_page.php">
+        <div class="alert alert-info" role="alert">>DATOS DEL ESTUDIANTE</div>
+        <h6>*DATOS GENERALES DEL ESTUDIANTE<span class="label label-default"></span></h6>
+        <div class="form-group">
+            <label for="Input" class="col-sm-6 control-label">CÉDULA DE IDENTIDAD</label><br>
+            <div class="col-md-12">
+                <input class="form-control" id="Input" name="cedula" type="text" placeholder="<%out.print(rs.getNString("SPBPERS_SSN"));
+                    }
+                    rs.close(); %>" disabled><br>
+            </div>
+        </div>
+   
+        <div class="form-group">
+            <label for="Input" class="col-sm-6 control-label">APELLIDOS Y NOMBRES</label><br>
+            <div class="col-md-12">
+                <input class="form-control" id="Input" name="nombres" type="text" placeholder=" <%out.print(rs1.getNString("SUBSTR(f_format_name(SPRIDEN_PIDM,'LFMI'),1,45)"));
+                    }
+                    rs1.close();%>" disabled><br>
+            </div>
+        </div> 
+       
+        <div class="form-group">
+            <label for="Input" class="col-sm-6 control-label">CARRERA DE ESTUDIO</label><br>
+            <div class="col-md-12">
+                <input class="form-control" id="Input" name="carrera de estudio" type="text" placeholder="<%out.print(rs2.getNString("SMRPRLE_PROGRAM_DESC"));
+                    }
+                    rs2.close();%>" disabled><br>
+            </div>
+        </div>
+</div>
+<div class="container">
+    <div class="alert alert-info" role="alert">DATOS DE LA TUTORIA</div>
+    <h6>*INGRESE LOS DATOS CON LA INFORMACION DE LA TUORIA DE REFORZAMIENTO ACADÉMICO<span class="label label-default"></span></h6>
+    <br>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">TEMA A TRATAR</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="tematratar" id="Input" type="text" placeholder="BASES DE DATOS" ><br>
+        </div>
+        <div class="form-group">
+            <label for="Input" class="col-sm-12 control-label">INGRESE EL NRC DEL QUE REQUIERE TUTORIA</label><br>
+            <div class="col-md-2">
+                <select class="form-control" id="sel1" name="nrc"id="Input">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <br><div class="alert alert-info" role="alert"><center>DATOS DEL REGISTRO</center></div>
+    <h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORIA<span class="label label-default"></span></h6>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">OBSERVACIONES GENERALES</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="observaciones" id="Input" type="text" placeholder="SOLICITO DAR ATENCION A MI PEDIDO" ><br>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">FECHA DE REGISTRO</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="fecharegistro" id="Input" type="text" placeholder="2019-10-02 09:34:05" <br>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <center><button type="button" class="btn btn-success">Guardar</button></center>
+</div>
+</form>
+</div>
+</body>
