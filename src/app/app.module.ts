@@ -14,6 +14,10 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ConfirmacionEstudianteComponent } from './pages/estudiantes/confirmacion-estudiante/confirmacion-estudiante.component';
+import { PlanificacionReforzamientoComponent } from './pages/docentes/planificacion-reforzamiento/planificacion-reforzamiento.component';
+import { PlanificacionAcompanamientoComponent } from './pages/docentes/planificacion-acompanamiento/planificacion-acompanamiento.component';
+import { RegistroAsistenciaComponent } from './pages/docentes/registro-asistencia/registro-asistencia.component';
 
 @NgModule({
   imports: [
@@ -31,6 +35,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    ConfirmacionEstudianteComponent,
+    PlanificacionReforzamientoComponent,
+    PlanificacionAcompanamientoComponent,
+    RegistroAsistenciaComponent,
 
   ],
   providers: [],
