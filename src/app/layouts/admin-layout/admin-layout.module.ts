@@ -13,6 +13,8 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { SolicitudReforzamientoComponent } from '../../pages/estudiantes/solicitud-reforzamiento/solicitud-reforzamiento.component';
 import { SolicitudAcompanamientosComponent } from '../../pages/estudiantes/solicitud-acompanamientos/solicitud-acompanamientos.component';
+import { DatosEstudianteComponent } from '../../pages/secciones/datos-estudiante/datos-estudiante.component';
+import { DatosRegistroComponent } from '../../pages/secciones/datos-registro/datos-registro.component';
 
 import {
   MatButtonModule,
@@ -52,7 +54,9 @@ import { DatosAcademicosComponent } from 'app/pages/secciones/datos-academicos/d
     NotificationsComponent,
     UpgradeComponent,
     SolicitudReforzamientoComponent,
-    SolicitudAcompanamientosComponent
+    SolicitudAcompanamientosComponent,
+    DatosEstudianteComponent,
+    DatosRegistroComponent
   ]
 })
 

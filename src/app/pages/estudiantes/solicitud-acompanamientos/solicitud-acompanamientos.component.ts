@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalDataService } from 'app/services/personal-data.service';
 
 @Component({
   selector: 'app-solicitud-acompanamientos',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudAcompanamientosComponent implements OnInit {
 
-  constructor() { }
 
+  constructor(private service: PersonalDataService) { }
+
+  cedula="1725412306";
   ngOnInit() {
+    
   }
 
 }
