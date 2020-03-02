@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -14,7 +14,6 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import {RestService} from 'app/service/rest.service'
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import {RestService} from 'app/service/rest.service'
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
@@ -36,7 +34,7 @@ import {RestService} from 'app/service/rest.service'
     AdminLayoutComponent,
 
   ],
-  providers: [RestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

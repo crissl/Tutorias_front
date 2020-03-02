@@ -74,8 +74,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reforzamientoPla',   component: PlanificacionReforzamientoComponent},
     { path: 'acompanamientoPla',   component: PlanificacionAcompanamientoComponent},
     { path: 'registro',   component: RegistroAsistenciasComponent},
-    { path: 'userPro',   component: UserProfileComponent},
-
 
 
 ];
