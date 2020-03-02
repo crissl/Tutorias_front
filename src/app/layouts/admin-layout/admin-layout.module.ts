@@ -13,12 +13,6 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { SolicitudReforzamientoComponent } from '../../pages/estudiantes/solicitud-reforzamiento/solicitud-reforzamiento.component';
 import { SolicitudAcompanamientosComponent } from '../../pages/estudiantes/solicitud-acompanamientos/solicitud-acompanamientos.component';
-import { ConfirmacionAsistenciaComponent } from '../../pages/estudiantes/confirmacion-asistencia/confirmacion-asistencia.component';
-// tslint:disable-next-line:max-line-length
-import { PlanificacionReforzamientoComponent } from '../../pages/docentes/planificacion-reforzamiento/planificacion-reforzamiento.component';
-// tslint:disable-next-line:max-line-length
-import { PlanificacionAcompanamientoComponent } from '../../pages/docentes/planificacion-acompanamiento/planificacion-acompanamiento.component';
-import { RegistroAsistenciasComponent } from '../../pages/docentes/registro-asistencias/registro-asistencias.component';
 import { DatosEstudianteComponent } from '../../pages/secciones/datos-estudiante/datos-estudiante.component';
 import { DatosRegistroComponent } from '../../pages/secciones/datos-registro/datos-registro.component';
 
@@ -61,12 +55,8 @@ import { DatosAcademicosComponent } from 'app/pages/secciones/datos-academicos/d
     UpgradeComponent,
     SolicitudReforzamientoComponent,
     SolicitudAcompanamientosComponent,
-    ConfirmacionAsistenciaComponent,
     DatosEstudianteComponent,
-    DatosRegistroComponent,
-    PlanificacionReforzamientoComponent,
-    PlanificacionAcompanamientoComponent,
-    RegistroAsistenciasComponent
+    DatosRegistroComponent
   ]
 })
 
