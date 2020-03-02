@@ -12,9 +12,7 @@ import { PacComponent } from 'app/pages/pac/pac.component';
 import { SolicitudReforzamientoComponent } from '../../pages/estudiantes/solicitud-reforzamiento/solicitud-reforzamiento.component';
 import { SolicitudAcompanamientosComponent } from '../../pages/estudiantes/solicitud-acompanamientos/solicitud-acompanamientos.component';
 import { ConfirmacionAsistenciaComponent } from '../../pages/estudiantes/confirmacion-asistencia/confirmacion-asistencia.component';
-// tslint:disable-next-line:max-line-length
 import { PlanificacionReforzamientoComponent } from '../../pages/docentes/planificacion-reforzamiento/planificacion-reforzamiento.component';
-// tslint:disable-next-line:max-line-length
 import { PlanificacionAcompanamientoComponent } from '../../pages/docentes/planificacion-acompanamiento/planificacion-acompanamiento.component';
 import { RegistroAsistenciasComponent } from '../../pages/docentes/registro-asistencias/registro-asistencias.component';
 export const AdminLayoutRoutes: Routes = [
@@ -71,9 +69,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reforzamiento',  component: SolicitudReforzamientoComponent},
     { path: 'acompanamiento', component: SolicitudAcompanamientosComponent},
     { path: 'confirmacion',   component: ConfirmacionAsistenciaComponent},
-    { path: 'reforzamientoPla',   component:PlanificacionReforzamientoComponent},
-    { path: 'acompanamientoPla',   component: PlanificacionAcompanamientoComponent},
-    { path: 'registro',   component: RegistroAsistenciasComponent},
+    { path: 'reforzamientoPla',   component: PlanificacionAsistenciaComponent},
+    { path: 'acompanamientoPla',   component: PlanificacionAsistenciaComponent},
+    { path: 'registro',   component: RegistroAsistenciaComponent},
 
 
 ];

@@ -70,10 +70,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'reforzamiento',  component: SolicitudReforzamientoComponent},
     { path: 'acompanamiento', component: SolicitudAcompanamientosComponent},
-    { path: 'confirmacion',   component: ConfirmacionAsistenciaComponent},
-    { path: 'reforzamientoPla',   component:PlanificacionReforzamientoComponent},
-    { path: 'acompanamientoPla',   component: PlanificacionAcompanamientoComponent},
-    { path: 'registro',   component: RegistroAsistenciasComponent},
-
+    { path: 'confirmacion',   component: ConfirmacionAsistenciaComponent}
 
 ];

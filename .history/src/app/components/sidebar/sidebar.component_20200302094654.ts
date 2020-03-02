@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
   // { path: '/hojaSalida', title: 'Hoja de Salida', icon: 'dashboard', class: '' },
   // { path: '/matriculaPac', title: 'Matrícula PAC', icon: 'person', class: '' },
   // { path: '/matriculaUte', title: 'Matrícula Titulación', icon: 'content_paste', class: '' },
-  { path: '/acompanamiento', title: 'Solicitud Acompañamiento', icon: 'supervised_user_circle', class: '' },
+  { path: '/acompanamiento', title: 'Solicitud Acompañamiento', icon: 'perm_contact_calendar', class: '' },
   { path: '/reforzamiento', title: ' Solicitud Reforzamiento', icon: 'announcement', class: '' },
   { path: '/confirmacion', title: ' Confrimación Asistencia', icon: 'how_to_reg', class: '' },
   { path: '/acompanamientoPla', title: 'Planifición Acompañamiento', icon: 'assignment_ind', class: '' },

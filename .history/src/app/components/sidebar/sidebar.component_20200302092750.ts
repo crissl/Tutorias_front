@@ -11,12 +11,12 @@ export const ROUTES: RouteInfo[] = [
   // { path: '/hojaSalida', title: 'Hoja de Salida', icon: 'dashboard', class: '' },
   // { path: '/matriculaPac', title: 'Matrícula PAC', icon: 'person', class: '' },
   // { path: '/matriculaUte', title: 'Matrícula Titulación', icon: 'content_paste', class: '' },
-  { path: '/acompanamiento', title: 'Solicitud Acompañamiento', icon: 'supervised_user_circle', class: '' },
-  { path: '/reforzamiento', title: ' Solicitud Reforzamiento', icon: 'announcement', class: '' },
-  { path: '/confirmacion', title: ' Confrimación Asistencia', icon: 'how_to_reg', class: '' },
-  { path: '/acompanamientoPla', title: 'Planifición Acompañamiento', icon: 'assignment_ind', class: '' },
-  { path: '/reforzamientoPla', title: ' Planificación Reforzamiento', icon: 'assignment', class: '' },
-  { path: '/registro', title: 'Registro Asistencias', icon: 'chrome_reader_mode', class: '' }
+  { path: '/acompanamiento', title: 'Solicitud Acompañamiento', icon: 'assignment_ind', class: '' },
+  { path: '/reforzamiento', title: ' Solicitud Reforzamiento', icon: 'assignment', class: '' },
+  { path: '/confirmacion', title: ' Confrimacion Asistencia', icon: 'assignment', class: '' }
+  { path: '/acompanamiento', title: 'Solicitud Acompañamiento', icon: 'assignment_ind', class: '' },
+  { path: '/reforzamiento', title: ' Solicitud Reforzamiento', icon: 'assignment', class: '' },
+  { path: '/confirmacion', title: ' Confrimacion Asistencia', icon: 'assignment', class: '' }
 
 
   /*{ path: '/typography', title: 'Typography', icon: 'library_books', class: '' },

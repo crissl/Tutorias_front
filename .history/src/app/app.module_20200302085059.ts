@@ -14,6 +14,9 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PlanificacionReforzamientoComponent } from './pages/estudiantes/planificacion-reforzamiento/planificacion-reforzamiento.component';
+import { PlanificacionAcompanamientoComponent } from './pages/estudiantes/docentes/planificacion-acompanamiento/planificacion-acompanamiento.component';
+import { RegistroAsistenciasComponent } from './pages/estudiantes/registro-asistencias/registro-asistencias.component';
 
 
 @NgModule({
@@ -32,6 +35,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    PlanificacionReforzamientoComponent,
+    PlanificacionAcompanamientoComponent,
+    RegistroAsistenciasComponent
 
   ],
   providers: [],
