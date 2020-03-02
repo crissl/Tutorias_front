@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-datos-registro',
@@ -6,16 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datos-registro.component.scss']
 })
 export class DatosRegistroComponent implements OnInit {
-
+  @Input() registro:any
   constructor() { }
 
   ngOnInit() {
+  
   }
 
-  public observaciones: any = {
-    observacion:'lolll',
-    fecha: Date.now() 
-  }
+  
 
 
 

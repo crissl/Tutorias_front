@@ -1,7 +1,7 @@
 <br><br><br>
 
 <div class="container">
-  <app-datos-estudiante [datos]="cedula"></app-datos-estudiante>
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-estudiante>
   <br>
 
   <div class="container">
@@ -13,10 +13,15 @@
       <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
       <div class="col-md-12">
         <input class="form-control text-uppercase" name="tema" id="Input" type="text"
-          placeholder="COMO SE PIERDE POR ASISTENCIAS" />
+          [(ngModel)]=" tema.tema" />
       </div>
     </div>
   </div>
-  <app-datos-registro></app-datos-registro>
+  <app-datos-registro [registro]="observaciones"></app-datos-registro>
+  <div class="col-md-12" align="center">
+    <button class="btn btn-success"  (click)="guardar()">
+      Enviar
+    </button>
+  </div>
  
 </div>

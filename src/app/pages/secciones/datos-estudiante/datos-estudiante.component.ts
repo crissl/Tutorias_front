@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { DatosAcademicosComponent } from '../datos-academicos/datos-academicos.component';
 
@@ -10,7 +10,7 @@ import { DatosAcademicosComponent } from '../datos-academicos/datos-academicos.c
 export class DatosEstudianteComponent implements OnInit {
 
   @Input() datos:String;
-
+  @Output() propagar = new EventEmitter<string>();
   
 
   Datosp: any;
@@ -25,7 +25,8 @@ export class DatosEstudianteComponent implements OnInit {
     this.service.getUsuarioCompleto(cedula).subscribe(
       data => {
         this.Datosp = data;
-        console.log(this.Datosp);
+        //console.log(this.Datosp);
+        this.propagar.emit(this.Datosp);
       }
     )
   }
