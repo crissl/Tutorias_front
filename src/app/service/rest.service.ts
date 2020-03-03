@@ -32,4 +32,17 @@ export class RestService {
       )
     );
   }
+
+  findData(data: number) {
+    return this.http.get(API_URL + data, http).pipe(
+      map(
+        (res: any) => {
+          return res;
+        },
+        error => {
+          console.log('Error: ', error);
+        }
+      )
+    );
+  }
 }

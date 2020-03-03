@@ -30,12 +30,11 @@ export class SolicitudAcompanamientosComponent implements OnInit {
      //console.log(data[0].pidm)
    }
    tema:any={
-     tema:"dasda"
+     tema:""
    }
 
  
 
-  
 
    public observaciones: any = {
     observacion:"",
