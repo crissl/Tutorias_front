@@ -1,40 +1,53 @@
 <br><br><br>
 
 <div class="container">
-  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-estudiante>
+  <app-datos-estudiante [datos]="cedula" (propagar)="procesaPropagar($event)"></app-datos-estudiante>
 </div>
-  <br>
+<br>
 
-  <div class="container">
-    <div class="alert alert-info" align="center" role="alert">DATOS DE LA TUTORÍA</div>
-    <h6>
-      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
-    </h6>
-    <div class="row">
-      <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
-      <label for="Input" class="col-sm-6 control-label">INGRESE EL NRC DEL QUE REQUIERE TUTORÍA</label> 
+<div class="container">
+  <div class="alert alert-info" align="center" role="alert">DATOS DE LA TUTORÍA</div>
+  <h6>
+    *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+  </h6>
+  <div class="row">
+    <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
+    <label for="Input" class="col-sm-6 control-label">INGRESE EL NRC DEL QUE REQUIERE TUTORÍA</label>
 
-      <div class="col-md-6">
-        <input class="form-control text-uppercase" name="tema" id="Input" type="text"
-          [(ngModel)]=" tema.tema" />
-      </div>
-
-      <div class="col-md-6">
-              <select class="form-control" id="sel1" name="nrc"id="Input">
-                  <option>2703	CHUM14054 - EDU. FÍSICA INSTITUCIONAL	01	201210	UG</option>
-                  <option>1515	CHUM30020 - APRECIACION MUSICAL (2.0)	01	201320	UG</option>
-              </select>
-          </div>
-      </div>
-
+    <div class="col-md-6">
+      <input class="form-control text-uppercase" name="tema" id="Input" type="text" [(ngModel)]=" tema.tema" />
     </div>
-  <app-datos-registro [registro]="observaciones"></app-datos-registro>
-  <div class="col-md-12" align="center">
-    <button class="btn btn-success"  (click)="guardar()">
-      Enviar
-    </button>
- 
- 
+
+    <div class="col-md-6">
+      <!-- <select class="form-control" id="sel1" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel">
+        <option (click)="guardar(nrc.nrc)" *ngFor="let nrc of nrcs" value="{{nrc.nrc}}" > {{nrc.codigo | uppercase}} - {{nrc.asignatura}}
+          {{nrc.campus}}
+          {{nrc.periodo}} {{nrc.nivel}}</option>
+
+      </select> -->
+
+      <mat-form-field>
+        <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required>
+          
+          <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}" (click)="guardar (nrc.nrc,nrc.codigo,nrc.asignatura,nrc.campus,nrc.periodo,nrc.nivel)">
+            {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
+            {{nrc.periodo}} {{nrc.nivel}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="select1.hasError('required')">Selecciona un Nrc</mat-error>
+      </mat-form-field>
+    </div>
+    
+  </div>
+
+</div>
+<app-datos-registro [registro]="observaciones"></app-datos-registro>
+<div class="col-md-12" align="center">
+  <button class="btn btn-success" (click)="guardar(nrc.codigo,nrc.asignatura,nrc.campus,nrc.periodo,nrc.nivel,nrc.nrc)">
+    Enviar
+  </button>
+
+
 </div>
 
 

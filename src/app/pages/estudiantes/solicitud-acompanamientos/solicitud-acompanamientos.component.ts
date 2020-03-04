@@ -20,6 +20,7 @@ export class SolicitudAcompanamientosComponent implements OnInit {
 
   constructor(private service: PersonalDataService, private restService: RestService) { }
   datosGuardar : any;
+  ncr:any;
 
   cedula="1725412306";
   ngOnInit() {
@@ -64,5 +65,13 @@ export class SolicitudAcompanamientosComponent implements OnInit {
           console.log("se guardo");
         }
       )
+   }
+   
+   listarNrc(){
+     this.restService.findData(this.id).subscribe(
+       data => {
+
+       }
+     )
    }
 }

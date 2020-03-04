@@ -45,4 +45,19 @@ export class RestService {
       )
     );
   }
+
+  findDataById(url: string, data: number) {
+    return this.http.get(API_URL+ url + data, http).pipe(
+      map(
+        (res: any) => {
+          return res;
+        },
+        error => {
+          console.log('Error: ', error);
+        }
+      )
+    );
+  }
+
+
 }
