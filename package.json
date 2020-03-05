@@ -44,6 +44,7 @@
     "jquery": "3.4.1",
     "moment": "2.24.0",
     "ngx-spinner": "^8.1.0",
+    "ngx-toastr": "11.3.3",
     "perfect-scrollbar": "1.1.0",
     "popper.js": "1.15.0",
     "primeicons": "^2.0.0",

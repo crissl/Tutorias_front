@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from "@angular/common";
 import { RestService } from 'app/service/rest.service';
+import { ToastrService } from 'ngx-toastr';
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -13,10 +14,15 @@ const formattedDate = formatDate(myDate, format, locale);
 })
 export class SolicitudReforzamientoComponent implements OnInit {
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService,public toast: ToastrService) { }
 
-  nrc1: any ={
-    id:""
+  options: any = {
+    toastLife: 3000,
+    dismiss: "auto",
+    showCloseButton: true
+  };
+  nrc1: any = {
+    id: ""
   }
 
   nrcs: any
@@ -39,22 +45,19 @@ export class SolicitudReforzamientoComponent implements OnInit {
     observacion: "",
     fecha: Date.now(),
   }
-  guardar(nrc,codigo,asignatura,campus,periodo,nivel) {
-    this.datosGuardar = {
-      codigoFormularios: "2",
-      interacion: "0",
-      fechaFormulario: formattedDate,
-      tipoPersona: "ESTUDIANTE",
-      tipoTutoria: "ACOMPANAMIENTO",
-      spridenPidm: this.id,
-      tema: this.tema.tema,
-      observacion: this.observaciones.observacion,
-      estado: "A",
-      
-
-    }
-    //console.log(this.datosGuardar);
-    console.log(nrc+codigo+asignatura+campus+periodo+nivel);
+  nrc: any;
+  codigo: any;
+  asignatura: any;
+  campus: any;
+  periodo: any;
+  nivel: any;
+  guardar(nrc: number, codigo, asignatura, campus, periodo, nivel) {
+    this.nrc = nrc;
+    this.codigo = codigo;
+    this.asignatura = asignatura;
+    this.campus = campus;
+    this.periodo = periodo;
+    this.nivel = nivel;
 
   }
 
@@ -68,5 +71,44 @@ export class SolicitudReforzamientoComponent implements OnInit {
       }
     )
   }
+
+  guardarTutoria() {
+
+    this.datosGuardar = {
+      codigoFormularios: "2",
+      interacion: "0",
+      fechaFormulario: formattedDate,
+      tipoPersona: "ESTUDIANTE",
+      tipoTutoria: "REFORZAMIENTO",
+      spridenPidm: this.id,
+      tema: this.tema.tema,
+      observacion: this.observaciones.observacion,
+      estado: "A",
+      nrc: this.nrc,
+      periodo: this.periodo,
+      nivel: this.nivel,
+      campCode: this.campus,
+      asignatura: this.asignatura,
+      codAsignatura: this.codigo
+    }
+    this.restService.addData(this.datosGuardar,"segu").subscribe(
+      data => {
+
+        if(data){
+          this.toast.success(data.mensaje, "El Formulario", this.options);
+          this.tema =[];
+          this.observaciones.observacion= "";
+          this.nrcs = []
+        }else{
+
+          this.toast.error("No se creo");
+        }
+        
+      }
+    )
+  }
+
+
+
 
 }

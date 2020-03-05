@@ -21,6 +21,8 @@ import { PlanificacionAcompanamientoComponent } from '../../pages/docentes/plani
 import { RegistroAsistenciasComponent } from '../../pages/docentes/registro-asistencias/registro-asistencias.component';
 import { DatosEstudianteComponent } from '../../pages/secciones/datos-estudiante/datos-estudiante.component';
 import { DatosRegistroComponent } from '../../pages/secciones/datos-registro/datos-registro.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import {
   MatButtonModule,
@@ -45,7 +47,7 @@ import { DatosAcademicosComponent } from 'app/pages/secciones/datos-academicos/d
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   declarations: [
     DashboardComponent,

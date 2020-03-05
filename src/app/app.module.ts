@@ -15,6 +15,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {RestService} from 'app/service/rest.service'
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {RestService} from 'app/service/rest.service'
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
