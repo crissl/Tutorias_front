@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "datos-docente.component.scss"
+    ],
+    "names": [],
+    "file": "datos-estudiante.component.css"
+}
