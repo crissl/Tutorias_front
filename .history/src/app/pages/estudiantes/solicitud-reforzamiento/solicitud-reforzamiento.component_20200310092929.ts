@@ -14,7 +14,7 @@ const formattedDate = formatDate(myDate, format, locale);
 })
 export class SolicitudReforzamientoComponent implements OnInit {
 
-  constructor(private restService: RestService, public toast: ToastrService) { }
+  constructor(private restService: RestService ,public toast: ToastrService) { }
 
   options: any = {
     toastLife: 3000,

@@ -32,7 +32,7 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
       this.restService.findDataById("confirmarAsistencia/", this.spidem).subscribe(
         data => {
           this.codA = data
-          console.log(this.codA)
+          console.log(this.c)
         }
       )
     }

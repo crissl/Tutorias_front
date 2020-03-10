@@ -19,20 +19,15 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
   ngOnInit() {
     this.listarFormuConfirma();
   }
-  codigoAs: any;
+
   codigoP: any;
   tema: any;
-  listConf(codigoAs: number, codigo, tema) {
-    this.codigoAs = codigoAs;
-    this.codigoP = codigo;
-    this.tema = tema;
-  }
 
     listarFormuConfirma() {
       this.restService.findDataById("confirmarAsistencia/", this.spidem).subscribe(
         data => {
           this.codA = data
-          console.log(this.codA)
+          //console.log(this.nrcs)
         }
       )
     }

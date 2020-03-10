@@ -10,31 +10,23 @@ import { ToastrService } from 'ngx-toastr';
 export class ConfirmacionAsistenciaComponent implements OnInit {
   constructor(private restService: RestService, public toast: ToastrService) { }
 
-  codA1: any = {
+  nrc1: any = {
     id: ""
   }
   codA: any
   spidem = 357192 ;
 
   ngOnInit() {
-    this.listarFormuConfirma();
-  }
-  codigoAs: any;
-  codigoP: any;
-  tema: any;
-  listConf(codigoAs: number, codigo, tema) {
-    this.codigoAs = codigoAs;
-    this.codigoP = codigo;
-    this.tema = tema;
-  }
 
     listarFormuConfirma() {
       this.restService.findDataById("confirmarAsistencia/", this.spidem).subscribe(
         data => {
           this.codA = data
-          console.log(this.codA)
+          //console.log(this.nrcs)
         }
       )
     }
 
   }
+
+}

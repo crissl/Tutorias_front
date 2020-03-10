@@ -22,17 +22,15 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
   codigoAs: any;
   codigoP: any;
   tema: any;
-  listConf(codigoAs: number, codigo, tema) {
-    this.codigoAs = codigoAs;
-    this.codigoP = codigo;
-    this.tema = tema;
-  }
+  guardar(codigoAs: number, codigo, tema) {
+    this.nrc = nrc;
+    this.tema = codigo;
 
     listarFormuConfirma() {
       this.restService.findDataById("confirmarAsistencia/", this.spidem).subscribe(
         data => {
           this.codA = data
-          console.log(this.codA)
+          //console.log(this.nrcs)
         }
       )
     }
