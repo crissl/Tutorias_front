@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+<h6>
+  *CONFIRMACIÓN POR PARTE DEL ESTUDIANTE, LUEGO DE HABER ASISTIDO A LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO<span class="label label-default"></span>
+</h6>
+
+
+<div class="panel panel-info panel-body" >{{titleEstudiante}}</div>
+<h6>
+  *DATOS GENERALES DEL TUTOR DE ACOMPAÑAMIENTO ACADÉMICO.<span class="label label-default"></span>
+</h6>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">Panel with panel-info class</div>
+  <div class="panel-body">Panel Content</div>
+</div>
+<p>
+  <ngb-alert type="custom" [dismissible]="true"><strong>Whoa!</strong> This is a custom alert.</ngb-alert>
+</p>
+<br>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+

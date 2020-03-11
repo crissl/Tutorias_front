@@ -1,0 +1,104 @@
+
+<div _ngcontent-ecr-c5="" class="main-content">
+  <div _ngcontent-ecr-c5="" class="container-fluid">
+    <div _ngcontent-ecr-c5="" class="row">
+      <div _ngcontent-ecr-c5="" class="col-md-12">
+        <div _ngcontent-ecr-c5="" class="card">
+          <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+            <h4 _ngcontent-ecr-c5="" class="card-title ">
+              Confirmacion Acompañamiento
+            </h4>
+            <p _ngcontent-ecr-c5="" class="card-category">
+              listado de las tutotias de acompañamiento por confirmar
+            </p>
+          </div>
+          
+          <div _ngcontent-ecr-c5="" class="card-body-form-control text-uppercase">
+            <div _ngcontent-ecr-c5="" class="table-responsive">
+              <table _ngcontent-ecr-c5="" class="table" >
+                <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+                  <th _ngcontent-ecr-c5="">Cod Asistentes</th>
+                  <th _ngcontent-ecr-c5="">Cod planificacion</th>
+                  <th _ngcontent-ecr-c5="">Tema</th>
+                  <th _ngcontent-ecr-c5="">Opciones</th>
+                </thead>
+                <tbody _ngcontent-ecr-c5="" class="table-default text-center">
+                  <tr _ngcontent-ecr-c5="" *ngFor= "let formulario of codA">
+                    <td _ngcontent-ecr-c5="" width="15%">{{formulario.uztasistentes_CODIGO}}</td>
+                    <td _ngcontent-ecr-c5="" width="15%">{{formulario.codigo_UZTPLANIF}}</td>
+                    <td _ngcontent-ecr-c5="" width="30%">{{formulario.uztplanif_TEMA}}</td>
+                    <td _ngcontent-ecr-c5="" width="30%">
+                      <ol>
+                        
+                        <li>
+                          <button mat-raised-button (click)="openDialog()">Pick one</button>
+                        </li>
+                        <li *ngIf="animal">
+                          You chose: <i>{{animal}}</i>
+                        </li>
+                      </ol>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div _ngcontent-ecr-c5="" class="col-md-12">
+        <div _ngcontent-ecr-c5="" class="card card-plain">
+          <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+            <h4 _ngcontent-ecr-c5="" class="card-title mt-0">
+              Confirmacion Reforzamiento
+            </h4>
+            <p _ngcontent-ecr-c5="" class="card-category">
+              listado de las tutotias de reforzamiento por confirmar
+            </p>
+          </div>
+          <div _ngcontent-ecr-c5="" class="card-body">
+            <div _ngcontent-ecr-c5="" class="table-responsive">
+              <table _ngcontent-ecr-c5="" class="table table-hover">
+                <thead _ngcontent-ecr-c5="" class="">
+                  <th _ngcontent-ecr-c5="">Cod Asistentes</th>
+                  <th _ngcontent-ecr-c5="">Cod planificacion</th>
+                  <th _ngcontent-ecr-c5="">Tema</th>
+                  <th _ngcontent-ecr-c5="">Opcion</th>
+                </thead>
+                <tbody _ngcontent-ecr-c5="">
+                  <tr _ngcontent-ecr-c5="">
+                    <td _ngcontent-ecr-c5="">1</td>
+                    <td _ngcontent-ecr-c5="">Dakota Rice</td>
+                    <td _ngcontent-ecr-c5="">Niger</td>
+                    <td _ngcontent-ecr-c5="">
+                      
+                      <button
+                      _ngcontent-ukq-c18=""
+                      class="btn btn-primary pull-right mat-raised-button"
+                      mat-raised-button=""
+                      type="submit"
+                    >
+                      <span class="mat-button-wrapper"><i class="material-icons">
+                        verified_user
+                        </i></span>
+                      <div
+                        class="mat-button-ripple mat-ripple"
+                        matripple=""
+                        ng-reflect-centered="false"
+                        ng-reflect-disabled="false"
+                        ng-reflect-trigger="[object HTMLButtonElement]"
+                      ></div>
+                      <div class="mat-button-focus-overlay"></div>
+                    </button>
+
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
