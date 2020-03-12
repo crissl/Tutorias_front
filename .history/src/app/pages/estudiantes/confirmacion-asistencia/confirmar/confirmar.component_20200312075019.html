@@ -1,0 +1,20 @@
+<app-alert></app-alert>
+<div class="container">
+<h6>
+  *CONFIRMACIÓN POR PARTE DEL ESTUDIANTE, LUEGO DE HABER ASISTIDO A LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO<span class="label label-default"></span>
+</h6>
+
+
+<div class="panel panel-info panel-body text-center" >{{titleEstudiante}}</div>
+
+</div>
+
+  <br>
+<div class="container">
+<app-datos-personales></app-datos-personales>
+  
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+

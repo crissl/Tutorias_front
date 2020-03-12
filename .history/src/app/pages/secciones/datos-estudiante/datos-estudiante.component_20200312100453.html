@@ -1,0 +1,33 @@
+<h6>
+  *SOLICITUD DE TUTORÍA POR PARTE DEL ESTUDIANT<span
+    class="label label-default"
+  ></span>
+</h6>
+
+<div class="alert alert-info text-center"  role="alert">{{titleEstudiante}}</div>
+
+<fieldset class="col-12 col-md-12 px-1" <!-- *ngIf="datos"> 
+  <legend class="text-primary">DATOS GENERALES DEL ESTUDIANTE</legend>
+<div class="row">
+  <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input placeholder="CÉDULA DE IDENTIDAD" matInput id="Input" name="cedula" type="text" value="{{Datosp[0].cedula}}" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width">
+        <input placeholder="APELLIDOS Y NOMBRES" matInput id="Input" name="nombres" type="text" value="{{Datosp[0].nombres}}  {{Datosp[0].apellidos}}}" disabled>
+      </mat-form-field>
+    </div>
+    <!-- <div class="col-md-4">
+      <input
+        class="form-control"
+        id="Input"
+        name="carreraestudio"
+        type="text"
+        value=""
+      />
+    </div> -->
+  </div>
+</fieldset>
+  <br>

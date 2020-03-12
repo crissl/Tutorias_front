@@ -1,0 +1,27 @@
+<app-alert></app-alert>
+
+<div class="container">
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-estudiante>
+</div>
+  <br>
+
+  <div class="container">
+    <div class="panel alert-info text-center" role="alert">{{titleTutoria}}</div>
+    <h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+    <div class="form-group">
+      <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
+      <div class="col-md-12">
+        <input class="form-control text-uppercase" name="tema" id="Input" type="text"
+          [(ngModel)]=" tema.tema" />
+      </div>
+    </div>
+  </div>
+  <app-datos-registro [registro]="observaciones"></app-datos-registro>
+  <div class="col-md-12">
+    <button class="btn btn-success" >
+      Enviar
+    </button>
+  </div>
+ 

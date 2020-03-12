@@ -1,0 +1,56 @@
+<h6>
+  *SOLICITUD DE TUTORÍA POR PARTE DEL ESTUDIANT<span
+    class="label label-default"
+  ></span>
+</h6>
+
+<div class="alert alert-info text-center"  role="alert">{{titleEstudiante}}</div>
+<h6>
+  DATOS GENERALES DEL ESTUDIANTE<span class="label label-default"></span>
+</h6>
+
+<div class="form-group">
+  <label for="Input" class="col-md-3 control-label"
+    >CÉDULA DE IDENTIDAD</label>
+   
+    
+   
+  <label for="Input" class="col-sm-5 control-label"
+    >APELLIDOS Y NOMBRES</label
+  >
+  <!-- <label for="Input" class="col-sm-4 control-label">CARRERA DE ESTUDIO</label> -->
+  <p _ngcontent-c9="" class="card-category">POSGRADO SEP 2019 - FEB 2020</p>
+  <div class="row">
+    <div class="col-md-3"
+    class="form-control"
+        id="Input"
+        name="cedula"
+        type="text"
+        value="{{Datosp[0].cedula}}"
+        disabled
+      >
+      
+        
+    </div>
+
+    <div class="col-md-5">
+      <input
+        class="form-control"
+        id="Input"
+        name="nombres"
+        type="text"
+        value="{{Datosp[0].nombres}}  {{Datosp[0].apellidos}}"
+        disabled
+      />
+    </div>
+    <!-- <div class="col-md-4">
+      <input
+        class="form-control"
+        id="Input"
+        name="carreraestudio"
+        type="text"
+        value=""
+      />
+    </div> -->
+  </div>
+  <br>
