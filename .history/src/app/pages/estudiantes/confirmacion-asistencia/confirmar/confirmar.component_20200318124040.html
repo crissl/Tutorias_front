@@ -1,0 +1,23 @@
+<div class="container-responsive">
+  <app-alert></app-alert>
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)"></app-datos-estudiante>
+</div>
+ 
+  
+  <div class="container">
+    <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+      
+    </legend>
+  </div>
+  <br>
+<div class="container">
+<app-datos-docente></app-datos-docente>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+

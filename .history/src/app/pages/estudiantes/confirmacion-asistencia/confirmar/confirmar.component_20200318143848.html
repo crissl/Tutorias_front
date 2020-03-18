@@ -1,0 +1,34 @@
+
+
+<div class="container-responsive">
+  <app-alert></app-alert>
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)"></app-datos-estudiante>
+</div><br><br><br><br><br><br>
+<div class="container-responsive">
+    <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>  
+    </legend>  
+    <div class="col-md-9">
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Option 1</mat-radio-button>
+      <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>  
+  <div class="col-md-9">
+    <mat-form-field class="example-full-width">
+      <mat-label>COMENTARIOS DE LA TUTORIA</mat-label>
+      <input matInput placeholder=""  id="Input" name="tema" type="text"  [(ngModel)]=" tema.tema" (ngModelChange)="value=$event.toUpperCase()">
+    </mat-form-field>
+    
+</div>
+<div class="row text-center">
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+</div>
+
+</div>
+
+
+
+
