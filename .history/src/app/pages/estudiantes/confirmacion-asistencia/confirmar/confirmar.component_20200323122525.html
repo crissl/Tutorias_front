@@ -11,8 +11,8 @@
   <div class="col-md-3">
     <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
     <mat-radio-group aria-label="Select an option">
-      <mat-radio-button  name="opcradio"  value="S">Si&nbsp;&nbsp;</mat-radio-button>
-      <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
+      <mat-radio-button  name="" value="S">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  value="N">No</mat-radio-button>
     </mat-radio-group>  
   </div>
   <div class="col-md-9">
@@ -28,7 +28,7 @@
 <div class="row text-center">
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="guardar()" [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
 </div>
 </div>
 

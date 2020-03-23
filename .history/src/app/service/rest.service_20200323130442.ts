@@ -34,7 +34,7 @@ export class RestService {
   }
  UpData(sistema, update: String) {
     const sistemaUp = JSON.stringify(sistema);
-    return this.http.put(API_URL + update, sistemaUp, http).pipe(
+    return this.http.put(API_URL + update, sistemaAdd, http).pipe(
       map(
         (res: any) => {
           return res;

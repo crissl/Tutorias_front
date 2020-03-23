@@ -15,7 +15,7 @@ const formattedDate = formatDate(myDate, format, locale);
 @Component({
   selector: 'app-confirmar',
   templateUrl: './confirmar.component.html',
-  styleUrls: ['./confirmar.component.scss', './confirmar.component.css']
+  styleUrls: ['./confirmar.component.scss', './confirmar.component.css'],
   
 
 })
@@ -61,27 +61,27 @@ export class ConfirmarComponent implements OnInit {
     this.datosGuardar = {
       codigoFormularios: "6",
       interacion: "0",
-      fechaRegistroAsi: formattedDate,
+      fechaFormulario: formattedDate,
+      tipoPersona: "ESTUDIANTE",
+      tipoTutoria: "CONFIRMACION",
       spridenPidm: this.id,
-      confirmacion: this.opcradio.opcradio,
       comentario: this.comentario.comentario,
-      observacionAsi: this.observaciones.observacion,
+      opcradio: this
+      observacion: this.observaciones.observacion,
       estado: "A"
 
     }
-    this.actualizarTutorias();
+    this.guardarTutorias();
   }
 
-  actualizarTutorias() {
+  guardarTutorias() {
 
-    this.restService.UpData(this.datosGuardar, "segu2").subscribe(
+    this.restService.addData(this.datosGuardar, "segu2").subscribe(
       data => {
         if(data){
           this.toast.success(data.mensaje, "El Formulario", this.options);
-          this.opcradio.opcradio= "";
           this.comentario =[];
           this.observaciones.observacion= "";
-
         }else{
 
           this.toast.error("No se creo");

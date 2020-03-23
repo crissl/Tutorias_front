@@ -61,11 +61,13 @@ export class ConfirmarComponent implements OnInit {
     this.datosGuardar = {
       codigoFormularios: "6",
       interacion: "0",
-      fechaRegistroAsi: formattedDate,
+      fechaFormulario: formattedDate,
+      tipoPersona: "ESTUDIANTE",
+      tipoTutoria: "CONFIRMACION",
       spridenPidm: this.id,
-      confirmacion: this.opcradio.opcradio,
+      opcradio: this.opcradio.opcradio,
       comentario: this.comentario.comentario,
-      observacionAsi: this.observaciones.observacion,
+      observacion: this.observaciones.observacion,
       estado: "A"
 
     }

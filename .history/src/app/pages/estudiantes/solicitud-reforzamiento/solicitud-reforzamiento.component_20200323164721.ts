@@ -15,7 +15,7 @@ const formattedDate = formatDate(myDate, format, locale);
 })
 export class SolicitudReforzamientoComponent implements OnInit {
   titleTutoria = TutoriaConstants.DATOSTUTORIA;
-  titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
+ titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   constructor(private restService: RestService, public toast: ToastrService) { }
 
   options: any = {

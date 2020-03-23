@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { formatDate } from "@angular/common";
 import { RestService } from 'app/service/rest.service';
 import { ToastrService } from 'ngx-toastr';
-import { TutoriaConstants } from 'app/constants/constants';
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -15,7 +14,7 @@ const formattedDate = formatDate(myDate, format, locale);
 })
 export class SolicitudReforzamientoComponent implements OnInit {
   titleTutoria = TutoriaConstants.DATOSTUTORIA;
-  titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
+ titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   constructor(private restService: RestService, public toast: ToastrService) { }
 
   options: any = {

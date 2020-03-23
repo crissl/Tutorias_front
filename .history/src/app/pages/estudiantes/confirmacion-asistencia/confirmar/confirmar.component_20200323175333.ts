@@ -65,7 +65,7 @@ export class ConfirmarComponent implements OnInit {
       spridenPidm: this.id,
       confirmacion: this.opcradio.opcradio,
       comentario: this.comentario.comentario,
-      observacionAsi: this.observaciones.observacion,
+      observacion: this.observaciones.observacion,
       estado: "A"
 
     }
