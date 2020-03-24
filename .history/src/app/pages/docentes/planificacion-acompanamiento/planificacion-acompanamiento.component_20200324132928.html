@@ -1,0 +1,100 @@
+<br><br><br>
+
+<div class="container">
+<h6>
+  *PLANIFICACIÓN DE LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO<span class="label label-default"></span>
+</h6>
+
+
+<div class="alert alert-info" align="center" role="alert">DATOS DEL DOCENTE</div>
+<h6>
+  *DATOS GENERALES DEL TUTOR DE ACOMPAÑAMIENTO ACADÉMICO.<span class="label label-default"></span>
+</h6>
+</div>
+<br>
+<div class="container">
+  <app-datos-docente [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-docente>
+</div>
+ 
+  <div class="container">
+    <div class="alert alert-info" align="center" role="alert">DATOS DE LA TUTORÍA</div>
+    <h6>
+      *INGRESE LA INFORMACIÓN REFERENTE A LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO
+<span class="label label-default"></span>
+    </h6>
+    <div class="row">
+      <label for="Input" class="col-sm-6 control-label">TEMA A TRATAR</label>
+      <label for="Input" class="col-sm-3 control-label">A QUIÉN DARÁ LA TUTORÍA</label>
+      <label for="Input" class="col-sm-3 control-label">FECHA DE TUTORIA</label>
+
+  
+      <div class="col-md-6">
+        <input class="form-control text-uppercase" name="tema" id="Input" type="text" [(ngModel)]=" tema.tema" />
+      </div>
+  
+      <div class="col-md-3">
+        <div class="radio">
+          <label><input type="radio" name="optradio" value="" checked>TODOS</label>
+      </div>
+    
+      <div class="radio">
+          <label><input type="radio" name="optradio" value="" checked>SOLICITADOS POR EL ESTUDIANTE</label>
+      </div>  
+
+    </div>
+    <div class="col-md-3">
+    
+      <input class="form-control" name="fecharegistro" id="Input" type="date"  value="" /><br />
+      
+    </div><br><br><br>
+    <label for="Input" class="col-sm-6 control-label">AULA/LUGAR EN LA QUE SE DARÁ LA TUTORÍA </label>
+    <label for="Input" class="col-sm-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
+    <label for="Input" class="col-sm-3 control-label">HORA FIN DE LA TUTORÍA:</label>
+   
+    <div ng-controller="PageController" class="col-sm-6">
+      <label>
+        <input type="radio" ng-model="opcion.name" value="aula"> Aula 
+      </label>
+      <label>
+        
+      </label>
+
+      <input type="radio" ng-model="opcion.name" value="sitio"> Lugar 
+      <div ng-if="color.name==='aula'?true:false">
+        <label for="Input" class="col-sm-12 control-label">SELECIONE EL AULA Y EL HORARIO EN LA QUE SE DARÁ LA TUTORÍA</label>
+        <div class="col-md-4">
+            <select class="form-control"  name="aula" id="Input">
+                <option selected="selected" value="">Seleccione el Aula y el Horario</option>
+                <option></option>
+            </select>
+        </div>
+      </div>
+     
+    </div>
+    <div class="col-md-3"> <input id="timepicker1" type="text" name="hinicia" class="form-control input-small"></div>
+    <div class="col-md-3"> <input id="timepicker2" type="text" name="hfin" class="form-control input-small"  readonly=""></div>
+
+   
+  </div>
+</div>
+  <div class="container">
+    <br><div class="alert alert-info"  align="center" role="alert">DATOS DEL REGISTRO</div>
+    <h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>
+    <div class="form-group">
+        <label for="Input" class="col-sm-12 control-label">OBSERVACIONES GENERALES</label><br>
+        <div class="col-md-9">
+            <input class="form-control" id="Input" type="text" name="observaciones" placeholder="TRAER MODELO DE BASE DE DATOS DE ACUERDO A SU PROYECTO"><br>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12"  align="center"><button class="btn btn-success" type="submit" name="Submit" onclick="" value="3">Enviar</button></div>
+
+</div>
+<script>
+  var app =angular.module("app",[]);
+app.controller("PageController",function($scope){
+$scope.opcion={name:'sitio'};
+
+});
+</script>

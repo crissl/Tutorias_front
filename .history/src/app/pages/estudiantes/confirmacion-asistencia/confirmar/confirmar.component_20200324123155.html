@@ -1,0 +1,39 @@
+
+
+<div class="container-responsive">
+  <app-alert></app-alert>
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)"></app-datos-estudiante>
+</div><br><br><br><br><br><br>
+<div class="container-responsive">
+    <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span></h6>  
+    </legend>  
+  <div class="col-md-3">
+    <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button  name="opcradio"  value="S">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
+    </mat-radio-group>  
+  </div>
+  <div class="col-md-9">
+    <mat-form-field class="example-full-width">
+      <mat-label>COMENTARIOS DE LA TUTORIA</mat-label>
+      <input matInput placeholder=""  id="Input" name="tema" type="text"  [(ngModel)]=" comentario.comentario" (ngModelChange)="value=$event.toUpperCase()">
+    </mat-form-field> 
+  </div>
+</div><br><br><br><br>
+ <div class="container-responsive">
+<app-datos-registro [registro]="observaciones"></app-datos-registro>
+<br><br>
+<div class="row text-center">
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="actualizar()">ENVIAR</button>
+  <!-- [mat-dialog-close]="data.animal" cdkFocusInitial -->
+</div>
+</div>
+
+
+
+
+
