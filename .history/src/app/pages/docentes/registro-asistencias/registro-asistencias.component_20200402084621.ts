@@ -12,7 +12,7 @@ export class RegistroAsistenciasComponent implements OnInit {
   titleDocente= TutoriaConstants.DATOSDOCENTE;
   titleTutoria= TutoriaConstants.DATOSTUTORIA;
   titleRegistro= TutoriaConstants.DATOSREGISTRO;
-  titleLista=    TutoriaConstants.LISTAESTUDIANTE;
+  titleL
   constructor(private service: PersonalDataService, private restService: RestService ) { }
   options: any = {
     toastLife: 3000,

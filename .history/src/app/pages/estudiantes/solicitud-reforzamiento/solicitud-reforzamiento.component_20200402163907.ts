@@ -59,7 +59,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
     this.asignatura = asignatura;
     this.campus = campus;
     this.periodo = periodo;
-    this.nivel = nivel; 
+    this.nivel = nivel;   respesta
 
   }
 

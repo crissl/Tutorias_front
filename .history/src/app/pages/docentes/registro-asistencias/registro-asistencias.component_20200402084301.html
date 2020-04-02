@@ -1,5 +1,5 @@
 <br><br><br>
-<app-alert></app-alert>>
+
 <div class="container">
 <h6>
     *ESTE FORMULARIO SERÁ UTILIZADO PARA REGISTRAR LA TUTORÍA POR PARTE DEL DOCENTE.<span class="label label-default"></span>
@@ -16,7 +16,7 @@
     <app-datos-docente [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-docente>
 </div>
 <div class="container">
-    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4>h4></div>
     <h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA <span class="label label-default" ></span></h6>
     <div class="form-group">
         <label for="Input" class="col-sm-6 control-label">TEMA TRATADO</label><br>
@@ -49,7 +49,7 @@
 </div>   
 </div>  
 <div class="container">
-    <br><div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleLista}}</h4></ul></div>
+    <br><div class="panel panel-info panel-body text-center" role="alert">LISTADO DE ESTUDIANTES</div>
     <h6>*REGISTRO DEL ID O CÉDULA DE LOS ESTUDIANTES QUE ASISTIERON A LA TUTORÍA<span class="label label-default"></span></h6>
     <div class="form-group">
         <label for="Input" class="col-sm-6 control-label">ID O CÉDULA DELOS ESTUDIANTES</label><br>
@@ -85,10 +85,10 @@
     </div>
 </div>
 <div class="form-control" style="display:none">
-    <input name="var" value="">>
+    <input name="var" value="">
 </div>
 <div class="container">
-    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <div class="panel panel-info panel-body text-center" role="alert">DATOS DE LA TUTORÍA</div>
     <h6>
       *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
     </h6>
@@ -100,9 +100,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
   <app-datos-registro [registro]="observaciones"></app-datos-registro>
-  </div>
   <div class="col-md-12" align="center">
     <button class="btn btn-success"  (click)="guardar()">
       Enviar

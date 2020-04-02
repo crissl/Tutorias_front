@@ -29,7 +29,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
 
   nrcs: any
   datosGuardar: any;
-  spidem = 334571;
+  spidem = 37991;
   cedula = "1725412306";
   ngOnInit() {
     this.listarNrc();
@@ -59,7 +59,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
     this.asignatura = asignatura;
     this.campus = campus;
     this.periodo = periodo;
-    this.nivel = nivel; 
+    this.nivel = nivel;
 
   }
 
