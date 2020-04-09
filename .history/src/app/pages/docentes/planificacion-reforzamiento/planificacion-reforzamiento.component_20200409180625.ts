@@ -49,7 +49,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   
   ngOnInit() {
     this.listarNrc();
-    this.listarHorario();
+    this
 
    }
    id:any

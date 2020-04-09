@@ -39,17 +39,16 @@ export class PlanificacionReforzamientoComponent implements OnInit {
 
   campus1 = "10";
   dia1 = "SZARPGN_CAMPVA10";
-  hora_INICIO = "0715";
-  hora_FIN = "0915";
+  hora_INICI = 0715;
+  hora_FIN: any;
   dia: any;
   aulas: any;
   horario: any;
-  horariosSelected: any;
+  
 
   
   ngOnInit() {
     this.listarNrc();
-    this.listarHorario();
 
    }
    id:any
@@ -129,7 +128,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   }
   listarHorario() {
 
-    this.restService.findDataByHorarioReforzamiento("horarioPlanificacion/", this.campus1,"/", this.dia1,"/",this.hora_INICIO,"/",this.hora_FIN).subscribe(
+    this.restService.findDataByHorarioReforzamiento("horario/", this.campus1,"/", this.dia1,"/",this.hora_INICIO,"/",this.hora_FIN).subscribe(
       data => {
         if (data) {
           console.log('datos2', data)

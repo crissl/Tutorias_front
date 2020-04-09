@@ -90,7 +90,7 @@ export class RestService {
     );
   }
   findDataByHorarioReforzamiento(url: string, campus: string, slash:string, dia: string, slash1:string, hora_INICIO: string, slash2:string, hora_FIN: string) {
-    return this.http.get(API_URL+ url + campus + slash + dia + slash1 + hora_INICIO + slash2 + hora_FIN, http).pipe(
+    return this.http.get(API_URL+ url + campus + slash + dia + slash + hora_INICIO + slash1 + hora_FIN, http).pipe(
       map(
         (res: any) => {
           return res;
