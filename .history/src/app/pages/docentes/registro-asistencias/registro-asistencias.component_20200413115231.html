@@ -1,0 +1,110 @@
+<br><br><br>
+<app-alert></app-alert>>
+<div class="container">
+<h6>
+    *ESTE FORMULARIO SERÁ UTILIZADO PARA REGISTRAR LA TUTORÍA POR PARTE DEL DOCENTE.<span class="label label-default"></span>
+</h6>
+
+
+<div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleDocente}}</h4></ul></div>
+<h6>
+    *DATOS DEL TUTOR.<span class="label label-default"></span>
+</h6>
+</div>
+<br>
+<div class="container">
+    <app-datos-docente [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-docente>
+</div>
+<div class="container">
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA <span class="label label-default" ></span></h6>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">TEMA TRATADO</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="tematratado" id="Input" type="text" value=""readonly ><br>
+        </div>
+        <label for="Input" class="col-sm-6 control-label">RESULTADOS OBTENIDOS</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="resultados" id="Input" type="text" placeholder="ESTUDIANTES ENTENDIERON PUNTOS IMPORTANTES DEL REGLAMENTO" required><br>
+        </div>
+     </div>
+<div class="container">
+    <div class="row">
+    <label for="Input" class="col-sm-3 control-label">FECHA DE LA TUTORÍA</label>
+    <label for="Input" class="col-md-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
+    <label for="Input" class="col-md-6 control-label">HORA FIN DE LA TUTORÍA:</label>
+
+
+    <div class="col-md-3">
+        <input class="form-control" name="fechatutoria" id="Input" type="text" value="">   
+    </div>
+    <div class="col-md-3">
+        <input id = "timepicker1" type = "text" name="hinicia" class = "form-control input-small" readonly>   
+    
+    </div>
+    <div class="col-md-3">
+    <input id = "timepicker2" type = "text" name="hfin" class="form-control input-small" readonly>   
+     </div>
+     </div>
+</div>   
+</div>  
+<div class="container">
+    <br><div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleLista}}</h4></ul></div>
+    <h6>*REGISTRO DEL ID O CÉDULA DE LOS ESTUDIANTES QUE ASISTIERON A LA TUTORÍA<span class="label label-default"></span></h6>
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+          <mat-cell *matCellDef="let element">  </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+          <mat-cell *matCellDef="let element">  </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+</div>
+<div class="form-control" style="display:none">
+    <input name="var" value="">>
+</div>
+<div class="container">
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+    <div class="form-group">
+      <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
+      <div class="col-md-12">
+        <input class="form-control text-uppercase" name="tema" id="Input" type="text"
+          [(ngModel)]=" tema.tema" />
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <app-datos-registro [registro]="observaciones"></app-datos-registro>
+  </div>
+  <div class="col-md-12 centerbtn">
+    <button class="btn btn-success"  (click)="guardar()">
+      Enviar
+    </button>
+  </div>      
+        
+          
+

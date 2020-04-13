@@ -1,0 +1,119 @@
+<br><br><br>
+<app-alert></app-alert>>
+<div class="container">
+<h6>
+    *ESTE FORMULARIO SERÁ UTILIZADO PARA REGISTRAR LA TUTORÍA POR PARTE DEL DOCENTE.<span class="label label-default"></span>
+</h6>
+
+
+<div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleDocente}}</h4></ul></div>
+<h6>
+    *DATOS DEL TUTOR.<span class="label label-default"></span>
+</h6>
+</div>
+<br>
+<div class="container">
+    <app-datos-docente [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-docente>
+</div>
+<div class="container">
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA <span class="label label-default" ></span></h6>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">TEMA TRATADO</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="tematratado" id="Input" type="text" value=""readonly ><br>
+        </div>
+        <label for="Input" class="col-sm-6 control-label">RESULTADOS OBTENIDOS</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="resultados" id="Input" type="text" placeholder="ESTUDIANTES ENTENDIERON PUNTOS IMPORTANTES DEL REGLAMENTO" required><br>
+        </div>
+     </div>
+<div class="container">
+    <div class="row">
+    <label for="Input" class="col-sm-3 control-label">FECHA DE LA TUTORÍA</label>
+    <label for="Input" class="col-md-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
+    <label for="Input" class="col-md-6 control-label">HORA FIN DE LA TUTORÍA:</label>
+
+
+    <div class="col-md-3">
+        <input class="form-control" name="fechatutoria" id="Input" type="text" value="">   
+    </div>
+    <div class="col-md-3">
+        <input id = "timepicker1" type = "text" name="hinicia" class = "form-control input-small" readonly>   
+    
+    </div>
+    <div class="col-md-3">
+    <input id = "timepicker2" type = "text" name="hfin" class="form-control input-small" readonly>   
+     </div>
+     </div>
+</div>   
+</div>  
+<div class="container">
+    <br><div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleLista}}</h4></ul></div>
+    <h6>*REGISTRO DEL ID O CÉDULA DE LOS ESTUDIANTES QUE ASISTIERON A LA TUTORÍA<span class="label label-default"></span></h6>
+
+    <div _ngcontent-ecr-c5="" class="table-responsive">
+        <table _ngcontent-ecr-c5="" class="table" >
+          <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+            <th _ngcontent-ecr-c5=""  width="15%">Cod Asistentes</th>
+            <th _ngcontent-ecr-c5=""  width="15%">Cod planificacion</th>
+            <th _ngcontent-ecr-c5=""  width="40%">Tema</th>
+            <th _ngcontent-ecr-c5=""  width="5%">Opciones</th>
+          </thead>
+          
+          <tbody _ngcontent-ecr-c5="" class="table-default  text-center" style="text-align: center" >
+            <tr _ngcontent-ecr-c5="" *ngFor= "let formulario of codA">
+              <td _ngcontent-ecr-c5="" width="10%">{{formulario.uztasistentes_CODIGO}}</td>
+              <td _ngcontent-ecr-c5="" width="10%">{{formulario.codigo_UZTPLANIF}}</td>
+              <td _ngcontent-ecr-c5="" >{{formulario.uztplanif_TEMA}}</td>
+              <td _ngcontent-ecr-c5="" >
+                <ol >
+                  
+                    <button  type="button" class="btn btn-outline-primary"  (click)="openDialog()"><span class="mat-button-wrapper"><i class="material-icons "> verified_user</i></span></button>
+                    <div
+                    class="mat-button-ripple mat-ripple"
+                    matripple=""
+                    ng-reflect-centered="false"
+                    ng-reflect-disabled="false"
+                    ng-reflect-trigger="[object HTMLButtonElement]">
+                  </div>
+                  <div class="mat-button-focus-overlay"></div>
+                  <li *ngIf="animal">
+                    You chose: <i>{{animal}}</i>
+                  
+                </ol>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+</div>
+<div class="form-control" style="display:none">
+    <input name="var" value="">>
+</div>
+<div class="container">
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+    <div class="form-group">
+      <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
+      <div class="col-md-12">
+        <input class="form-control text-uppercase" name="tema" id="Input" type="text"
+          [(ngModel)]=" tema.tema" />
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <app-datos-registro [registro]="observaciones"></app-datos-registro>
+  </div>
+  <div class="col-md-12 centerbtn">
+    <button class="btn btn-success"  (click)="guardar()">
+      Enviar
+    </button>
+  </div>      
+        
+          
+
