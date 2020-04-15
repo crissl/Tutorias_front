@@ -103,6 +103,11 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     showCloseButton: true
   }
 
+  options2: any = {
+    toastLife: 3000,
+    dismiss: "auto",
+    showCloseButton: false
+  }
   ngOnInit() {
     this.listarCamp();
     //this.listarHorario();
@@ -198,7 +203,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       data => {
         if(data.mensaje){
 
-          this.toast.info(data.mensaje, "Para este campus", this.options);
+          this.toast.error(data.mensaje, "El Formulario", this.options);
 
 
         }else{

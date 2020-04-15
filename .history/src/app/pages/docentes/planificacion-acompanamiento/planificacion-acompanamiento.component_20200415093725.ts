@@ -11,6 +11,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
+import { ToastrService } from 'ngx-toastr';
 
 
 const format = 'dd/MM/yyyy';
@@ -51,7 +52,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   titleRegistro = TutoriaConstants.DATOSREGISTRO;
 
   constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
- 
+
 
   datosGuardar: any;
   ncr: any;
@@ -196,15 +197,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   listarHorario(codigo: number,horarioInicio:any,horarioFin:any) {
     this.restService.get('horario/' + codigo + '/' + this.dia).subscribe(
       data => {
-        if(data.mensaje){
-
-          this.toast.info(data.mensaje, "Para este campus", this.options);
-
-
-        }else{
-          this.aulas = data;
-
-        }
+        this.aulas = data;
         //this.horaInicio = data.hora_INICIO;
 
         

@@ -100,7 +100,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   options: any = {
     toastLife: 3000,
     dismiss: "auto",
-    showCloseButton: true
+    showCloseButton: false
   }
 
   ngOnInit() {
@@ -196,15 +196,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   listarHorario(codigo: number,horarioInicio:any,horarioFin:any) {
     this.restService.get('horario/' + codigo + '/' + this.dia).subscribe(
       data => {
-        if(data.mensaje){
-
-          this.toast.info(data.mensaje, "Para este campus", this.options);
-
-
-        }else{
-          this.aulas = data;
-
-        }
+        this.aulas = data;
         //this.horaInicio = data.hora_INICIO;
 
         

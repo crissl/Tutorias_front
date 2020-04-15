@@ -103,6 +103,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     showCloseButton: true
   }
 
+
   ngOnInit() {
     this.listarCamp();
     //this.listarHorario();
@@ -198,7 +199,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       data => {
         if(data.mensaje){
 
-          this.toast.info(data.mensaje, "Para este campus", this.options);
+          this.toast.error(data.mensaje, "En el Formulario", this.options);
 
 
         }else{

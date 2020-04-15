@@ -44,7 +44,7 @@
       <!-- <mat-form-field> -->
       <!-- <mat-label>SELECCIONE</mat-label> -->
       <mat-radio-group aria-label="Selecione ">
-        <mat-radio-button value="T">TODOS</mat-radio-button><br />
+        <mat-radio-button value="AT">TODOS</mat-radio-button><br />
         <mat-radio-button value="S">SOLICITADOS POR EL ESTUDIANTE</mat-radio-button>
       </mat-radio-group>
       <!-- </mat-form-field> -->
@@ -71,9 +71,8 @@
 
       <ng-container *ngIf="expressType === 'AULA'">
         <div class="row">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <mat-form-field>
-              <mat-label>Seleccione primero campus</mat-label>
               <mat-select [(ngModel)]="campusSelected" name="campus" #select1="ngModel" required>
                 <mat-option *ngFor="let codigo of codigos" value="{{ codigo.codigo }}"
                   (click)="guardar(codigo.codigo, codigo.campus);listarHorario(codigo.codigo)">
@@ -84,9 +83,8 @@
             </mat-form-field>
           </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <mat-form-field>
-              <mat-label>Seleccione ahora horario</mat-label>
               <mat-select class="select" [(ngModel)]="horarioSelected" name="horario" #select2="ngModel" required>
                 <mat-option *ngFor="let aula of aulas" value="{{ aula.aula }}" (click)="
                     guardar2(
@@ -121,7 +119,8 @@
         <label class="col-sm-6 control-label">INGRESE EL LUGAR EN LA QUE SE DARÁ LA TUTORÍA</label>
         <div class="row">
           <div class="col-md-6">
-            
+            <mat-label>Selecione fecha</mat-label>
+
             <input type="text" class="form-control" name="" placeholder="Ingrese el Lugar" />
           </div>
           <div class="col-md-3">

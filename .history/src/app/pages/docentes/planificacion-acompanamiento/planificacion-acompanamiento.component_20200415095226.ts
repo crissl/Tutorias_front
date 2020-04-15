@@ -198,7 +198,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       data => {
         if(data.mensaje){
 
-          this.toast.info(data.mensaje, "Para este campus", this.options);
+          this.toast.(data.mensaje, "En el Formulario", this.options, "seleccione");
 
 
         }else{
