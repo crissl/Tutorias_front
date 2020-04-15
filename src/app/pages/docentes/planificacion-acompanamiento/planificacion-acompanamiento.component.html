@@ -103,7 +103,7 @@
                 <mat-option
                   *ngFor="let codigo of codigos"
                   value="{{ codigo.codigo }}"
-                  (click)="guardar(codigo.codigo, codigo.campus)"
+                  (click)="guardar(codigo.codigo, codigo.campus);listarHorario(codigo.codigo)"
                 >
                   {{ codigo.codigo }}-{{ codigo.campus }}
                 </mat-option>
@@ -129,12 +129,11 @@
                       aula.aula,
                       aula.horario,
                       aula.hora_INICIO,
-                      aula.hora_FINaula.hora_FIN
-                    )
+                      aula.hora_FIN
+                    );selectHour(aula)
                   "
                 >
-                  {{ aula.aula }}-{{ aula.horario }} {{ aula.hora_INICIO }}
-                  {{ aula.hora_FIN }}
+                  {{ aula.aula }}    {{ aula.horario }} 
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="select2.hasError('required')"
@@ -151,6 +150,7 @@
                 name="hinicia"
                 type="text"
                 disabled
+                [(ngModel)]="horaFormatoI"
               />
             </mat-form-field>
           </div>
@@ -163,6 +163,7 @@
                 name="hinicia"
                 type="text"
                 disabled
+                [(ngModel)]="horaFormatoF"
               />
             </mat-form-field>
           </div>

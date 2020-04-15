@@ -6,10 +6,11 @@ import { MatRadioButton, MatRadioChange } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TutoriaConstants } from 'app/constants/constants';
-import {FormControl} from '@angular/forms';
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { FormControl } from '@angular/forms';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
+import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
 
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
@@ -19,7 +20,7 @@ const formattedDate = formatDate(myDate, format, locale);
 interface Dia {
   dia: string;
   nombre: string;
- }
+}
 
 @Component({
   selector: 'app-planificacion-acompanamiento',
@@ -35,19 +36,19 @@ interface Dia {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
 
-    {provide: MAT_DATE_FORMATS, useValue:MAT_MOMENT_DATE_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
 
 })
 
 export class PlanificacionAcompanamientoComponent implements OnInit {
-  @Input() registro:any
+  @Input() registro: any
   @Input() datos: boolean;
   @Output() propagar = new EventEmitter<string>();
   titleDocente = TutoriaConstants.DATOSDOCENTE;
   titleTutoria = TutoriaConstants.DATOSTUTORIA;
   titleRegistro = TutoriaConstants.DATOSREGISTRO;
- 
+
   constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
 
 
@@ -79,11 +80,11 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   ];
 
 
- 
+
   hora_INICIO: any = {
     hora_INICIO: ""
   }
-  
+
   hora_FIN: any = {
     hora_FIN: ""
   }
@@ -103,7 +104,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   ngOnInit() {
     this.listarCamp();
-    this.listarHorario();
+    //this.listarHorario();
 
   }
   procesaPropagar(data) {
@@ -121,7 +122,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   }
 
-  guardar2( aula, horario, hora_INICIO, hora_FIN) {
+  guardar2(aula, horario, hora_INICIO, hora_FIN) {
     this.aula = aula;
     this.horario = horario;
     this.hora_INICIO = hora_INICIO;
@@ -141,7 +142,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       tema: this.tema.tema,
       observacion: this.observaciones.observacion,
       estado: "A",
-      publico:"T",
+      publico: "T",
       aula: this.aula.aula,
       fechaTutoria: MAT_DATE_FORMATS,
       horaInicio: this.hora_INICIO.hora_INICIO,
@@ -160,11 +161,11 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     console.log('guardar')
     this.restService.addData(this.datosGuardar, "crearPlanificacion").subscribe(
       data => {
-        if(data){
+        if (data) {
           this.toast.success(data.mensaje, "El Formulario", this.options);
-          this.tema =[];
-          this.observaciones.observacion= "";
-        }else{
+          this.tema = [];
+          this.observaciones.observacion = "";
+        } else {
 
           this.toast.error("No se creo");
         }
@@ -177,28 +178,39 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   listarCamp() {
     this.restService.get('getCampus').subscribe(
       data => {
+        console.log(data);
         if (data) {
           console.log('datos', data)
           this.codigos = data;
-          console.log("se listo" + this.codigos);
-          console.log("se listo" + this.codigos.codigo);
+          // console.log("se listo" + this.codigos);
+          //console.log("se listo" + this.codigos.codigo);
         }
       }
     )
   }
-  listarHorario() {
+  dias: number = 10;
 
-    this.restService.findDataByCampus("horario/", this.campus1,"/", this.dia).subscribe(
+  horaInicio:any;
+  horaFin:any;
+  listarHorario(codigo: number,horarioInicio:any,horarioFin:any) {
+    this.restService.get('horario/' + codigo + '/' + this.dia).subscribe(
       data => {
-        if (data) {
-          console.log('datos2', data)
-          this.aulas = data;
-          console.log("se listo" + this.aulas);
+        this.aulas = data;
+        //this.horaInicio = data.hora_INICIO;
 
-        }
+        
       }
-
     )
+  }
+ horaFormatoI:any;
+ horaFormatoF:any;
+  selectHour(aula: any){
+    this.horaInicio = aula.hora_INICIO;
+    this.horaFin = aula.hora_FIN
+    console.log(this.horaInicio)
+    this.horaFormatoI = (this.horaInicio).slice(0,2)+ ":" +(this.horaInicio).slice(2);
+    this.horaFormatoF = (this.horaFin).slice(0,2)+ ":" +(this.horaFin).slice(2);
+    
   }
 
 
@@ -206,7 +218,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   typeExpress: string[] = ['AULA', 'LUGAR'];
 
   radioOptions: FormGroup;
-  
+
   date = new FormControl(moment());
 
 }
