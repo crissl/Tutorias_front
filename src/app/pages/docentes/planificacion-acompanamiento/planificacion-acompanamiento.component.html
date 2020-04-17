@@ -33,7 +33,7 @@
     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
       <mat-form-field class="example-full-width">
         <mat-label>TEMA A TRATAR</mat-label>
-        <textarea matInput placeholder="" id="Input" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
+        <textarea matInput placeholder="" id="Input9" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
       </mat-form-field>
     </div>
     <!-- <div class="col-md-6">
@@ -43,8 +43,8 @@
     <div class="col-12 col-sm-12 col-md-5 col-lg-4">
       <!-- <mat-form-field> -->
       <!-- <mat-label>SELECCIONE</mat-label> -->
-      <mat-radio-group aria-label="Selecione ">
-        <mat-radio-button value="T">TODOS</mat-radio-button><br />
+      <mat-radio-group aria-label="Selecione " [(ngModel)]="publico">
+        <mat-radio-button value="T" >TODOS</mat-radio-button><br />
         <mat-radio-button value="S">SOLICITADOS POR EL ESTUDIANTE</mat-radio-button>
       </mat-radio-group>
       <!-- </mat-form-field> -->
@@ -105,13 +105,13 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-2">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" disabled
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input18" name="hinicia" type="text" disabled
                 [(ngModel)]="horaFormatoI" />
             </mat-form-field>
           </div>
           <div class="col-12 col-sm-12 col-md-6 col-lg-2">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" disabled
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input2" name="hinicia1" type="text" disabled
                 [(ngModel)]="horaFormatoF" />
             </mat-form-field>
           </div>
@@ -126,12 +126,12 @@
           </div>
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" value="" />
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia4" type="text" value="" />
             </mat-form-field>
           </div>
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" value="" />
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hinicia11" type="text" value="" />
             </mat-form-field>
           </div>
         </div>
@@ -153,13 +153,13 @@
   <div class="form-group">
     <label for="Input" class="col-sm-12 control-label">OBSERVACIONES GENERALES</label><br />
     <div class="col-md-9">
-      <input class="form-control" id="Input" type="text" name="observaciones"
+      <input class="form-control" id="Input0" type="text" name="observaciones"
         placeholder="TRAER MODELO DE BASE DE DATOS DE ACUERDO A SU PROYECTO" /><br />
     </div>
   </div>
 
   <div class="col-md-12 centerbtn">
-    <button class="btn btn-success" type="submit" name="Submit" onclick="guardarTutorias()" value="3">
+    <button class="btn btn-success" type="submit" name="Submit" (click)="guardarAcompanamiento()">
       Enviar
     </button>
   </div>

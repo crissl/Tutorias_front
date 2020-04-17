@@ -23,6 +23,7 @@ interface Dia {
   nombre: string;
 }
 
+
 @Component({
   selector: 'app-planificacion-acompanamiento',
   templateUrl: './planificacion-acompanamiento.component.html',
@@ -69,6 +70,8 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   // hora_INICIO: any;
   // hora_FIN: any;
   aula1: any;
+  publico: string;
+
 
   myDate: Dia[] = [
     { dia: 'domingo-1', nombre: 'SZARPGN_CAMPVA15' },
@@ -128,37 +131,39 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     this.horario = horario;
     this.hora_INICIO = hora_INICIO;
     this.hora_FIN = hora_FIN;
-
-
   }
 
   guardarAcompanamiento() {
-    this.datosGuardar = {
-      codigoFormularios: "3",
-      interacion: "0",
-      fechaFormulario: formattedDate,
-      tipoPersona: "ESTUDIANTE",
-      tipoTutoria: "PLANIFICACION ACOMPANAMIENTO",
-      spridenPidm: this.id,
-      tema: this.tema.tema,
-      observacion: this.observaciones.observacion,
-      estado: "A",
-      publico: "T",
-      aula: this.aula.aula,
-      fechaTutoria: MAT_DATE_FORMATS,
-      horaInicio: this.hora_INICIO.hora_INICIO,
-      horaFin: this.hora_FIN.hora_FIN,
-      fechaCrea: MAT_MOMENT_DATE_FORMATS,
-      usuaCrea: this.spidem
+    // this.datosGuardar = {
+    //   codigoFormularios: "3",
+    //   interacion: "0",
+    //   fechaFormulario: formattedDate,
+    //   tipoPersona: "ESTUDIANTE",
+    //   tipoTutoria: "PLANIFICACION ACOMPANAMIENTO",
+    //   spridenPidm: this.id,
+    //   tema: this.tema.tema,
+    //   observacion: this.observaciones.observacion,
+    //   estado: "A",
+    //   publico: this.publico,
+    //   aula: this.aula.aula,
+    //   fechaTutoria: MAT_DATE_FORMATS,
+    //   horaInicio: this.hora_INICIO.hora_INICIO,
+    //   horaFin: this.hora_FIN.hora_FIN,
+    //   fechaCrea: MAT_MOMENT_DATE_FORMATS,
+    //   usuaCrea: this.spidem,
+    //   campcode:1
 
+    // }
+    //this.guardarTutorias();
+    if(this.publico =='T'){
+      this.buscartodos();
+    }else{
+      this.buscaSolicitado();
     }
-    this.guardarTutorias();
   }
 
 
   guardarTutorias() {
-
-
     console.log('guardar')
     this.restService.addData(this.datosGuardar, "crearPlanificacion").subscribe(
       data => {
@@ -231,6 +236,23 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   radioOptions: FormGroup;
 
   date = new FormControl(moment());
+
+  buscartodos(){
+    this.restService.get('convocadosTodosAcompanamiento/'+this.spidem).subscribe(
+      data =>{
+        console.log('todos')
+      }
+    )
+
+  }
+
+  buscaSolicitado(){
+    this.restService.get('/convocadosSolicitadosAcompanamiento/'+this.spidem).subscribe(
+      data =>{
+        console.log('solicitado')
+      }
+    )
+  }
 
 }
 
