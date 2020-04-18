@@ -11,14 +11,14 @@
   <div class="col-md-3">
     <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
     <mat-radio-group aria-label="Select an option">
-      <mat-radio-button  name="opcradio"  [(ngModel)]="S">Si&nbsp;&nbsp;</mat-radio-button>
-      <mat-radio-button  name="opcradio"  [(ngModel)]="N">No</mat-radio-button>
+      <mat-radio-button  name="opcradio"  value="S">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
     </mat-radio-group>  
   </div>
   <div class="col-md-9">
     <mat-form-field class="example-full-width">
       <mat-label>COMENTARIOS DE LA TUTORIA</mat-label>
-      <input matInput placeholder=""  id="Input" name="tema" type="text"  [(ngModel)]="confirmacion.comentario" (ngModelChange)="value=$event.toUpperCase()">
+      <input matInput placeholder=""  id="Input" name="tema" type="text"  [(ngModel)]="confirmacion.usuarioCrea" (ngModelChange)="value=$event.toUpperCase()">
     </mat-form-field> 
   </div>
 </div><br><br><br><br>
@@ -32,13 +32,13 @@
     <div class="col-md-9">
         <mat-form-field class="example-full-width">
           <mat-label>OBSERVACIONES GENERALES</mat-label>
-          <textarea matInput placeholder="" id="Input" name="observaciones" type="text" [(ngModel)]="confirmacion.observacionAsi"></textarea>
+          <textarea matInput placeholder="" id="Input" name="observaciones" type="text" [(ngModel)]="confirmacion.observacion"></textarea>
         </mat-form-field>
     </div>
    <div class="col-md-3">
         <mat-form-field class="example-full-width">
           <mat-label>FECHA DE REGISTRO</mat-label>
-          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="{{fecha | date: 'yyyy-MM-dd'}}"></textarea>
+          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="{{registro.fecha | date: 'yyyy-MM-dd'}}"></textarea>
         </mat-form-field>
     </div>
 

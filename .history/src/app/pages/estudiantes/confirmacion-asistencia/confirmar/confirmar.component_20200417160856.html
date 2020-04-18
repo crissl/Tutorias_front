@@ -11,8 +11,8 @@
   <div class="col-md-3">
     <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
     <mat-radio-group aria-label="Select an option">
-      <mat-radio-button  name="opcradio"  [(ngModel)]="S">Si&nbsp;&nbsp;</mat-radio-button>
-      <mat-radio-button  name="opcradio"  [(ngModel)]="N">No</mat-radio-button>
+      <mat-radio-button  name="opcradio"  value="S">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
     </mat-radio-group>  
   </div>
   <div class="col-md-9">
@@ -38,7 +38,7 @@
    <div class="col-md-3">
         <mat-form-field class="example-full-width">
           <mat-label>FECHA DE REGISTRO</mat-label>
-          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="{{fecha | date: 'yyyy-MM-dd'}}"></textarea>
+          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="{{confirmacion.= Date.now(); | date: 'yyyy-MM-dd'}}"></textarea>
         </mat-form-field>
     </div>
 

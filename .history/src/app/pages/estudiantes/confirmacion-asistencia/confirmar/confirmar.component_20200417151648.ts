@@ -34,7 +34,7 @@ export class ConfirmarComponent implements OnInit {
     };
     datosGuardar: any;
     ncr: any;
-    fecha= Date.now();
+    fecha: any;
     cedula = "1725412306";
   ngOnInit() {
   //  console.log(this.data)
@@ -63,9 +63,9 @@ export class ConfirmarComponent implements OnInit {
       interacion: "0",
       fechaRegistroAsi: formattedDate,
       spridenPidm: this.id,
-      confirmacion: this.opcradio,
+      confirmacion: this.opcradio.opcradio,
       comentario: this.comentario.comentario,
-      observacionAsi: this.confirmacion.observacion,
+      observacionAsi: this.observaciones.observacion,
       estado: "A"
 
     }

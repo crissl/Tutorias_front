@@ -34,7 +34,7 @@ export class ConfirmarComponent implements OnInit {
     };
     datosGuardar: any;
     ncr: any;
-    fecha= Date.now();
+  
     cedula = "1725412306";
   ngOnInit() {
   //  console.log(this.data)
@@ -52,9 +52,11 @@ export class ConfirmarComponent implements OnInit {
     opcradio: ""
   }
 
-
-
-  
+  public observaciones: any = {
+    observacion: "",
+    fecha: Date.now(),
+  }
+  fecha =Date.now()
 
 
   actualizar() {
@@ -63,9 +65,9 @@ export class ConfirmarComponent implements OnInit {
       interacion: "0",
       fechaRegistroAsi: formattedDate,
       spridenPidm: this.id,
-      confirmacion: this.opcradio,
+      confirmacion: this.opcradio.opcradio,
       comentario: this.comentario.comentario,
-      observacionAsi: this.confirmacion.observacion,
+      observacionAsi: this.observaciones.observacion,
       estado: "A"
 
     }
@@ -80,7 +82,7 @@ export class ConfirmarComponent implements OnInit {
           this.toast.success(data.mensaje, "El Formulario", this.options);
           this.opcradio.opcradio= "";
           this.comentario =[];
-          this.confirmacion.observacion= "";
+          this.observaciones.observacion= "";
 
         }else{
 
