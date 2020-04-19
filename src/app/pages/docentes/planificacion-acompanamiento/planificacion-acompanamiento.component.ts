@@ -13,6 +13,9 @@ import * as moment from 'moment';
 import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
 
 
+//import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../../Formatos/format-datepicker';
+
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -39,6 +42,9 @@ interface Dia {
     },
 
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    {provide: DateAdapter, useClass: AppDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+    
   ],
 
 })
@@ -52,7 +58,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   titleRegistro = TutoriaConstants.DATOSREGISTRO;
 
   constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
- 
+
 
   datosGuardar: any;
   ncr: any;
@@ -134,32 +140,32 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   }
 
   guardarAcompanamiento() {
-    // this.datosGuardar = {
-    //   codigoFormularios: "3",
-    //   interacion: "0",
-    //   fechaFormulario: formattedDate,
-    //   tipoPersona: "ESTUDIANTE",
-    //   tipoTutoria: "PLANIFICACION ACOMPANAMIENTO",
-    //   spridenPidm: this.id,
-    //   tema: this.tema.tema,
-    //   observacion: this.observaciones.observacion,
-    //   estado: "A",
-    //   publico: this.publico,
-    //   aula: this.aula.aula,
-    //   fechaTutoria: MAT_DATE_FORMATS,
-    //   horaInicio: this.hora_INICIO.hora_INICIO,
-    //   horaFin: this.hora_FIN.hora_FIN,
-    //   fechaCrea: MAT_MOMENT_DATE_FORMATS,
-    //   usuaCrea: this.spidem,
-    //   campcode:1
-
-    // }
-    //this.guardarTutorias();
-    if(this.publico =='T'){
-      this.buscartodos();
-    }else{
-      this.buscaSolicitado();
+    this.datosGuardar = {
+      codigoFormularios: "3",
+      interacion: "0",
+      fechaFormulario: Date.now(),
+      tipoPersona: "ESTUDIANTE",
+      tipoTutoria: "PLANIFICACION ACOMPANAMIENTO",
+      spridenPidm: this.id,
+      tema: this.tema.tema,
+      observacion: this.observaciones.observacion,
+      estado: "A",
+      publico: this.publico,
+      aula: this.aula.aula,
+      fechaTutoria: MAT_DATE_FORMATS,
+      horaInicio: this.hora_INICIO.hora_INICIO,
+      horaFin: this.hora_FIN.hora_FIN,
+      fechaCrea: Date.now(),
+      usuaCrea: this.spidem,
+      campcode: 1
     }
+    console.log(this.fecha1);
+    //this.guardarTutorias();
+    // if (this.publico == 'T') {
+    //   this.buscartodos();
+    // } else {
+    //   this.buscaSolicitado();
+    // }
   }
 
 
@@ -196,17 +202,17 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   }
   dias: number = 10;
 
-  horaInicio:any;
-  horaFin:any;
-  listarHorario(codigo: number,horarioInicio:any,horarioFin:any) {
+  horaInicio: any;
+  horaFin: any;
+  listarHorario(codigo: number, horarioInicio: any, horarioFin: any) {
     this.restService.get('horario/' + codigo + '/' + this.dia).subscribe(
       data => {
-        if(data.mensaje){
+        if (data.mensaje) {
 
           this.toast.info(data.mensaje, "Para este campus", this.options);
 
 
-        }else{
+        } else {
           this.toast.success(data.mensaje, "Seleccione ahora el aula-horario", this.options);
 
           this.aulas = data;
@@ -214,19 +220,19 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
         }
         //this.horaInicio = data.hora_INICIO;
 
-        
+
       }
     )
   }
- horaFormatoI:any;
- horaFormatoF:any;
-  selectHour(aula: any){
+  horaFormatoI: any;
+  horaFormatoF: any;
+  selectHour(aula: any) {
     this.horaInicio = aula.hora_INICIO;
     this.horaFin = aula.hora_FIN
     console.log(this.horaInicio)
-    this.horaFormatoI = (this.horaInicio).slice(0,2)+ ":" +(this.horaInicio).slice(2);
-    this.horaFormatoF = (this.horaFin).slice(0,2)+ ":" +(this.horaFin).slice(2);
-    
+    this.horaFormatoI = (this.horaInicio).slice(0, 2) + ":" + (this.horaInicio).slice(2);
+    this.horaFormatoF = (this.horaFin).slice(0, 2) + ":" + (this.horaFin).slice(2);
+
   }
 
 
@@ -237,22 +243,29 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   date = new FormControl(moment());
 
-  buscartodos(){
-    this.restService.get('convocadosTodosAcompanamiento/'+this.spidem).subscribe(
-      data =>{
+  buscartodos() {
+    this.restService.get('convocadosTodosAcompanamiento/' + this.spidem).subscribe(
+      data => {
         console.log('todos')
       }
     )
 
   }
 
-  buscaSolicitado(){
-    this.restService.get('/convocadosSolicitadosAcompanamiento/'+this.spidem).subscribe(
-      data =>{
+  buscaSolicitado() {
+    this.restService.get('/convocadosSolicitadosAcompanamiento/' + this.spidem).subscribe(
+      data => {
         console.log('solicitado')
       }
     )
   }
+
+  fecha1:any;
+  yourFunctionName(event: any) {
+    const data = event;
+    //const formattedDate = (data.getMonth() + 1) + '-' + data.getFullYear();
+    console.log(event);
+}
 
 }
 
