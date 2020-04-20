@@ -14,9 +14,9 @@ export class RegistroAsistenciasComponent implements OnInit {
   titleRegistro= TutoriaConstants.DATOSREGISTRO;
   titleLista=    TutoriaConstants.LISTAESTUDIANTE;
   constructor(private service: PersonalDataService, private restService: RestService ) { }
-  codA: any
-  spidem = 357192 ;
-  codigoPlanificacion = 13;
+  alumno: any
+  spidem = 14159 ;
+  codigoPlanificacion = 41;
   idAsistentes: any;
   estudiante: any;
   email: any;
@@ -35,7 +35,9 @@ export class RegistroAsistenciasComponent implements OnInit {
 
   cedula = "1725412306";
   ngOnInit() {
+    this.listarFormuConfirma()
    }
+   
    id:any
    procesaPropagar(data) {
      this.id = data[0].pidm
@@ -63,8 +65,8 @@ export class RegistroAsistenciasComponent implements OnInit {
     listarFormuConfirma() {
       this.restService.findDataById("registroAsistencia/", this.codigoPlanificacion).subscribe(
         data => {
-          this.codA = data
-          console.log(this.codA)
+          this.alumno = data
+          console.log(this.alumno)
         }
       )
     }
