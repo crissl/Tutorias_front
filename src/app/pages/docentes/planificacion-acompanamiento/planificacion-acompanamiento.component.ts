@@ -42,9 +42,9 @@ interface Dia {
     },
 
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-    {provide: DateAdapter, useClass: AppDateAdapter},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
-    
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+
   ],
 
 })
@@ -63,7 +63,8 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   datosGuardar: any;
   ncr: any;
   codigos: any;
-  spidem = 357192;
+  //spidem = 357192;
+  spidem = 14159 ;
   cedula = "1725412306";
   id: any
   campus1 = "10";
@@ -140,6 +141,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   }
 
   guardarAcompanamiento() {
+    console.log(this.fechaTutoria)
     this.datosGuardar = {
       codigoFormularios: "3",
       interacion: "0",
@@ -152,20 +154,20 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       estado: "A",
       publico: this.publico,
       aula: this.aula.aula,
-      fechaTutoria: MAT_DATE_FORMATS,
-      horaInicio: this.hora_INICIO.hora_INICIO,
-      horaFin: this.hora_FIN.hora_FIN,
+      fechaTutoria: this.fechaTutoria,
+      horaInicio: this.horaInicio,
+      horaFin: this.horaFin,
       fechaCrea: Date.now(),
       usuaCrea: this.spidem,
-      campcode: 1
+      campcode: this.codigoCampus
     }
-    console.log(this.fecha1);
+    console.log(this.datosGuardar);
     //this.guardarTutorias();
-    // if (this.publico == 'T') {
-    //   this.buscartodos();
-    // } else {
-    //   this.buscaSolicitado();
-    // }
+    if (this.publico == 'T') {
+      this.buscartodos();
+    } else {
+      this.buscaSolicitado();
+    }
   }
 
 
@@ -177,6 +179,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
           this.toast.success(data.mensaje, "El Formulario", this.options);
           this.tema = [];
           this.observaciones.observacion = "";
+
         } else {
 
           this.toast.error("No se creo");
@@ -205,6 +208,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   horaInicio: any;
   horaFin: any;
   listarHorario(codigo: number, horarioInicio: any, horarioFin: any) {
+    //this.horaInicio = codigo;
     this.restService.get('horario/' + codigo + '/' + this.dia).subscribe(
       data => {
         if (data.mensaje) {
@@ -243,10 +247,13 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   date = new FormControl(moment());
 
+  Todos: any;
   buscartodos() {
     this.restService.get('convocadosTodosAcompanamiento/' + this.spidem).subscribe(
       data => {
-        console.log('todos')
+        console.log(data)
+        this.Todos = data;
+        this.listarEstudiantes();
       }
     )
 
@@ -260,12 +267,56 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     )
   }
 
-  fecha1:any;
+  fecha1: any;
+  fechaTutoria: any;
   yourFunctionName(event: any) {
-    const data = event;
+    // const data = event;
+    // const  formato = data.getDay() + '-' + (data.getMonth() + 1)  + '-' + data.getFullYear();
+    // console.log(formato);
     //const formattedDate = (data.getMonth() + 1) + '-' + data.getFullYear();
-    console.log(event);
-}
+    // console.log(event);
+    const stringified = JSON.stringify(event.value);
+
+    this.fechaTutoria = stringified;
+
+    //const dob = stringified.substring(1, 11);
+    // this.applicant.contact[0].dob = dob;
+    //console.log(dob)
+  }
+  public estudianteM: any[] = []
+  estudianteA: any;
+
+  //busca el ultimo id que se ingresó y lo tra para ingresarlo en uztsolicitudes
+  BusacarIdPlanif(){
+    this.restService.getData('').subscribe(
+      data =>{
+        
+      }
+    )
+
+  }
+
+  //función que crea un array con todos los estudiantes(cuando la selección es todos) que va a insertar en la tabla uztsolicitud
+  listarEstudiantes() {
+    for (let estudiante of this.Todos) {
+      console.log(estudiante);
+      this.estudianteM.push({
+        CODIGO_UZTPLANIF: 9,
+        CODIGO_UZGTFORMULARIOS:3,// codigo para la plificacion acompañamiento 
+        UZTASISTENTES_ID: estudiante.id,
+        UZTASISTENTES_CEDULA: estudiante.cedula,
+        UZTASISTENTES_nombre: estudiante.nombres,
+        SPRIDEN_PIDM:estudiante.pidm,//codigo pidm del estudiante que va a repetir  
+        correo_PERSONAL: estudiante.correo_PERSONAL,
+        UZTASISTENTES_EMAIL: estudiante.correo_INSTITUCIONAL,
+        UZTASISTENTES_USUA_CREA: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
+        UZTASISTENTES_estado: 'A'
+      })
+    }
+    console.log(this.estudianteM);
+  }
+
+
 
 }
 

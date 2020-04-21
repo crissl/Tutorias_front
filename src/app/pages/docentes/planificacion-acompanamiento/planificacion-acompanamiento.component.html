@@ -52,7 +52,7 @@
     <div class="col-12 col-sm-12 col-md-3 col-lg-4">
       <mat-form-field>
         <mat-label>Selecione fecha</mat-label>
-        <input matInput [matDatepicker]="dp" [formControl]="date" (dateChange)="yourFunctionName($event.value)" />
+        <input matInput [matDatepicker]="dp" [formControl]="date" (dateChange)="yourFunctionName($event)" />
         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp ></mat-datepicker>
       </mat-form-field>
