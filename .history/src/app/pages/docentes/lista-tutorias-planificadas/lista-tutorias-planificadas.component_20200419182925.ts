@@ -10,17 +10,16 @@ import { RestService } from 'app/service/rest.service';
 })
 export class ListaTutoriasPlanificadasComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
-  titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
 
   constructor(private service: PersonalDataService, private restService: RestService) { }
-  cedula = "1310494586";
+  cedula = "1710802925";
   tutoria: any
   id: any
   tema: any
   asignatura: any
   fecha: any
   aula: any
-  spidem = 24760 ;
+  spidem = 14159 ;
   hora: any
   fechaCrea: any
   procesaPropagar(data) {

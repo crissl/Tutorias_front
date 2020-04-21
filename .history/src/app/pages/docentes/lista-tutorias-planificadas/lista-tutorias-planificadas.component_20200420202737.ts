@@ -20,7 +20,7 @@ export class ListaTutoriasPlanificadasComponent implements OnInit {
   asignatura: any
   fecha: any
   aula: any
-  spidem = 24760 ;
+  spidem = 245991 ;
   hora: any
   fechaCrea: any
   procesaPropagar(data) {
