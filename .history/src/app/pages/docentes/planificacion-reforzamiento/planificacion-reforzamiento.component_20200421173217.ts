@@ -51,8 +51,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   datosGuardar: any;
   ncr: any;
   nrcs: any
-  nrcs2: any
-  spidem = 14159;
+  spidem = 334571;
   cedula = "1725412306";
 
   campus1 = "10";
@@ -75,7 +74,6 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   
   ngOnInit() {
     this.listarNrc();
-    this.listarNrc2();
     this.listarHorario();
 
    }
@@ -115,7 +113,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   listarNrc2() {
     this.restService.findDataById("planificaionSeleccion/", this.spidem).subscribe(
       data => {
-        this.nrcs2 = data
+        this.nrcs = data
         //console.log(this.nrcs)
       }
     )

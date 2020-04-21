@@ -48,7 +48,7 @@
           <mat-form-field>
           <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
             <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}">
-              {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+              {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
               {{nrc.periodo}} {{nrc.inicio}} {{nrc.fin}}
              </mat-option>
              </mat-select>
@@ -58,22 +58,17 @@
 
         </ng-container>
         <ng-container  *ngIf="expressType === 'No'">
-          <div class="row">
-
-          <div class="col-md-6">
-            <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" value="" >
-            </mat-form-field>
-          </div>
-          <div class="col-md-6">
-            <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input" name="hfin" type="text" value="" >
-            </mat-form-field>
-          </div>
-        </div>
-
           <!-- <label for="Input" class="col-sm-8 control-label">NRC DEL QUE REQUIERE LA TUTORIA/ HORARIO A ESCOGER</label> -->
-  
+          <!-- <div class="col-md-6">
+
+          <mat-form-field>
+          <mat-select style="width:500px; font-size: 12px;"> 
+            <mat-option>
+             </mat-option>
+             </mat-select>
+             <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
+             </mat-form-field>
+            </div> -->
 
         </ng-container>
 
@@ -118,7 +113,7 @@
         
         <ng-container *ngIf="expressType2 === 'AULA'">
           <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <mat-form-field > 
                 <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
                <mat-option  *ngFor="let aula of aulas" value="aula" >
@@ -200,21 +195,9 @@
         
         <ng-container *ngIf="expressType2 === 'AULA'">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-              <mat-form-field>
-                <mat-select  [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
-                  <mat-option  *ngFor="let nrc of nrcs2" value="{{nrc.nrc}}">
-                    {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
-                   </mat-option>
-                   </mat-select>
-                   <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
-                   </mat-form-field>
-
-              </div>
-
-              <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <mat-form-field> 
-                <mat-select  [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
+              <div class="col-md-6">
+                <mat-form-field > 
+                <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
                <mat-option  *ngFor="let aula of aulas" value="aula" >
                   {{aula.aula}}-{{aula.horario}} {{aula.hora_INICIO}}
                   {{aula.hora_FIN}}
@@ -223,7 +206,6 @@
                 <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
                 </mat-form-field>
               </div>
-
               <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                   <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input" name="hinicia" type="text" value="" disabled>
@@ -235,7 +217,7 @@
                 </mat-form-field>
               </div>
             </div>
-
+ 
         </ng-container>
         <ng-container &nbsp;&nbsp; *ngIf="expressType2 === 'LUGAR'">
           <label  class="col-sm-6 control-label">INGRESE EL LUGAR EN LA QUE SE DARÁ LA TUTORÍA</label>

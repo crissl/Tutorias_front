@@ -48,7 +48,7 @@
           <mat-form-field>
           <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
             <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}">
-              {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+              {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
               {{nrc.periodo}} {{nrc.inicio}} {{nrc.fin}}
              </mat-option>
              </mat-select>

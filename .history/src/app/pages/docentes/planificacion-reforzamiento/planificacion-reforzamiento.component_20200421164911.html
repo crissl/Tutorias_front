@@ -48,7 +48,7 @@
           <mat-form-field>
           <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
             <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}">
-              {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+              {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
               {{nrc.periodo}} {{nrc.inicio}} {{nrc.fin}}
              </mat-option>
              </mat-select>
@@ -200,11 +200,12 @@
         
         <ng-container *ngIf="expressType2 === 'AULA'">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-3">
               <mat-form-field>
-                <mat-select  [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
-                  <mat-option  *ngFor="let nrc of nrcs2" value="{{nrc.nrc}}">
-                    {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+                <mat-select [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
+                  <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}">
+                    {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
+                    
                    </mat-option>
                    </mat-select>
                    <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
@@ -212,7 +213,7 @@
 
               </div>
 
-              <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                 <mat-form-field> 
                 <mat-select  [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
                <mat-option  *ngFor="let aula of aulas" value="aula" >
