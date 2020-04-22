@@ -78,7 +78,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.listarNrc();
     this.listarNrc2();
     this.listarHorario();
-    this.listarAula();
+    thi
    }
    id:any
    procesaPropagar(data) {

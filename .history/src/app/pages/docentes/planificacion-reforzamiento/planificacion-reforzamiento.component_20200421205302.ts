@@ -61,7 +61,6 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   hora_FIN = "0915";
   dia: any;
   aulas: any;
-  aulas2: any;
   horario: any;
   horariosSelected: any;
 
@@ -78,7 +77,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.listarNrc();
     this.listarNrc2();
     this.listarHorario();
-    this.listarAula();
+
    }
    id:any
    procesaPropagar(data) {
@@ -173,12 +172,12 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   }
   listarAula() {
 
-    this.restService.get('AulaEscogido'+"/"+ this.campus1+"/"+ this.dia1).subscribe(
+    this.restService.get('horarioPlanificacion'+"/"+ this.campus1+"/"+ this.dia1).subscribe(
       data => {
         if (data) {
           console.log('datos2', data)
-          this.aulas2 = data;
-          console.log("se listo" + this.aulas2);
+          this.aulas = data;
+          console.log("se listo" + this.aulas);
 
         }
       }

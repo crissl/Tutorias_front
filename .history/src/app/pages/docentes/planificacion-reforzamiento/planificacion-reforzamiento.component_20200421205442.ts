@@ -61,7 +61,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   hora_FIN = "0915";
   dia: any;
   aulas: any;
-  aulas2: any;
+  aulas2
   horario: any;
   horariosSelected: any;
 
@@ -78,7 +78,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.listarNrc();
     this.listarNrc2();
     this.listarHorario();
-    this.listarAula();
+
    }
    id:any
    procesaPropagar(data) {
