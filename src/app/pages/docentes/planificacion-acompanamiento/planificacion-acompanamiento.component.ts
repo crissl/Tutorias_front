@@ -11,10 +11,11 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
-
+import {DatePipe} from '@angular/common';
 
 //import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../../Formatos/format-datepicker';
+
 
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
@@ -50,6 +51,11 @@ interface Dia {
 })
 
 export class PlanificacionAcompanamientoComponent implements OnInit {
+
+  pipe = new DatePipe('en-US');
+  now = Date.now();
+  fechaActual = this.pipe.transform(this.now,'dd-MM-yyyy')
+
   @Input() registro: any
   @Input() datos: boolean;
   @Output() propagar = new EventEmitter<string>();
@@ -78,7 +84,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   // hora_FIN: any;
   aula1: any;
   publico: string;
-
+ observaciones:any;
 
   myDate: Dia[] = [
     { dia: 'domingo-1', nombre: 'SZARPGN_CAMPVA15' },
@@ -123,10 +129,10 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     //console.log(data[0].pidm)
   }
 
-  public observaciones: any = {
-    observacion: "",
-    fecha: Date.now(),
-  }
+  // public observaciones: any = {
+  //   observacion: "",
+  //   fecha: Date.now(),
+  // }
   guardar(codigo: number, campus) {
     this.codigoCampus = codigo;
     this.campus = campus;
@@ -145,19 +151,19 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
     this.datosGuardar = {
       codigoFormularios: "3",
       interacion: "0",
-      fechaFormulario: Date.now(),
-      tipoPersona: "ESTUDIANTE",
-      tipoTutoria: "PLANIFICACION ACOMPANAMIENTO",
+      fechaFormulario: this.fechaActual,
+      tipoPersona: "DOCENTE",
+      tipoTutoria: "ACOMPAÑAMIENTO",
       spridenPidm: this.id,
       tema: this.tema.tema,
-      observacion: this.observaciones.observacion,
+      observacion: this.observaciones,
       estado: "A",
       publico: this.publico,
       aula: this.aula.aula,
       fechaTutoria: this.fechaTutoria,
       horaInicio: this.horaInicio,
       horaFin: this.horaFin,
-      fechaCrea: Date.now(),
+      fechaCrea: this.fechaActual,
       usuaCrea: this.spidem,
       campcode: this.codigoCampus
     }
@@ -270,14 +276,10 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   fecha1: any;
   fechaTutoria: any;
   yourFunctionName(event: any) {
-    // const data = event;
-    // const  formato = data.getDay() + '-' + (data.getMonth() + 1)  + '-' + data.getFullYear();
-    // console.log(formato);
-    //const formattedDate = (data.getMonth() + 1) + '-' + data.getFullYear();
-    // console.log(event);
-    const stringified = JSON.stringify(event.value);
-
-    this.fechaTutoria = stringified;
+    
+    const myFormattedDate = this.pipe.transform(event.value,'dd-MM-yyyy')
+    console.log(myFormattedDate);
+    this.fechaTutoria = myFormattedDate;
 
     //const dob = stringified.substring(1, 11);
     // this.applicant.contact[0].dob = dob;
@@ -286,11 +288,16 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   public estudianteM: any[] = []
   estudianteA: any;
 
+  idPlanificacion:any;
   //busca el ultimo id que se ingresó y lo tra para ingresarlo en uztsolicitudes
   BusacarIdPlanif(){
-    this.restService.getData('').subscribe(
+    this.restService.getData('ultimoPlanif').subscribe(
       data =>{
-        
+        if(data){
+          this.idPlanificacion = data;
+          this.listarEstudiantes();
+        }
+       
       }
     )
 
@@ -306,7 +313,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
         UZTASISTENTES_ID: estudiante.id,
         UZTASISTENTES_CEDULA: estudiante.cedula,
         UZTASISTENTES_nombre: estudiante.nombres,
-        SPRIDEN_PIDM:estudiante.pidm,//codigo pidm del estudiante que va a repetir  
+        SPRIDEN_PIDM:estudiante.pidm,//codigo pidm del estudiante que va a recibir la tutoria
         correo_PERSONAL: estudiante.correo_PERSONAL,
         UZTASISTENTES_EMAIL: estudiante.correo_INSTITUCIONAL,
         UZTASISTENTES_USUA_CREA: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
