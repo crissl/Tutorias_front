@@ -116,7 +116,7 @@
                     <td class="text-center">{{alumnos.uztasistentes_EMAIL}}</td>
                     <td class="text-center">{{alumnos.uztasistentes_ESTADO}} </td>
                     <td> 
-                        <mat-radio-group aria-label="Select an option">
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="registrar">
                             <mat-radio-button  name="opcradio"  value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
                             <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
                           </mat-radio-group> 

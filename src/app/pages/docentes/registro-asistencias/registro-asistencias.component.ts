@@ -22,7 +22,7 @@ export class RegistroAsistenciasComponent implements OnInit {
   email: any;
   cedula1: any;
   estado: any;
-
+  registrar: string;
 
   datosGuardar: any;
   ncr: any;
