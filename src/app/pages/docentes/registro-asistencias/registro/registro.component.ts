@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
-import { TutoriaConstants } from 'app/constants/constants';
 
 @Component({
-  selector: 'app-registro-asistencias',
-  templateUrl: './registro-asistencias.component.html',
-  styleUrls: ['./registro-asistencias.component.scss']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.scss']
 })
-export class RegistroAsistenciasComponent implements OnInit {
+export class RegistroComponent implements OnInit {
   titleDocente= TutoriaConstants.DATOSDOCENTE;
   titleTutoria= TutoriaConstants.DATOSTUTORIA;
   titleRegistro= TutoriaConstants.DATOSREGISTRO;
   titleLista=    TutoriaConstants.LISTAESTUDIANTE;
-  constructor(private service: PersonalDataService, private restService: RestService ) { }
+
+  constructor(private service: PersonalDataService, private restService: RestService) { }
+
   alumno: any
   spidem = 14159 ;
   codigoPlanificacion = 53;
