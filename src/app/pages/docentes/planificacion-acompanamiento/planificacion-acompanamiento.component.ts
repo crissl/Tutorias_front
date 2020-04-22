@@ -11,7 +11,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { ScaleControlStyle } from '@agm/core/services/google-maps-types';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 //import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../../Formatos/format-datepicker';
@@ -54,7 +54,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   pipe = new DatePipe('en-US');
   now = Date.now();
-  fechaActual = this.pipe.transform(this.now,'dd-MM-yyyy')
+  fechaActual = this.pipe.transform(this.now, 'yyyy-MM-dd')
 
   @Input() registro: any
   @Input() datos: boolean;
@@ -70,7 +70,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   ncr: any;
   codigos: any;
   //spidem = 357192;
-  spidem = 14159 ;
+  spidem = 14159;
   cedula = "1725412306";
   id: any
   campus1 = "10";
@@ -84,7 +84,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   // hora_FIN: any;
   aula1: any;
   publico: string;
- observaciones:any;
+  observaciones: any;
 
   myDate: Dia[] = [
     { dia: 'domingo-1', nombre: 'SZARPGN_CAMPVA15' },
@@ -154,38 +154,37 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       fechaFormulario: this.fechaActual,
       tipoPersona: "DOCENTE",
       tipoTutoria: "ACOMPAÑAMIENTO",
-      spridenPidm: this.id,
+      spridenPidm: this.spidem,
       tema: this.tema.tema,
       observacion: this.observaciones,
       estado: "A",
       publico: this.publico,
-      aula: this.aula.aula,
+      aula: this.aula,
       fechaTutoria: this.fechaTutoria,
       horaInicio: this.horaInicio,
       horaFin: this.horaFin,
       fechaCrea: this.fechaActual,
       usuaCrea: this.spidem,
-      campcode: this.codigoCampus
+      campCode: this.codigoCampus
     }
     console.log(this.datosGuardar);
-    //this.guardarTutorias();
-    if (this.publico == 'T') {
-      this.buscartodos();
-    } else {
-      this.buscaSolicitado();
-    }
+    this.guardarTutorias();
+    // if (this.publico == 'T') {
+    //   this.buscartodos();
+    // } else {
+    //   this.buscaSolicitado();
+    // }
   }
 
 
   guardarTutorias() {
-    console.log('guardar')
     this.restService.addData(this.datosGuardar, "crearPlanificacion").subscribe(
       data => {
         if (data) {
           this.toast.success(data.mensaje, "El Formulario", this.options);
           this.tema = [];
-          this.observaciones.observacion = "";
-
+          this.observaciones = "";
+          this.BuscarIdPlanif();
         } else {
 
           this.toast.error("No se creo");
@@ -257,18 +256,26 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   buscartodos() {
     this.restService.get('convocadosTodosAcompanamiento/' + this.spidem).subscribe(
       data => {
-        console.log(data)
         this.Todos = data;
-        this.listarEstudiantes();
+        if(data.mensaje){
+          console.log('no existen resultado');
+        }else{
+          this.listarTodosEstudiantes();
+        }
       }
     )
 
   }
-
+Solicitado:any
   buscaSolicitado() {
     this.restService.get('/convocadosSolicitadosAcompanamiento/' + this.spidem).subscribe(
       data => {
-        console.log('solicitado')
+        this.Solicitado= data;
+        if(data.mensaje){
+          console.log('no hay estudiantes para este pidm')
+        }else{
+          this.listarSolitadoEstudiante();
+        }
       }
     )
   }
@@ -276,8 +283,8 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   fecha1: any;
   fechaTutoria: any;
   yourFunctionName(event: any) {
-    
-    const myFormattedDate = this.pipe.transform(event.value,'dd-MM-yyyy')
+
+    const myFormattedDate = this.pipe.transform(event.value, 'yyyy-MM-dd')
     console.log(myFormattedDate);
     this.fechaTutoria = myFormattedDate;
 
@@ -288,41 +295,85 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   public estudianteM: any[] = []
   estudianteA: any;
 
-  idPlanificacion:any;
-  //busca el ultimo id que se ingresó y lo tra para ingresarlo en uztsolicitudes
-  BusacarIdPlanif(){
+  idPlanificacion: any;
+  //busca el ultimo id que se ingresó y lo trae para ingresarlo en uztsolicitudes
+  BuscarIdPlanif() {
     this.restService.getData('ultimoPlanif').subscribe(
-      data =>{
-        if(data){
+      data => {
+        if (data) {
           this.idPlanificacion = data;
-          this.listarEstudiantes();
+          if (this.publico == 'T') {
+            this.buscartodos();
+          } else {
+            this.buscaSolicitado();
+          }
         }
-       
       }
     )
 
   }
 
-  //función que crea un array con todos los estudiantes(cuando la selección es todos) que va a insertar en la tabla uztsolicitud
-  listarEstudiantes() {
-    for (let estudiante of this.Todos) {
-      console.log(estudiante);
-      this.estudianteM.push({
-        CODIGO_UZTPLANIF: 9,
-        CODIGO_UZGTFORMULARIOS:3,// codigo para la plificacion acompañamiento 
-        UZTASISTENTES_ID: estudiante.id,
-        UZTASISTENTES_CEDULA: estudiante.cedula,
-        UZTASISTENTES_nombre: estudiante.nombres,
-        SPRIDEN_PIDM:estudiante.pidm,//codigo pidm del estudiante que va a recibir la tutoria
-        correo_PERSONAL: estudiante.correo_PERSONAL,
-        UZTASISTENTES_EMAIL: estudiante.correo_INSTITUCIONAL,
-        UZTASISTENTES_USUA_CREA: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
-        UZTASISTENTES_estado: 'A'
-      })
+  SolicitadoLista:any;
+  //función que crea un objeto(cuando la selección es solicitado)   que va a insertar en la tabla uztsolicitud
+  listarSolitadoEstudiante(){
+    this.SolicitadoLista = {
+      codigoPlanificacion: this.idPlanificacion,
+        codigoFormularios: 3,// codigo para la plificacion acompañamiento 
+        idAsistentes: this.Solicitado.id,
+        ci: this.Solicitado.cedula,
+        estudiante: this.Solicitado.nombres,
+        pidm: this.Solicitado.pidm,//codigo pidm del estudiante que va a recibir la tutoria
+        email: this.Solicitado.correo_INSTITUCIONAL,
+        usuarioCrea: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
+        estado: 'A',
+        fechaCrea: this.fechaActual,
+        fechaTutoriaAsi: this.fechaActual
     }
-    console.log(this.estudianteM);
+    this.CrearAsistenciaSolitud();
   }
 
+
+
+  //función que crea un array con todos los estudiantes(cuando la selección es todos) que va a insertar en la tabla uztsolicitud
+  listarTodosEstudiantes() {
+    for (let estudiante of this.Todos) {
+      //console.log(estudiante);
+      this.estudianteM.push({
+        codigoPlanificacion: this.idPlanificacion,
+        codigoFormularios: 3,// codigo para la plificacion acompañamiento 
+        idAsistentes: estudiante.id,
+        ci: estudiante.cedula,
+        estudiante: estudiante.nombres,
+        pidm: estudiante.pidm,//codigo pidm del estudiante que va a recibir la tutoria
+        email: estudiante.correo_INSTITUCIONAL,
+        usuarioCrea: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
+        estado: 'A',
+        fechaCrea: this.fechaActual,
+        fechaTutoriaAsi: this.fechaActual
+      })
+    }
+     //console.log(this.estudianteM);
+    this.CrearAsistenciaTodos();
+  }
+
+
+  //Enviar array de todos los estudiantes en tabla uztasistentes 
+  CrearAsistenciaTodos() {
+    console.log(this.estudianteM);
+    this.restService.addData(this.estudianteM, 'crearAsistenciaLista').subscribe(
+      data => {
+        this.estudianteM =[]
+      }
+    )
+  }
+
+  CrearAsistenciaSolitud() {
+    this.restService.addData(this.SolicitadoLista, 'crearAsistencia').subscribe(
+      data => {
+        this.SolicitadoLista=[];
+      }
+    )
+  }
 
 
 }
