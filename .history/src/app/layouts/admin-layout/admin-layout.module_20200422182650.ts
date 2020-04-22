@@ -79,7 +79,6 @@ import { ConfirmarComponent } from '../../pages/estudiantes/confirmacion-asisten
 import { ListaAlumnosAcompanamientoComponent } from 'app/pages/docentes/lista-alumnos-acompanamiento/lista-alumnos-acompanamiento.component';
 import { ListaTutoriasPlanificadasComponent } from 'app/pages/docentes/lista-tutorias-planificadas/lista-tutorias-planificadas.component';
 import { ListaTutoriasSolicitadasComponent } from 'app/pages/docentes/lista-tutorias-solicitadas/lista-tutorias-solicitadas.component';
-import { RegistroComponent } from '../../pages/docentes/registro-asistencias/registro/registro.component';
 
 
 
@@ -165,16 +164,15 @@ import { RegistroComponent } from '../../pages/docentes/registro-asistencias/reg
     AlertComponent,
     ListaAlumnosAcompanamientoComponent,
     ListaTutoriasSolicitadasComponent,
-    ListaTutoriasPlanificadasComponent,
-    RegistroComponent
+    ListaTutoriasPlanificadasComponent
     
     
   ],
  
 
   entryComponents: [
-    ConfirmarComponent,
-    RegistroComponent,
+    ConfirmarComponent
+    RegistroComponent
 
   ],
 })

@@ -1,5 +1,5 @@
 <br><br><br>
-<app-alert></app-alert>
+<app-alert></app-alert>>
 <div class="container-responsive">
 <h6>
     *ESTE FORMULARIO SERÁ UTILIZADO PARA REGISTRAR LA TUTORÍA POR PARTE DEL DOCENTE.<span class="label label-default"></span>
@@ -15,8 +15,7 @@
 <div class="container-responsive">
     <app-datos-docente [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-docente>
 </div>
-<br>
-<div class="container-responsive">
+<div class="container">
     <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
     <h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA <span class="label label-default" ></span></h6>
     <div class="form-group">
@@ -29,7 +28,7 @@
             <input class="form-control" name="resultados" id="Input" type="text" placeholder="ESTUDIANTES ENTENDIERON PUNTOS IMPORTANTES DEL REGLAMENTO" required><br>
         </div>
      </div>
-<div class="container-responsive">
+<div class="container">
     <div class="row">
     <label for="Input" class="col-sm-3 control-label">FECHA DE LA TUTORÍA</label>
     <label for="Input" class="col-md-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
@@ -49,7 +48,7 @@
      </div>
 </div>   
 </div>  
-<div class="container-responsive">
+<div class="container">
     <br><div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleLista}}</h4></ul></div>
     <h6>*REGISTRO DEL ID O CÉDULA DE LOS ESTUDIANTES QUE ASISTIERON A LA TUTORÍA<span class="label label-default"></span></h6>
     <!-- <div _ngcontent-ecr-c5="" class="container-fluid">
@@ -131,7 +130,7 @@
     <input name="var" value="">>
 </div>
 
-  <div class="container-responsive">
+  <div class="container">
   <app-datos-registro [registro]="observaciones"></app-datos-registro>
   </div>
   <!-- <div class="col-md-12 centerbtn">

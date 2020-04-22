@@ -165,8 +165,7 @@ import { RegistroComponent } from '../../pages/docentes/registro-asistencias/reg
     AlertComponent,
     ListaAlumnosAcompanamientoComponent,
     ListaTutoriasSolicitadasComponent,
-    ListaTutoriasPlanificadasComponent,
-    RegistroComponent
+    ListaTutoriasPlanificadasComponent
     
     
   ],
