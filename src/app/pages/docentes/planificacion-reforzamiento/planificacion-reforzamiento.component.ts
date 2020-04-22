@@ -109,7 +109,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.restService.findDataById("planificaionReforzamiento/", this.spidem).subscribe(
       data => {
         this.nrcs = data
-        //console.log(this.nrcs)
+        console.log(this.nrcs)
       }
     )
   }
@@ -117,7 +117,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.restService.findDataById("planificaionSeleccion/", this.spidem).subscribe(
       data => {
         this.nrcs2 = data
-        //console.log(this.nrcs)
+        console.log(this.nrcs2)
       }
     )
   }
@@ -195,5 +195,32 @@ export class PlanificacionReforzamientoComponent implements OnInit {
  
    date = new FormControl(moment());
 
+   
+  //Enviar array de todos los estudiantes en tabla uztasistentes 
+
+
+  // CrearAsistenciaTodos() {
+  //   this.restService.addData(this.estudianteM, 'crearAsistenciaLista').subscribe(
+  //     data => {
+  //       this.estudianteM =[]
+  //     }
+  //   )
+  // }
+
+  // CrearAsistenciaSolitud() {
+  //   this.restService.addData(this.SolicitadoLista, 'crearAsistencia').subscribe(
+  //     data => {
+  //       this.SolicitadoLista=[];
+  //     }
+  //   )
+  // }
+
+  // CrearAsistenciaMenos14(){
+  //   this.restService.addData().subscribe(
+  //     data => {
+
+  //     }
+  //   )
+  // }
 
 }
