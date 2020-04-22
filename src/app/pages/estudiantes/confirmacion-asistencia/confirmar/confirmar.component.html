@@ -10,9 +10,9 @@
     </legend>  
   <div class="col-md-3">
     <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button  name="opcradio"  [(ngModel)]="S">Si&nbsp;&nbsp;</mat-radio-button>
-      <mat-radio-button  name="opcradio"  [(ngModel)]="N">No</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="confirmar">
+      <mat-radio-button  name="opcradio"   value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  name="opcradio"   value="N">No</mat-radio-button>
     </mat-radio-group>  
   </div>
   <div class="col-md-9">

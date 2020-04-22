@@ -36,6 +36,8 @@ export class ConfirmarComponent implements OnInit {
     ncr: any;
     fecha= Date.now();
     cedula = "1725412306";
+    confirmar: string;
+
   ngOnInit() {
   //  console.log(this.data)
   this.traersolicitud();
@@ -48,9 +50,7 @@ export class ConfirmarComponent implements OnInit {
   comentario: any = {
     comentario: ""
   }
-  opcradio: any = {
-    opcradio: ""
-  }
+  confirmacion:any;
 
 
 
@@ -63,7 +63,7 @@ export class ConfirmarComponent implements OnInit {
       interacion: "0",
       fechaRegistroAsi: formattedDate,
       spridenPidm: this.id,
-      confirmacion: this.opcradio,
+      confirmacion: this.confirmar,
       comentario: this.comentario.comentario,
       observacionAsi: this.confirmacion.observacion,
       estado: "A"
@@ -78,7 +78,7 @@ export class ConfirmarComponent implements OnInit {
       data => {
         if(data){
           this.toast.success(data.mensaje, "El Formulario", this.options);
-          this.opcradio.opcradio= "";
+          this.confirmar= "";
           this.comentario =[];
           this.confirmacion.observacion= "";
 
@@ -97,7 +97,6 @@ export class ConfirmarComponent implements OnInit {
       }
     )
   }
-  confirmacion:any;
   traersolicitud(){
     this.restService.get('planificacionpidm'+"/"+this.data.idplanif+"/"+this.data.pidm).subscribe(
       data =>{
