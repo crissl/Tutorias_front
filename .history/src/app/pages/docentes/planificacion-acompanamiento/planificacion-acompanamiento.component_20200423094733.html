@@ -89,14 +89,13 @@
               <mat-select class="select" [(ngModel)]="horarioSelected" name="horario" #select2="ngModel" required>
                 <mat-option *ngFor="let aula of aulas" value="{{ aula.aula }}" (click)="
                     guardar2(
-                      aula.nivel,
                       aula.aula,
                       aula.horario,
                       aula.hora_INICIO,
                       aula.hora_FIN
                     );selectHour(aula)
                   ">
-                  {{aula.nivel}} - {{ aula.aula }} - {{ aula.horario }}
+                  {{aula.nivel}}{{ aula.aula }} {{ aula.horario }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>

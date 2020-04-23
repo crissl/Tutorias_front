@@ -96,7 +96,7 @@
                       aula.hora_FIN
                     );selectHour(aula)
                   ">
-                  {{aula.nivel}} - {{ aula.aula }} - {{ aula.horario }}
+                  {{aula.nivel}} -{{ aula.aula }} {{ aula.horario }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
