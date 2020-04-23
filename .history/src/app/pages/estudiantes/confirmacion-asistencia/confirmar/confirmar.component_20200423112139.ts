@@ -51,10 +51,8 @@ export class ConfirmarComponent implements OnInit {
     comentario: ""
   }
   confirmacion:any;
-  observacion: any = {
-    observacion: ""
 
-  }
+
   
 
 
@@ -64,9 +62,9 @@ export class ConfirmarComponent implements OnInit {
       interacion: "0",
       fechaRegistroAsi: formattedDate,
       spridenPidm: this.id,
-      confirmacion: this.confirmacion.confirmar,
+      confirmacion: this.confirmacion.confirmacion,
       comentario: this.confirmacion.comentario,
-      observacionAsi: this.confirmacion.observacion,
+      observacionAsi: this.confirmacion.observacionAsi,
       estado: "A"
 
     }

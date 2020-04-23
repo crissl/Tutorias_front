@@ -51,10 +51,9 @@ export class ConfirmarComponent implements OnInit {
     comentario: ""
   }
   confirmacion:any;
-  observacion: any = {
-    observacion: ""
 
-  }
+
+
   
 
 
