@@ -10,6 +10,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'app/pages/Formatos/format-datepicker';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 // const format = 'dd/MM/yyyy';
 // const myDate = Date.now();
@@ -55,14 +56,14 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   nrc1: any = {
     id: ""
   }
-
+  idPlanificacion: any;
   datosGuardar: any;
   ncr: any;
   nrcs: any
   nrcs2: any
   spidem = 14159;
   cedula = "1725412306";
-  publico:string;
+  publico: string;
   campus1 = "10";
   dia1 = "SZARPGN_CAMPVA10";
   hora_INICIO = "0715";
@@ -74,7 +75,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   aulas2: any;
   horario: any;
   horariosSelected: any;
-  fechatutoria:any
+  fechatutoria: any
   nrc: any;
   codigo: any;
   asignatura: any;
@@ -82,7 +83,9 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   periodo: any;
   inicio: any;
   fin: any;
-
+  codigoAsignatura: any;
+  aula: any;
+  nivel: any;
 
   ngOnInit() {
     this.listarNrc();
@@ -142,33 +145,35 @@ export class PlanificacionReforzamientoComponent implements OnInit {
       estado: "A",
       nrc: this.nrcSeleccionado,
       periodo: this.periodoSeleccionado,
-      inicio: this.inicio,
-      fin: this.fin,
+      horaInicio: this.inicio,
+      horaFin: this.fin,
       campCode: this.campus,
       asignatura: this.asignatura,
-      codAsignatura: this.codigo,
-      horarioOpcion: "sds",//horario,
-      publico:this.publico,
+      codAsignatura: this.codigoAsignatura,
+      horarioOpcion: this.expressType.substring(0, 1),//horario,
+      publico: this.publico,
       fechaCrea: this.fechaActual,
-      fechaTutoria:this.fechatutoria,
-      usuariocrea:this.spidem
+      fechaTutoria: this.fechatutoria,
+      usuaCrea: this.spidem,
+      aula: this.aula,
+      nivel: this.nivel
     }
-    console.log(this.datosGuardar);
-    //this.guardarPlanificaR();
+    
+    this.guardarPlanificaR();
     //this.buscartodos();
 
   }
 
 
-  guardarPlanificaR(){
+  guardarPlanificaR() {
     this.restService.addData(this.datosGuardar, "crearPlanificacion").subscribe(
       data => {
-
         if (data) {
           this.toast.success(data.mensaje, "El Formulario se actualizo", this.options);
-          this.tema = [];
+          //this.tema = [];
           //this.observaciones.observacion = "";
-          this.nrcs = []
+         // this.nrcs = [];
+          this.BuscarIdPlanif();
         } else {
 
           this.toast.error("No se creo");
@@ -185,7 +190,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
         if (data) {
           console.log('datos2', data)
           this.aulas = data;
-          console.log("se listo" , this.aulas);
+          console.log("se listo", this.aulas);
 
         }
       }
@@ -216,11 +221,11 @@ export class PlanificacionReforzamientoComponent implements OnInit {
 
   date = new FormControl(moment());
 
-  nrcSeleccionado:any
-  periodoSeleccionado:any;
+  nrcSeleccionado: any
+  periodoSeleccionado: any;
 
 
-  nrcSeleccionadoOption(nrc:any){
+  nrcSeleccionadoOption(nrc: any) {
     this.nrcSeleccionado = nrc.nrc;
     this.periodoSeleccionado = nrc.periodo
     //this.codigo = nrc.codigo;
@@ -228,40 +233,13 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.campus = nrc.campus;
     this.inicio = nrc.inicio;
     this.fin = nrc.fin;
-    console.log(this.campus,this.inicio,this.fin);
+    this.codigoAsignatura = nrc.codigo_ASIGNATURA;
+    console.log(this.campus, this.inicio, this.fin);
   }
 
 
-  
+
   Todos: any;
-  buscartodos() {
-    this.restService.get('convocadosTodos/' + this.nrcSeleccionado + '/'+ this.periodoSeleccionado).subscribe(
-      data => {
-        this.Todos = data;
-        console.log(data);
-        if(data.mensaje){
-          console.log('no existen resultado');
-        }else{
-         // this.listarTodosEstudiantes();
-        }
-      }
-    )
-
-  }
-Solicitado:any;
-
-  buscaSolicitado() {
-    this.restService.get('/convocadosSolicitadosAcompanamiento/' + this.spidem).subscribe(
-      data => {
-        this.Solicitado= data;
-        if(data.mensaje){
-          console.log('no hay estudiantes para este pidm')
-        }else{
-         // this.listarSolitadoEstudiante();
-        }
-      }
-    )
-  }
 
   FechaDeTutoria(event: any) {
 
@@ -272,6 +250,21 @@ Solicitado:any;
     // this.applicant.contact[0].dob = dob;
     //console.log(dob)
   }
+  horaFormatoI: any;
+  horaFormatoF: any;
+  horaInicio:any;
+  horaFin:any;
+  guardarAula(aula) {
+    console.log(aula)
+    this.aula = aula.aula;
+    this.nivel = aula.nivel;
+    this.horaInicio = aula.hora_INICIO;
+    this.horaFin = aula.hora_FIN;
+    console.log(this.horaInicio);
+    // this.horaFormatoI = (this.horaInicio).slice(0, 1); 
+    // this.horaFormatoF = (this.horaFin).slice(0, 1); 
+  }
+
 
 
   // CrearAsistenciaTodos() {
@@ -297,5 +290,71 @@ Solicitado:any;
   //     }
   //   )
   // }
+
+  BuscarIdPlanif() {
+    this.restService.getData('ultimoPlanif').subscribe(
+      data => {
+        if (data) {
+          this.idPlanificacion = data;
+          if (this.publico == 'T') {
+            this.BuscarEstudiantesAsistentes('convocadosTodos');
+          } else if (this.publico == 'M') {
+            this.BuscarEstudiantesAsistentes('convocadosMeno14');
+          } else if (this.publico == 'S') {
+            this.BuscarEstudiantesAsistentes('convocadosSolicitados');
+          }
+        }
+      }
+    )
+
+  }
+
+  listaEstudiantes: any;
+
+  BuscarEstudiantesAsistentes(tipo: string) {
+    this.restService.get(tipo + '/' + this.nrcSeleccionado + '/' + this.periodoSeleccionado).subscribe(
+      data => {
+        if (data.mensaje) {
+          console.log('no existen resultado');
+        } else {
+          // this.listarTodosEstudiantes();
+          this.listaEstudiantes = data;
+          this.CrearModelo();
+          //console.log(this.listaEstudiantes)
+        }
+      }
+    )
+  }
+
+  public estudianteM: any[] = []
+  CrearModelo(){
+    for (let estudiante of this.listaEstudiantes) {
+      //console.log(estudiante);
+      this.estudianteM.push({
+        codigoPlanificacion: this.idPlanificacion,
+        codigoFormularios: 1,// codigo para la plificacion acompañamiento 
+        idAsistentes: estudiante.id,
+        ci: estudiante.cedula,
+        estudiante: estudiante.nombres,
+        pidm: estudiante.pidm,//codigo pidm del estudiante que va a recibir la tutoria
+        email: estudiante.correo_INSTITUCIONAL,
+        usuarioCrea: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
+        estado: 'A',
+        fechaCrea: this.fechaActual,
+        fechaTutoriaAsi: this.fechaActual
+      })
+    }
+    console.log(this.estudianteM);
+    this.CrearAsistencia();
+  }
+
+  CrearAsistencia() {
+    
+    this.restService.addData(this.estudianteM, 'crearAsistenciaLista').subscribe(
+      data => {
+        this.estudianteM =[]
+      }
+    )
+  }
 
 }
