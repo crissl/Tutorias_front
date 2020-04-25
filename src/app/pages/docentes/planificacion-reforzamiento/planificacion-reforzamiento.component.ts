@@ -59,8 +59,9 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   idPlanificacion: any;
   datosGuardar: any;
   ncr: any;
-  nrcs: any
-  nrcs2: any
+  nrcs: any;
+  nrcs2: any;
+  nrcs3: any;
   spidem = 14159;
   cedula = "1725412306";
   publico: string;
@@ -92,6 +93,7 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.listarNrc2();
     this.listarHorario();
     this.listarHorarioSelecto();
+    this.listarNrcLugar();
 
   }
   id: any
@@ -129,6 +131,14 @@ export class PlanificacionReforzamientoComponent implements OnInit {
       data => {
         this.nrcs2 = data
         console.log(this.nrcs2)
+      }
+    )
+  }
+  listarNrcLugar() {
+    this.restService.findDataById("planificaionReforzamiento/", this.spidem).subscribe(
+      data => {
+        this.nrcs3 = data
+        console.log(this.nrcs3)
       }
     )
   }
@@ -218,6 +228,10 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   expressType2: string;
   typeExpress2: string[] = ['AULA', 'LUGAR'];
   radioOptions2: FormGroup;
+
+  expressType1: string;
+  typeExpress1: string[] = ['AULA', 'LUGAR'];
+  radioOptions1: FormGroup;
 
   date = new FormControl(moment());
 
