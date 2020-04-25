@@ -62,7 +62,7 @@
       <label for="Input" class="col-sm-12 control-label">AULA/LUGAR EN LA QUE SE DARÁ LA TUTORÍA
       </label>
       <mat-radio-group [(ngModel)]="expressType">
-        <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress" [value]="te"
+        <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress" [value]="te" 
           style="margin-left: 16px;">
           {{ te }}
         </mat-radio-button>
@@ -87,15 +87,7 @@
             <mat-form-field>
               <mat-label>Seleccione ahora horario</mat-label>
               <mat-select class="select" [(ngModel)]="horarioSelected" name="horario" #select2="ngModel" required>
-                <mat-option *ngFor="let aula of aulas" value="{{ aula.aula }}" (click)="
-                    guardar2(
-                      aula.nivel,
-                      aula.aula,
-                      aula.horario,
-                      aula.hora_INICIO,
-                      aula.hora_FIN
-                    );selectHour(aula)
-                  ">
+                <mat-option *ngFor="let aula of aulas" value="{{ aula.aula }}" (click)="selectHour(aula)">
                   {{aula.nivel}} - {{ aula.aula }} - {{ aula.horario }}
                 </mat-option>
               </mat-select>
@@ -122,16 +114,16 @@
         <div class="row">
           <div class="col-md-6">
             
-            <input type="text" class="form-control" name="" placeholder="Ingrese el Lugar" />
+            <input type="text" class="form-control" name="" placeholder="Ingrese el Lugar"  [(ngModel)]="lLugar"/>
           </div>
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia4" type="text" value="" />
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia4" type="text" value="" [(ngModel)]="lHorarioInicio" />
             </mat-form-field>
           </div>
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hinicia11" type="text" value="" />
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hinicia11" type="text" value="" [(ngModel)]="lHorarioFin"/>
             </mat-form-field>
           </div>
         </div>

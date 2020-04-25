@@ -65,7 +65,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
 
-
+  lugarTutoria:any;
   datosGuardar: any;
   ncr: any;
   codigos: any;
@@ -85,7 +85,10 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   aula1: any;
   publico: string;
   observaciones: any;
-
+  lLugar:any;
+  lHorarioInicio:any;
+  lHorarioFin:any;
+  nivel:any
   myDate: Dia[] = [
     { dia: 'domingo-1', nombre: 'SZARPGN_CAMPVA15' },
     { dia: 'lunes-2', nombre: 'SZARPGN_CAMPVAR9' },
@@ -139,14 +142,25 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   }
 
-  guardar2(aula, horario, hora_INICIO, hora_FIN) {
-    this.aula = aula;
-    this.horario = horario;
-    this.hora_INICIO = hora_INICIO;
-    this.hora_FIN = hora_FIN;
-  }
+  // guardar2(aula, horario, hora_INICIO, hora_FIN) {
+  //   this.nivel = nivel;    
+  //   this.aula = aula;
+  //   this.horario = horario;
+  //   this.hora_INICIO = hora_INICIO;
+  //   this.hora_FIN = hora_FIN;
+  // }
 
   guardarAcompanamiento() {
+    if(this.expressType==='AULA'){
+
+    }else if(this.expressType ==='LUGAR'){
+      this.aula = this.lLugar;
+      this.horaInicio = this.lHorarioInicio
+      this.horaFin = this.lHorarioFin
+      this.codigoCampus= undefined
+      this.nivel= undefined
+      //console.log(this.lLugar,this.lHorarioInicio,this.lHorarioFin);
+    }
     console.log(this.fechaTutoria)
     this.datosGuardar = {
       codigoFormularios: "3",
@@ -159,6 +173,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       observacion: this.observaciones,
       estado: "A",
       publico: this.publico,
+      nivel:this.nivel,
       aula: this.aula,
       fechaTutoria: this.fechaTutoria,
       horaInicio: this.horaInicio,
@@ -168,12 +183,8 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       campCode: this.codigoCampus
     }
     console.log(this.datosGuardar);
+    console.log(this.expressType);
     this.guardarTutorias();
-    // if (this.publico == 'T') {
-    //   this.buscartodos();
-    // } else {
-    //   this.buscaSolicitado();
-    // }
   }
 
 
@@ -225,7 +236,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
           this.toast.success(data.mensaje, "Seleccione ahora el aula-horario", this.options);
 
           this.aulas = data;
-
+          console.log(this.aulas);
         }
         //this.horaInicio = data.hora_INICIO;
 
@@ -236,9 +247,12 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   horaFormatoI: any;
   horaFormatoF: any;
   selectHour(aula: any) {
+    this.aula =aula.aula;
     this.horaInicio = aula.hora_INICIO;
-    this.horaFin = aula.hora_FIN
-    console.log(this.horaInicio)
+    this.horaFin = aula.hora_FIN;
+    this.nivel = aula.nivel
+    console.log(this.horaInicio);
+
     this.horaFormatoI = (this.horaInicio).slice(0, 2) + ":" + (this.horaInicio).slice(2);
     this.horaFormatoF = (this.horaFin).slice(0, 2) + ":" + (this.horaFin).slice(2);
 
@@ -247,38 +261,11 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
 
   expressType: string;
   typeExpress: string[] = ['AULA', 'LUGAR'];
-
   radioOptions: FormGroup;
-
   date = new FormControl(moment());
+  listaEstudiantes:any;
 
-  Todos: any;
-  buscartodos() {
-    this.restService.get('convocadosTodosAcompanamiento/' + this.spidem).subscribe(
-      data => {
-        this.Todos = data;
-        if(data.mensaje){
-          console.log('no existen resultado');
-        }else{
-          this.listarTodosEstudiantes();
-        }
-      }
-    )
-
-  }
-Solicitado:any
-  buscaSolicitado() {
-    this.restService.get('/convocadosSolicitadosAcompanamiento/' + this.spidem).subscribe(
-      data => {
-        this.Solicitado= data;
-        if(data.mensaje){
-          console.log('no hay estudiantes para este pidm')
-        }else{
-          this.listarSolitadoEstudiante();
-        }
-      }
-    )
-  }
+  
 
   fecha1: any;
   fechaTutoria: any;
@@ -287,10 +274,6 @@ Solicitado:any
     const myFormattedDate = this.pipe.transform(event.value, 'yyyy-MM-dd')
     console.log(myFormattedDate);
     this.fechaTutoria = myFormattedDate;
-
-    //const dob = stringified.substring(1, 11);
-    // this.applicant.contact[0].dob = dob;
-    //console.log(dob)
   }
   public estudianteM: any[] = []
   estudianteA: any;
@@ -303,44 +286,36 @@ Solicitado:any
         if (data) {
           this.idPlanificacion = data;
           if (this.publico == 'T') {
-            this.buscartodos();
-          } else {
-            this.buscaSolicitado();
+            this.BuscarEstudiantesAsistentes('convocadosTodosAcompanamiento');
+          } else if(this.publico =='S'){
+            this.BuscarEstudiantesAsistentes('convocadosSolicitadosAcompanamiento');
           }
         }
       }
     )
-
   }
 
-  SolicitadoLista:any;
-  //función que crea un objeto(cuando la selección es solicitado)   que va a insertar en la tabla uztsolicitud
-  listarSolitadoEstudiante(){
-    this.SolicitadoLista = {
-      codigoPlanificacion: this.idPlanificacion,
-        codigoFormularios: 3,// codigo para la plificacion acompañamiento 
-        idAsistentes: this.Solicitado.id,
-        ci: this.Solicitado.cedula,
-        estudiante: this.Solicitado.nombres,
-        pidm: this.Solicitado.pidm,//codigo pidm del estudiante que va a recibir la tutoria
-        email: this.Solicitado.correo_INSTITUCIONAL,
-        usuarioCrea: this.spidem,//codigo pidm  del tutor que crea la planificacion -- cambio a variable localstorage
-        estado: 'A',
-        fechaCrea: this.fechaActual,
-        fechaTutoriaAsi: this.fechaActual
-    }
-    this.CrearAsistenciaSolitud();
+  BuscarEstudiantesAsistentes(tipo: string) {
+    this.restService.get(tipo + '/' + this.spidem ).subscribe(
+      data => {
+        if (data.mensaje) {
+          console.log('no existen resultado');
+        } else {
+          // this.listarTodosEstudiantes();
+          this.listaEstudiantes = data;
+          this.CrearModelo();
+          //console.log(this.listaEstudiantes)
+        }
+      }
+    )
   }
 
-
-
-  //función que crea un array con todos los estudiantes(cuando la selección es todos) que va a insertar en la tabla uztsolicitud
-  listarTodosEstudiantes() {
-    for (let estudiante of this.Todos) {
+  CrearModelo(){
+    for (let estudiante of this.listaEstudiantes) {
       //console.log(estudiante);
       this.estudianteM.push({
         codigoPlanificacion: this.idPlanificacion,
-        codigoFormularios: 3,// codigo para la plificacion acompañamiento 
+        codigoFormularios: 1,// codigo para la plificacion acompañamiento 
         idAsistentes: estudiante.id,
         ci: estudiante.cedula,
         estudiante: estudiante.nombres,
@@ -352,30 +327,18 @@ Solicitado:any
         fechaTutoriaAsi: this.fechaActual
       })
     }
-     //console.log(this.estudianteM);
-    this.CrearAsistenciaTodos();
+    console.log(this.estudianteM);
+    this.CrearAsistencia();
   }
 
-
-  //Enviar array de todos los estudiantes en tabla uztasistentes 
-  CrearAsistenciaTodos() {
-    console.log(this.estudianteM);
+  
+  CrearAsistencia() {
     this.restService.addData(this.estudianteM, 'crearAsistenciaLista').subscribe(
       data => {
         this.estudianteM =[]
       }
     )
   }
-
-  CrearAsistenciaSolitud() {
-    this.restService.addData(this.SolicitadoLista, 'crearAsistencia').subscribe(
-      data => {
-        this.SolicitadoLista=[];
-      }
-    )
-  }
-
-
 }
 
 
