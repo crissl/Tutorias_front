@@ -5,7 +5,7 @@ import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
 import { ToastrService } from 'ngx-toastr';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
 const format = 'yyyy-MM-dd';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -16,7 +16,7 @@ const formattedDate = formatDate(myDate, format, locale);
   selector: 'app-confirmar',
   templateUrl: './confirmar.component.html',
   styleUrls: ['./confirmar.component.scss', './confirmar.component.css']
-  
+
 
 })
 export class ConfirmarComponent implements OnInit {
@@ -26,21 +26,26 @@ export class ConfirmarComponent implements OnInit {
 
   constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService, public dialogRef: MatDialogRef<ConfirmarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
+  pipe = new DatePipe('en-US');
+  now = Date.now();
+  fechaActual = this.pipe.transform(this.now, 'yyyy-MM-dd');
 
-    options: any = {
-      toastLife: 3000,
-      dismiss: "auto",
-      showCloseButton: true
-    };
-    datosGuardar: any;
-    ncr: any;
-    fecha= Date.now();
-    cedula = "1725412306";
-    confirmar: string;
+  options: any = {
+    toastLife: 3000,
+    dismiss: "auto",
+    showCloseButton: true
+  };
+  datosGuardar: any;
+  ncr: any;
+  fecha = Date.now();
+  cedula = "1725412306";
+  confirmar: string;
+  recibioT: String;
 
   ngOnInit() {
-  //  console.log(this.data)
-  this.traersolicitud();
+    console.log(this.data)
+    //this.traersolicitud();
+
   }
   id: any
   procesaPropagar(data) {
@@ -50,46 +55,41 @@ export class ConfirmarComponent implements OnInit {
   comentario: any = {
     comentario: ""
   }
-  confirmacion:any;
+  confirmacion: any;
   observacion: any = {
     observacion: ""
 
   }
-  
+
+
+
 
 
   actualizar() {
-    this.datosGuardar = {
-      codigoFormularios: "6",
-      interacion: "0",
-      fechaRegistroAsi: formattedDate,
-      spridenPidm: this.id,
-      confirmacion: this.confirmacion.confirmar,
-      comentario: this.confirmacion.comentario,
-      observacionAsi: this.confirmacion.observacion,
-      estado: "A"
-
-    }
-    this.actualizarTutorias();
+    
+  
+      this.data.asistencia.confirmacion = this.recibioT
+      this.data.asistencia.fechaModica = this.fechaActual
+      this.data.asistencia.estado = 'I'
+      //console.log(this.data.asistencia)
+      this.ConfirmarAsistencia();
   }
 
-  actualizarTutorias() {
-
-    this.restService.UpData(this.datosGuardar, "actualizarAsistencia").subscribe(
+ ConfirmarAsistencia(){
+   this.restService.UpData(this.data.asistencia, "actualizarAsistencia").subscribe(
       data => {
         if(data){
           this.toast.success(data.mensaje, "El Formulario", this.options);
-          this.confirmar= "";
-          this.comentario =[];
-          this.confirmacion.observacion= "";
+          this.dialogRef.close(data);
 
         }else{
-
           this.toast.error("No se creo");
+          this.dialogRef.close();
         }
       }
     )
-  }
+ }
+
 
   listarNrc() {
     this.restService.findData(this.id).subscribe(
@@ -98,14 +98,11 @@ export class ConfirmarComponent implements OnInit {
       }
     )
   }
-  traersolicitud(){
-    this.restService.get('planificacionpidm'+"/"+this.data.idplanif+"/"+this.data.pidm).subscribe(
-      data =>{
-        console.log(data);
-        this.confirmacion = data;
-      }
-    )
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
+
 
 }
 

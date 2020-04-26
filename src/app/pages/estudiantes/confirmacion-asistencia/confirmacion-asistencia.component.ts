@@ -46,17 +46,29 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
       )
     }
 
+   
     openDialog(planificacion:any): void {
-      const dialogRef = this.dialog.open(ConfirmarComponent, {
-        width: '1000px',
-        height: '500PX',
-        data: {pidm:this.spidem,idplanif:planificacion},
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-       
-      });
+      this.restService.getData('buscaIdAsistente/'+planificacion.codigo_UZTPLANIF).subscribe(
+        (data:{})=>{
+          const dialogRef = this.dialog.open(ConfirmarComponent, {
+            width: '1000px',
+            height: '500PX',
+            data: {asistencia: data,info: planificacion},
+          });
+          dialogRef.afterClosed().subscribe(result => {
+            if(result != undefined){
+               console.log("se creo")
+            }
+            console.log('The dialog was closed');
+
+          });
+        }
+      )
+      //
+     
+      //
+
+
     }
   
   }

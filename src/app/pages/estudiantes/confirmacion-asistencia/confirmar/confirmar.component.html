@@ -1,30 +1,30 @@
 
 
-<div class="container-responsive">
+<!-- <div class="container-responsive">
   <app-alert></app-alert>
   <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)"></app-datos-estudiante>
-</div><br><br><br><br><br><br>
+</div><br><br><br><br><br><br> -->
 <div class="container-responsive">
     <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
     <legend class="text-default"><h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span></h6>  
     </legend>  
   <div class="col-md-3">
-    <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA?</label><br>
-    <mat-radio-group aria-label="Select an option" [(ngModel)]="confirmacion.confirmar">
+    <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA DEL TEMA:{{data.info.uztplanif_TEMA}} ?</label><br>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="recibioT">
       <mat-radio-button  name="opcradio"   value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
-      <mat-radio-button  name="opcradio"   value="N">No</mat-radio-button>
+      <mat-radio-button  name="opcradio1"   value="N">No</mat-radio-button>
     </mat-radio-group>  
   </div>
   <div class="col-md-9">
     <mat-form-field class="example-full-width">
       <mat-label>COMENTARIOS DE LA TUTORIA</mat-label>
-      <input matInput placeholder=""  id="Input" name="tema" type="text"  [(ngModel)]="confirmacion.comentario" (ngModelChange)="value=$event.toUpperCase()">
+      <input matInput placeholder=""  id="Input" name="tema" type="text" [(ngModel)]="data.asistencia.comentario" >
     </mat-form-field> 
   </div>
 </div><br><br><br><br>
  <div class="container-responsive">
   <br/>
-  <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleRegistro}}</h4></ul></div>
+  <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>regg</h4></ul></div>
   <legend class="text-default"><h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>
     
    </legend>
@@ -32,13 +32,13 @@
     <div class="col-md-9">
         <mat-form-field class="example-full-width">
           <mat-label>OBSERVACIONES GENERALES</mat-label>
-          <textarea matInput placeholder="" id="Input" name="observaciones" type="text" [(ngModel)]="confirmacion.observacionAsi"></textarea>
+          <textarea matInput placeholder="" id="Input" name="observaciones" type="text" [(ngModel)]="data.asistencia.observacionAsi" ></textarea>
         </mat-form-field>
     </div>
    <div class="col-md-3">
         <mat-form-field class="example-full-width">
           <mat-label>FECHA DE REGISTRO</mat-label>
-          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="confirmacion.fechaTutoriaAsi"></textarea>
+          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" ></textarea>
         </mat-form-field>
     </div>
 
