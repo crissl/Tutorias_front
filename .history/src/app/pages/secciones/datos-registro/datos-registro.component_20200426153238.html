@@ -1,0 +1,30 @@
+
+  <br/>
+  <form>
+  <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleRegistro}}</h4></ul></div>
+  <legend class="text-default"><h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>
+    
+   </legend>
+  <div class="row">
+    <div class="col-md-9">
+        <mat-form-field class="example-full-width">
+          <mat-label>OBSERVACIONES GENERALES</mat-label>
+          <textarea matInput placeholder="" id="Input"  name="observaciones" type="text" [(ngModel)]="registro.observacion" (ngModelChange)="value=$event.toUpperCase()"></textarea>
+          <mat-error *ngIf="submitted && f.observaciones.errors" class="invalid-feedback">
+          <mat-error class="mat-error" *ngIf="submitted && f.observaciones.errors">*Ingrese Observacion</mat-error>
+        </mat-error>
+
+        </mat-form-field>
+    </div> 
+    
+   <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>FECHA DE REGISTRO</mat-label>
+          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" value="{{registro.fecha | date: 'yyyy-MM-dd'}}"></textarea>
+        </mat-form-field>
+    </div>
+
+  </div>
+</form>
+
+  

@@ -1,0 +1,121 @@
+<br><br><br>
+<app-alert></app-alert>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container">
+  <app-datos-estudiante [datos]="cedula" (propagar)="procesaPropagar($event)"></app-datos-estudiante>
+</div>
+<br>
+
+<div class="container">
+  <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+  <h6>
+    *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+  </h6>
+  <div class="row">
+    <label for="Input" class="col-sm-6 control-label"> TEMA A TRATAR</label>
+    <label for="Input" class="col-sm-6 control-label">INGRESE EL NRC DEL QUE REQUIERE TUTORÍA</label>
+
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>TEMA A TRATAR</mat-label>
+        <input matInput placeholder=""  id="Input" formControlName="tema" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" name="tema" type="text"  [(ngModel)]=" tema.tema" (ngModelChange)="value=$event.toUpperCase()">
+        <mat-error *ngIf="submitted && f.tema.errors" class="invalid-feedback">
+          <mat-error class="mat-error" *ngIf="submitted && f.tema.errors.required">*Ingrese tema</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <!-- <input class="form-control text-uppercase" name="tema" id="Input" type="text" [(ngModel)]=" tema.tema" /> -->
+    </div>
+
+    <div class="col-md-6">
+
+      <mat-form-field>
+        <mat-select style="width:500px; font-size: 12px;"  [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required>
+          
+          <mat-option  *ngFor="let nrc of nrcs"  formControlName="selectNrc"value="{{nrc.nrc}}" (click)="guardar (nrc.nrc,nrc.codigo,nrc.asignatura,nrc.campus,nrc.periodo,nrc.nivel)">
+            {{nrc.codigo}} - {{nrc.asignatura}} {{nrc.campus}} 
+            {{nrc.periodo}} {{nrc.nivel}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="select1.hasError('required')">Selecciona un Nrc</mat-error>
+      </mat-form-field>
+    </div>
+    
+  </div>
+
+</div>
+<div class="container"><app-datos-registro [registro]="observaciones"></app-datos-registro></div>
+<div class="col-md-12 centerbtn">
+  <button class="btn btn-success" (click)="guardarTutoria()">
+    Enviar
+  </button>
+
+
+</div>
+</form>
+
+<!-- <br><br><br>
+<div class="container">
+  
+   
+
+<div class="container">
+    <div class="alert alert-info" align="center" role="alert">DATOS DE LA TUTORIA</div>
+    <h6>*INGRESE LOS DATOS CON LA INFORMACION DE LA TUORIA DE REFORZAMIENTO ACADÉMICO<span class="label label-default"></span></h6>
+    <br>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">TEMA A TRATAR</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="tematratar" id="Input" type="text" placeholder="BASES DE DATOS" ><br>
+        </div>
+        <div class="form-group">
+            <label for="Input" class="col-sm-12 control-label">INGRESE EL NRC DEL QUE REQUIERE TUTORIA</label><br>
+            <div class="col-md-6">
+                <select class="form-control" id="sel1" name="nrc"id="Input">
+                    <option>9602	CADMS0052 - PROY INTEG DE SABERES ADM	12	201418</option>
+                    <option>9164	EXCTS0044 - PROY INTEG DE SABERES TECNICAS	01	201518</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <br><div class="alert alert-info" align="center" role="alert">DATOS DEL REGISTRO</div>
+    <h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORIA<span class="label label-default"></span></h6>
+    <div class="row">
+        <label for="Input" class="col-sm-9 control-label"
+          >OBSERVACIONES GENERALES</label
+        >
+        <label for="Input" class="col-sm-3 control-label"
+          >FECHA DE REGISTRO</label
+        >
+        <div class="col-md-9">
+          <input
+            class="form-control"
+            id="Input"
+            name="observaciones"
+            type="text"
+            placeholder="SOLICITO DAR ATENCION A MI PEDIDO"
+          /><br />
+        
+      </div>
+      
+        <div class="col-md-3">
+          <input
+            class="form-control"
+            name="fecharegistro"
+            id="Input"
+            type="date"
+            value=""
+            readonly
+          /><br />
+       
+      </div>
+    </div>
+<br>
+<div class="container" align="center">
+    <button type="button" class="btn btn-success" ><i class="material-icons">
+        save&nbsp;</i>Guardar</button>
+</div>
+
+</div>
+'' -->

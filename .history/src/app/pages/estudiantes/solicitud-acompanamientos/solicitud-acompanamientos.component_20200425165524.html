@@ -1,0 +1,40 @@
+<br><br><br>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+<div class="container">
+  <app-alert></app-alert>
+  <app-datos-estudiante [datos]="cedula"  (propagar)="procesaPropagar($event)" ></app-datos-estudiante>
+</div>
+  <br>
+  
+  <div class="container">
+    <div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+      
+    </legend>
+    
+    
+    <div class="form-group">
+      
+      <div class="col-md-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>TEMA A TRATAR</mat-label>
+          <input matInput placeholder="" id="Input" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" formControlName="tema" name="tema" type="text"  [(ngModel)]=" tema.tema" (ngModelChange)="value=$event.toUpperCase()">
+        </mat-form-field>
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">llene el tema</div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="container"><app-datos-registro  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" formControlName="comentario" [registro]="observaciones"></app-datos-registro>
+  </div>
+  <div class="col-md-12 centerbtn">
+    <button class="btn btn-success" (click)="guardar()">
+      Enviar
+    </button>
+  </div>
+ 
+</form>
