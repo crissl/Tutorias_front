@@ -47,29 +47,7 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
     }
 
    
-    openDialog(planificacion:any): void {
-      this.restService.getData('buscaIdAsistente/'+planificacion.uztasistentes_CODIGO).subscribe(
-        (data:{})=>{
-          const dialogRef = this.dialog.open(ConfirmarComponent, {
-            width: '1000px',
-            height: '500PX',
-            data: {asistencia: data,info: planificacion},
-          });
-          dialogRef.afterClosed().subscribe(result => {
-            if(result != undefined){
-               console.log("se creo")
-            }
-            console.log('The dialog was closed');
-
-          });
-        }
-      )
-      //
-     
-      //
-
-
-    }
+    UZTASISTENTES_CODIGO
   
   }
 

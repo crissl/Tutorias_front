@@ -71,8 +71,8 @@ export class ConfirmarComponent implements OnInit {
       this.data.asistencia.confirmacion = this.recibioT
       this.data.asistencia.fechaModica = this.fechaActual
       this.data.asistencia.estado = 'I'
-      this.data.asistencia.codigoFormularios=6
-      //console.log(this.data.asistencia)
+      this.data.asistencia
+      //console.log(this.data.asist.encia)
       this.ConfirmarAsistencia();
   }
 

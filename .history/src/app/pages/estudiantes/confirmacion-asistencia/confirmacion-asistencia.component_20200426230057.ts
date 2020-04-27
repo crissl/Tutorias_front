@@ -48,7 +48,7 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
 
    
     openDialog(planificacion:any): void {
-      this.restService.getData('buscaIdAsistente/'+planificacion.uztasistentes_CODIGO).subscribe(
+      this.restService.getData('buscaIdAsistente/'+planificacion.codigo_UZTPLANIF+planificacion.uztasistentes_CODIGO).subscribe(
         (data:{})=>{
           const dialogRef = this.dialog.open(ConfirmarComponent, {
             width: '1000px',
