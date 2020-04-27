@@ -45,17 +45,26 @@ export class RegistroAsistenciasComponent implements OnInit {
       )
     }
 
+    Asistentes:any;
     openDialog(planificacion:any): void {
-      const dialogRef = this.dialog.open(RegistroComponent, {
-        width: '1000px',
-        height: '500PX',
-        data: {pidm:this.spidem,idplanif:planificacion},
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-       
-      });
+      this.restService.get('registroAsistenciaD/'+planificacion.codigo_UZTPLANIF).subscribe(
+        data =>{
+          const dialogRef = this.dialog.open(RegistroComponent, {
+            width: '1000px',
+            height: '500PX',
+            data: {asistentes:data,planificacion:planificacion},
+          });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            if(result){
+              this.listarFormuRegistro();
+            }
+            console.log('The dialog was closed');
+           
+          });
+          
+        }
+      )  
     }
   
 

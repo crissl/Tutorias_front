@@ -22,7 +22,7 @@
     <div class="form-group">
         <label for="Input" class="col-sm-6 control-label">TEMA TRATADO</label><br>
         <div class="col-md-12">
-            <input class="form-control" name="tematratado" id="Input" type="text" value=""readonly ><br>
+            <input class="form-control" name="tematratado" id="Input" type="text" value=""readonly [(ngModel)]="data.planificacion.uztplanif_TEMA"><br>
         </div>
         <label for="Input" class="col-sm-6 control-label">RESULTADOS OBTENIDOS</label><br>
         <div class="col-md-12">
@@ -103,21 +103,21 @@
                 <tr>
                     <td class="text-center"><b>CÉDULA</b></td>
                     <td class="text-center"><b>ID</b></td>
-                    <td class="text-center"><b>ESTUDIANTES</b></td>
+                    <td class="text-center"><b>ESTUDIANTE</b></td>
                     <td class="text-center"><b>EMAIL</b></td>
-                    <td class="text-center"><b>ESTADO</b></td>
-                    <td class="text-center"><b>PRESENTES</b></td>
+                    <td class="text-center"><b>ASISTIÓ</b></td>
+                    <!-- <td class="text-center"><b>PRESENTES</b></td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor= "let alumnos of alumno">
-                    <td class="text-center">{{alumnos.uztasistentes_CEDULA}}</td>
-                    <td class="text-center">{{alumnos.uztasistentes_ID}} </td>
-                    <td class="text-center">{{alumnos.uztasistentes_ESTUDIANTE}} </td>
-                    <td class="text-center">{{alumnos.uztasistentes_EMAIL}}</td>
-                    <td class="text-center">{{alumnos.uztasistentes_ESTADO}} </td>
+                <tr *ngFor= "let alumnos of data.asistentes">
+                    <td class="text-center">{{alumnos.ci}}</td>
+                    <td class="text-center">{{alumnos.idAsistentes}} </td>
+                    <td class="text-center">{{alumnos.estudiante}} </td>
+                    <td class="text-center">{{alumnos.email}}</td>
+                    <!-- <td class="text-center">{{alumnos.uztasistentes_ESTADO}} </td> -->
                     <td> 
-                        <mat-radio-group aria-label="Select an option" >
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="alumnos.asistentes">
                             <mat-radio-button  name="opcradio"  value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
                             <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
                           </mat-radio-group> 

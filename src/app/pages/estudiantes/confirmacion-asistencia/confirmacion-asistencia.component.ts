@@ -22,7 +22,8 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
   codA1: any = {
     id: ""}
   codA: any
-  spidem = 357192 ;
+  spidem =21619
+  //spidem = 357192 ;
   codigoAs: any;
   codigoP: any;
   tema: any;
@@ -56,8 +57,9 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
             data: {asistencia: data,info: planificacion},
           });
           dialogRef.afterClosed().subscribe(result => {
-            if(result != undefined){
+            if(result){
                console.log("se creo")
+               this. listarFormuConfirma()
             }
             console.log('The dialog was closed');
 

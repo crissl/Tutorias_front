@@ -77,6 +77,8 @@ export class ConfirmarComponent implements OnInit {
   }
 
  ConfirmarAsistencia(){
+   this.data.asistencia.fechaRegistroAsi =this.fechaActual;
+   this.data.asistencia.usuarioModica = this.fechaActual;
    this.restService.UpData(this.data.asistencia, "actualizarAsistencia").subscribe(
       data => {
         if(data){
