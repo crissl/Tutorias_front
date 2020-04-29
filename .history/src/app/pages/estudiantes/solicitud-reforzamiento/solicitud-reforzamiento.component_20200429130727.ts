@@ -38,10 +38,9 @@ export class SolicitudReforzamientoComponent implements OnInit {
 
   nrcs: any
   datosGuardar: any;
-  spidem = 334571;
+  spidem;
   cedula = "1725412306";
   ngOnInit() {
-        // this.spidem= localStorage.getItem('pidm');
     this.listarNrc();
     this.initForm();
 

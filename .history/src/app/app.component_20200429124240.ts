@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -10,9 +9,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit{
   public isLoggedIn = false;
   public userName: string;
-  constructor(private authService:AuthService){
 
-  }
   
   ngOnInit(){
     this.isLoggedIn = this.authService.isLoggedIn();
@@ -23,8 +20,5 @@ export class AppComponent implements OnInit{
 
   }
   
-  login() {
-    this.authService.obtainAccessToken();
-  }
 
 }

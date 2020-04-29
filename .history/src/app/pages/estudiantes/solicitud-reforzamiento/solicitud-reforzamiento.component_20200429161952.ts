@@ -42,6 +42,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
   cedula = "1725412306";
   ngOnInit() {
         // this.spidem= localStorage.getItem('pidm');
+
     this.listarNrc();
     this.initForm();
 
