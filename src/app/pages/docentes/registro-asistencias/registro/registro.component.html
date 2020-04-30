@@ -28,20 +28,20 @@
      </div>
 <div class="container-responsive">
     <div class="row">
-    <label for="Input" class="col-sm-3 control-label">FECHA DE LA TUTORÍA</label>
+    <label for="Input" class="col-sm-3 control-label" >FECHA DE LA TUTORÍA</label>
     <label for="Input" class="col-md-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
     <label for="Input" class="col-md-6 control-label">HORA FIN DE LA TUTORÍA:</label>
 
 
     <div class="col-md-3">
-        <input class="form-control" name="fechatutoria" id="Input" type="text" value="">   
+        <input class="form-control" name="fechatutoria" id="Input" type="text" value="" [(ngModel)]="fechaFormato" readonly>   
     </div>
     <div class="col-md-3">
-        <input id = "timepicker1" type = "text" name="hinicia" class = "form-control input-small" readonly>   
+        <input id = "timepicker1" type = "text" name="hinicia" class = "form-control input-small" [(ngModel)]="fechaInicio" readonly>   
     
     </div>
     <div class="col-md-3">
-    <input id = "timepicker2" type = "text" name="hfin" class="form-control input-small" readonly>   
+    <input id = "timepicker2" type = "text" name="hfin" class="form-control input-small" [(ngModel)]="fechaFin" readonly>   
      </div>
      </div>
 </div>   

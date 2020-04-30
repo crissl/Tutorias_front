@@ -107,14 +107,18 @@ export class RegistroComponent implements OnInit {
       }
     )
   }
-
+  fechaFormato:any;
+  fechaInicio:any;
+  fechaFin:any;
 
   planificacion:any;
   traerPlanificacion(){
     this.restService.get('getPlanificacion/'+this.data.planificacion.codigo_UZTPLANIF).subscribe(
       data =>{
         this.planificacion = data;
-        console.log(data);
+         this.fechaInicio = (data.horaInicio).slice(0, 2) + ":" + (data.horaInicio).slice(2);
+         this.fechaFin = (data.horaFin).slice(0, 2) + ":" + (data.horaFin).slice(2);
+        this.fechaFormato = this.pipe.transform(data.fechaTutoria, 'dd-MM-yyyy');
       }
     )
   }
