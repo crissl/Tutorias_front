@@ -10,7 +10,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'app/pages/Formatos/format-datepicker';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { THIS_EXPR, ThrowStmt } from '@angular/compiler/src/output/output_ast';
 
 // const format = 'dd/MM/yyyy';
 // const myDate = Date.now();
@@ -67,10 +67,11 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   publico: string;
   campus1 = "10";
   dia1 = "SZARPGN_CAMPVA10";
-  hora_INICIO = "0715";
-  hora_FIN = "0915";
-  horaInicioEscogido = "1200";
-  horaFinEscogido = "1400";
+  
+    horaInicioEscogido: any;
+  horaFinEscogido:any;
+  //horaInicioEscogido = "1200";
+  //horaFinEscogido = "1400";
   dia: any;
   aulas: any;
   aulas2: any;
@@ -87,11 +88,17 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   codigoAsignatura: any;
   aula: any;
   nivel: any;
+  horaIN: any
+  horaIF: any
+  NoLugar: any;
+  SiLugar:any;
+  siLugarInicio:any;
+  siLugarFin:any;
 
   ngOnInit() {
     this.listarNrc();
     this.listarNrc2();
-    this.listarHorario();
+    //this.listarHorario();
     this.listarHorarioSelecto();
     this.listarNrcLugar();
 
@@ -118,10 +125,13 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   }
 
 
+  nrcNo:any
+
   listarNrc() {
     this.restService.findDataById("planificaionReforzamiento/", this.spidem).subscribe(
       data => {
-        this.nrcs = data
+        this.nrcs = data;
+        this.nrcNo =data;
         console.log(this.nrcs)
       }
     )
@@ -143,6 +153,21 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     )
   }
   guardarTutoria() {
+    if(this.expressType2 ==='LUGAR'){
+      this.aula = this.NoLugar
+      this.nivel = undefined;
+    }
+
+    if(this.expressType1 ==='LUGAR' && this.expressType==='Si'){
+      this.aula = this.SiLugar;
+      //this.inicio = this.inicio;
+      //this.fin = this.fin;
+     
+      this.nivel=undefined;
+    
+    }
+    
+
     this.datosGuardar = {
       codigoFormularios: "1",
       interacion: "0",
@@ -168,9 +193,9 @@ export class PlanificacionReforzamientoComponent implements OnInit {
       aula: this.aula,
       nivel: this.nivel
     }
-    
+    console.log(this.datosGuardar);
     this.guardarPlanificaR();
-    //this.buscartodos();
+    
 
   }
 
@@ -195,27 +220,26 @@ export class PlanificacionReforzamientoComponent implements OnInit {
   }
 
   listarHorario() {
-    this.restService.findDataByHorarioReforzamiento("horarioPlanificacion/", this.campus1, "/", this.dia1, "/", this.hora_INICIO, "/", this.hora_FIN).subscribe(
+    this.restService.findDataByHorarioReforzamiento("horarioPlanificacion/", this.campus, "/", this.dia1, "/", this.inicio, "/", this.fin).subscribe(
       data => {
         if (data) {
           console.log('datos2', data)
           this.aulas = data;
-          console.log("se listo", this.aulas);
-
         }
       }
 
     )
   }
-  listarHorarioSelecto() {
 
+  horarioInNo:any
+  horarioFiNo:any
+  listarHorarioSelecto() {
     this.restService.findDataByHorarioReforzamiento("horarioPlanificacion/", this.campus1, "/", this.dia1, "/", this.horaInicioEscogido, "/", this.horaFinEscogido).subscribe(
       data => {
         if (data) {
           console.log('datos2', data)
           this.aulas2 = data;
-          console.log("se listo" + this.aulas2);
-
+          
         }
       }
 
@@ -237,6 +261,8 @@ export class PlanificacionReforzamientoComponent implements OnInit {
 
   nrcSeleccionado: any
   periodoSeleccionado: any;
+  SiLugarHorarioI:any;
+  NoLugarHorarioF:any;
 
 
   nrcSeleccionadoOption(nrc: any) {
@@ -248,7 +274,30 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.inicio = nrc.inicio;
     this.fin = nrc.fin;
     this.codigoAsignatura = nrc.codigo_ASIGNATURA;
+    this.SiLugarHorarioI = (this.inicio).slice(0, 2) + ":" + (this.inicio).slice(2);
+    this.NoLugarHorarioF = (this.fin).slice(0, 2) + ":" + (this.fin).slice(2);
     console.log(this.campus, this.inicio, this.fin);
+    this.listarHorario();
+  }
+
+  nrcSelecionadoNoHorario(nrc){
+    this.campus = nrc.campus
+    this.inicio = nrc.inicio;
+    this.fin = nrc.fin;
+    this.listarHorario
+  }
+
+
+
+  guardarAsignaturaNo(aula){
+    console.log(aula)
+    this.aula = aula.aula;
+    this.nivel = aula.nivel;
+    this.inicio =aula.hora_INICIO;
+    this.fin =aula.hora_FIN;
+    this.horarioInNo = (aula.hora_INICIO).slice(0, 2) + ":" + (aula.hora_INICIO).slice(2);
+     this.horarioFiNo = (aula.hora_FIN).slice(0, 2) + ":" + (aula.hora_FIN).slice(2);
+
   }
 
 
@@ -275,35 +324,29 @@ export class PlanificacionReforzamientoComponent implements OnInit {
     this.horaInicio = aula.hora_INICIO;
     this.horaFin = aula.hora_FIN;
     console.log(this.horaInicio);
-     this.horaFormatoI = (this.horaInicio).slice(0, 1); 
-     this.horaFormatoF = (this.horaFin).slice(0, 1); 
+     //this.horaFormatoI = (this.horaInicio).slice(0, 1); 
+     //this.horaFormatoF = (this.horaFin).slice(0, 1);
+     this.horaFormatoI = (this.horaInicio).slice(0, 2) + ":" + (this.horaInicio).slice(2);
+     this.horaFormatoF = (this.horaFin).slice(0, 2) + ":" + (this.horaFin).slice(2);
+     console.log(this.horaFormatoF,this.horaFormatoI)
   }
 
 
+  guardarAulaNo(aula){
+    console.log(aula);
+    this.campus1 = aula.campus;
+    this.horaInicioEscogido = this.horaIN;
+    this.horaFinEscogido =this.horaIF;
+     this.campus = aula.campus;
+     this.periodoSeleccionado = aula.periodo;
+     this.codigoAsignatura =aula.codigo_ASIGNATURA;
+     this.nrcSeleccionado = aula.nrc;
+     this.asignatura = aula.asignatura;
+    // this.nrc = aula.nrc;
+    // this.codigoAsignatura = aula.codigo_ASIGNATURA;
+    this.listarHorarioSelecto();
+  }
 
-  // CrearAsistenciaTodos() {
-  //   this.restService.addData(this.estudianteM, 'convocadosTodos').subscribe(
-  //     data => {
-  //       this.estudianteM =[]
-  //     }
-  //   )
-  // }
-
-  // CrearAsistenciaSolitud() {
-  //   this.restService.addData(this.SolicitadoLista, 'crearAsistencia').subscribe(
-  //     data => {
-  //       this.SolicitadoLista=[];
-  //     }
-  //   )
-  // }
-
-  // CrearAsistenciaMenos14(){
-  //   this.restService.addData(,'convocadosMeno14').subscribe(
-  //     data => {
-
-  //     }
-  //   )
-  // }
 
   BuscarIdPlanif() {
     this.restService.getData('ultimoPlanif').subscribe(
@@ -369,6 +412,19 @@ export class PlanificacionReforzamientoComponent implements OnInit {
         this.estudianteM =[]
       }
     )
+  }
+
+  
+  SelectNrcnrLugar(nrc){
+    console.log(nrc)
+    this.campus = nrc.campus;
+    this.asignatura = nrc.asignatura;
+    this.codigoAsignatura = nrc.codigo_ASIGNATURA;
+    this.periodoSeleccionado = nrc.periodo;
+    this.nrcSeleccionado = nrc.nrc
+    //this.aula = this.NoLugar
+    this.inicio = this.horaIN;
+    this.fin = this.horaIF;
   }
 
 }

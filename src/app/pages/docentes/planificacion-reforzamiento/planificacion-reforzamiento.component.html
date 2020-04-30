@@ -49,13 +49,15 @@
           <div class="col-md-6">
 
           <mat-form-field>
+            <mat-label>Seleccione una Asignatura</mat-label>
           <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
+            
             <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}" (click)="nrcSeleccionadoOption(nrc)">
               {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
               {{nrc.periodo}} {{nrc.inicio}} {{nrc.fin}}
              </mat-option>
              </mat-select>
-             <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
+             <mat-error *ngIf="select1.hasError('required')">Selecciona una Asiganatura</mat-error>
              </mat-form-field>
             </div>
           </div>
@@ -66,12 +68,12 @@
 
           <div class="col-md-6">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia" type="text" value="" [(ngModel)]="horaFormatoI" >
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia" type="text" value="" [(ngModel)]="horaIN" >
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hfin" type="text" value="" [(ngModel)]="horaFormatoF" >
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hfin" type="text" value="" [(ngModel)]="horaIF" >
             </mat-form-field>
           </div>
         </div>
@@ -121,10 +123,11 @@
           <div class="row">
               <div class="col-md-6">
                 <mat-form-field > 
+                  <mat-label>Seleccione un Aula</mat-label>
                 <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
-               <mat-option  *ngFor="let aula of aulas" value="aula" (click)="guardarAula(aula)" >
-                {{aula.nivel}}- {{aula.aula}}-{{aula.horario}} {{aula.hora_INICIO}}
-                  {{aula.hora_FIN}}
+                  
+                  <mat-option  *ngFor="let aula of aulas" value="aula" (click)="guardarAula(aula)" >
+                    Bloque: {{aula.nivel}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aula:  {{aula.aula}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Horario:{{aula.horario}}
                 </mat-option>
                 </mat-select>
                 <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
@@ -132,12 +135,12 @@
               </div>
               <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input5" name="hinicia" type="text" value=""  disabled>
+                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input5" name="hinicia" type="text" [(ngModel)]="horaFormatoI"  disabled>
                 </mat-form-field>
               </div>
               <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input6" name="hfin" type="text" value=""   disabled>
+                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input6" name="hfin" type="text" [(ngModel)]="horaFormatoF"   disabled>
                 </mat-form-field>
               </div>
             </div>
@@ -148,17 +151,17 @@
 
           <div class="col-md-6">
             <mat-form-field class="example-full-width">
-              <textarea matInput placeholder="INGRESE LUGAR" id="Input45" name="lugar2" type="text"></textarea>
+              <textarea matInput placeholder="INGRESE LUGAR" id="Input45" name="lugar2" type="text" [(ngModel)]="SiLugar" ></textarea>
             </mat-form-field>
           </div>          
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input10" name="hinicia" type="text" value="">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input10" name="hinicia" type="text" value="" [(ngModel)]="SiLugarHorarioI" disabled>
             </mat-form-field>
           </div>
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input11" name="hfin" type="text" value="">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input11" name="hfin" type="text" value="" [(ngModel)]="NoLugarHorarioF" disabled>
             </mat-form-field>
           </div>
         </div>
@@ -206,7 +209,7 @@
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
               <mat-form-field>
                 <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
-                  <mat-option  *ngFor="let nrc of nrcs2" value="{{nrc.nrc}}" (click)="guardarAula(nrc)">
+                  <mat-option  *ngFor="let nrc of nrcNo" value="" (click)="guardarAulaNo(nrc)">
                     {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
                    </mat-option>
                    </mat-select>
@@ -218,9 +221,8 @@
               <div class="col-12 col-sm-12 col-md-6 col-lg-3">
                 <mat-form-field > 
                   <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
-                 <mat-option  *ngFor="let aula of aulas2" value="aula" >
-                  {{aula.nivel}}-{{aula.aula}}-{{aula.horario}} {{aula.hora_INICIO}}
-                    {{aula.hora_FIN}}
+                 <mat-option  *ngFor="let aula of aulas2" value="aula" (click)="guardarAsignaturaNo(aula)">
+                  Bloque: {{aula.nivel}} &nbsp;&nbsp;&nbsp; Aula: {{aula.aula}} &nbsp;&nbsp;&nbsp;
                   </mat-option>
                   </mat-select>
                   <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
@@ -229,12 +231,12 @@
 
               <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input41" name="hinicia" type="text" value="" disabled>
+                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input41" name="hinicia" type="text" value="" [(ngModel)]="horarioInNo" disabled>
                 </mat-form-field>
               </div>
               <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input78" name="hfin" type="text" value="" disabled>
+                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input78" name="hfin" type="text" value="" [(ngModel)]="horarioFiNo" disabled>
                 </mat-form-field>
               </div>
             </div>
@@ -246,7 +248,7 @@
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <mat-form-field>
               <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select3="ngModel" required> 
-                <mat-option  *ngFor="let nrc of nrcs3" value="{{nrc.nrc}}"  (click)="guardarAula(nrc)" >
+                <mat-option  *ngFor="let nrc of nrcs3" value="{{nrc.nrc}}"  (click)="SelectNrcnrLugar(nrc)" >
                   {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
                  </mat-option>
                  </mat-select>
@@ -255,10 +257,10 @@
             </div>
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <mat-form-field class="example-full-width">
-              <textarea matInput placeholder="Ingrese lugar" id="Input12" name="lugar" type="text" ></textarea>
+              <textarea matInput placeholder="Ingrese lugar" id="Input12" name="lugar" type="text" [(ngModel)]="NoLugar" ></textarea>
             </mat-form-field>
           </div>
-          <div class="col-md-3">
+          <!-- <div class="col-md-3">
             <mat-form-field class="example-full-width">
               <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input14" name="inicio" type="text" value="" disabled>
             </mat-form-field>
@@ -267,7 +269,7 @@
             <mat-form-field class="example-full-width">
               <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input15" name="fin" type="text" value="" disabled>
             </mat-form-field>
-          </div>
+          </div> -->
        
         </div>
         </ng-container>
