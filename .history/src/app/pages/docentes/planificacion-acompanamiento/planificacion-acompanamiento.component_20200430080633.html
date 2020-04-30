@@ -33,7 +33,7 @@
     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
       <mat-form-field class="example-full-width">
         <mat-label>TEMA A TRATAR</mat-label>
-        <textarea matInput placeholder=""  class="text-uppercase" id="Input9" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
+        <textarea matInput placeholder="" id="Input9" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
       </mat-form-field>
     </div>
     <!-- <div class="col-md-6">
@@ -144,12 +144,17 @@
 
   <div class="form-group">
     <label for="Input" class="col-sm-12 control-label">OBSERVACIONES GENERALES</label><br />
-    <div class="col-md-12">
+    <div class="col-md-9">
       <mat-form-field class="example-full-width">
         <mat-label>OBSERVACIONES GENERALES</mat-label>
-        <textarea matInput placeholder="" id="Input0" class="text-uppercase" name="observaciones" type="text" [(ngModel)]="observaciones"></textarea>
+        <textarea matInput placeholder="" id="Input"  name="observaciones" type="text" [(ngModel)]="registro.observacion"></textarea>
+        <!-- <mat-error *ngIf="submitted && f.observacionV.errors" class="invalid-feedback">
+        <mat-error class="mat-error" *ngIf="submitted && f.observacionV.errors">*Ingrese Observacion</mat-error>
+        formControlName="observacionV"   [ngClass]="{ 'is-invalid': submitted && f.observacionV.errors }"
+      </mat-error> -->
 
       </mat-form-field>
+      <input class="form-control" id="Input0" type="text" name="observaciones"  [(ngModel)]="observaciones" /><br />
     </div>
   </div>
 
