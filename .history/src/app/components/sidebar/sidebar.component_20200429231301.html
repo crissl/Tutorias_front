@@ -1,0 +1,69 @@
+<div class="logo">
+    <img class="mx-auto d-block" src="/assets/img/Espe-Angular-Logo.png" alt="Logo - ESPE" />
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">person</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+  </div>
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+    <!-- <nav>
+        <ul>
+          <li><a routerLink="/first-component" routerLinkActive="active">First Component</a></li>
+          <li><a routerLink="/second-component" routerLinkActive="active">Second Component</a></li>
+        </ul>
+      </nav> -->
+      <span>Techniques</span>
+      <div class="heading-children level-1 expanded selected"><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="guide/security" title="Developing for content security in Angular applications."><span>Security</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 expanded selected" href="" title="Translate the app's template text into multiple languages."><span>Internationalization (i18n)</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="guide/accessibility" title="Design apps to be accessible to all users."><span>Accessibility</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><!----><button type="button" class="vertical-menu-item heading ng-star-inserted level-2 collapsed" title="Angular service workers: Controlling caching of application resources." aria-pressed="false"><span>Service Workers &amp; PWA</span><mat-icon role="img" svgicon="keyboard_arrow_right" class="mat-icon notranslate rotating-icon mat-icon-no-color" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><!----><div class="heading-children level-2 collapsed"><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/service-worker-intro" title="Angular's implementation of service workers improves user experience with slow or unreliable network connectivity."><span>Introduction</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/service-worker-getting-started" title="Enabling the service worker in a CLI project and observing behavior in the browser."><span>Getting Started</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/app-shell" title="Enabling the App Shell in a CLI project."><span>App Shell</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/service-worker-communications" title="Services that enable you to interact with an Angular service worker."><span>Service Worker Communication</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/service-worker-devops" title="Running applications with service workers, managing application update, debugging, and killing applications."><span>Service Worker in Production</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/service-worker-config" title="Configuring service worker caching behavior."><span>Service Worker Configuration</span></a></div><!----><!----></aio-nav-item><!----></div></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="guide/universal" title="Render HTML server-side with Angular Universal."><span>Server-side Rendering</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><!----><button type="button" class="vertical-menu-item heading ng-star-inserted level-2 collapsed" title="Incrementally upgrade an AngularJS application to Angular." aria-pressed="false"><span>Upgrading from AngularJS</span><mat-icon role="img" svgicon="keyboard_arrow_right" class="mat-icon notranslate rotating-icon mat-icon-no-color" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><!----><div class="heading-children level-2 collapsed"><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/upgrade" title="Incrementally upgrade an AngularJS application to Angular."><span>Upgrading Instructions</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/upgrade-performance" title="Upgrade from AngularJS to Angular in a more flexible way."><span>Upgrading for Performance</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/ajs-quick-reference" title="Learn how AngularJS concepts and techniques map to Angular."><span>AngularJS-Angular Concepts</span></a></div><!----><!----></aio-nav-item><!----></div></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><!----><button type="button" class="vertical-menu-item heading ng-star-inserted level-2 collapsed" title="Extending Angular with shared libraries." aria-pressed="false"><span>Angular Libraries</span><mat-icon role="img" svgicon="keyboard_arrow_right" class="mat-icon notranslate rotating-icon mat-icon-no-color" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><!----><div class="heading-children level-2 collapsed"><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/libraries" title="Understand how and when to use or create libraries."><span>Libraries Overview</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/using-libraries" title="Integrate published libraries into an app."><span>Using Published Libraries</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/creating-libraries" title="Extend Angular by creating, publishing, and using your own libraries."><span>Creating Libraries</span></a></div><!----><!----></aio-nav-item><!----></div></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><!----><button type="button" class="vertical-menu-item heading ng-star-inserted level-2 collapsed" title="Using CLI schematics for code generation." aria-pressed="false"><span>Schematics</span><mat-icon role="img" svgicon="keyboard_arrow_right" class="mat-icon notranslate rotating-icon mat-icon-no-color" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><!----><div class="heading-children level-2 collapsed"><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/schematics" title="How the CLI uses schematics to generate code."><span>Schematics Overview</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/schematics-authoring" title="Understand the structure of a schematic."><span>Authoring Schematics</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="guide/schematics-for-libraries" title="Use schematics to integrate your library with the Angular CLI."><span>Schematics for Libraries</span></a></div><!----><!----></aio-nav-item><!----></div></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="guide/cli-builder" title="Using builders to customize Angular CLI."><span>CLI Builders</span></a></div><!----><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="guide/web-worker" title="Implement background processing with web workers."><span>Web Workers in Angular</span></a></div><!----><!----></aio-nav-item><!----></div>
+</div>
