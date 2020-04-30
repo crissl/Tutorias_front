@@ -23,7 +23,7 @@ export class ListaTutoriasSolicitadasComponent implements OnInit {
   tutoria: any
   fecha: any
   spidem = 14159 ;
-  spidem2= 14159;
+  spidem2= 245991;
   ids: any
   nombres: any
   observacion: any

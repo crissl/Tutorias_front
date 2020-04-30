@@ -13,7 +13,7 @@ export class ListaTutoriasPlanificadasComponent implements OnInit {
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
 
   constructor(private service: PersonalDataService, private restService: RestService) { }
-  cedula = "1722340138";
+  cedula = "1310494586";
   tutoria: any
   id: any
   tema: any
