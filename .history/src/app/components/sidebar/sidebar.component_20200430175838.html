@@ -1,0 +1,221 @@
+<div class="logo">
+    <img class="mx-auto d-block" src="/assets/img/Espe-Angular-Logo.png" alt="Logo - ESPE" />
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">person</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+  </div>
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a data-toggle="collapse" class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+    <ul class="nav">
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+    
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active" routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem2.class}} nav-item">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" class="nav-link" [routerLink]="[menuItem2.path]">Acompañamiento</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">                
+                                <p>{{menuItem2.title}}</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+               
+                <li class="active" routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem3.class}} nav-item">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" class="nav-link" [routerLink]="[menuItem4.path]">Reforzamiento</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">
+                                @Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	
+		/*http
+			  	.csrf().disable() // Disable CSRF protection, not necessary with x-auth-token
+			  	.httpBasic()
+			.and()
+				.authorizeRequests()
+				.requestMatchers(CorsUtils::isCorsRequest).permitAll()
+				.anyRequest().authenticated();*/
+		
+		// https://github.com/spring-projects/spring-boot/issues/5834
+		http.csrf().disable()
+	        	.authorizeRequests()
+	        	.antMatchers(HttpMethod.GET, "/**").permitAll()
+	        	.antMatchers(HttpMethod.POST, "/**").permitAll()
+	        	.requestMatchers(CorsUtils::isCorsRequest).permitAll()
+	        	.anyRequest().authenticated()
+	        .and().httpBasic()
+	        .and().addFilterBefore(new WebSecurityCorsFilter(), ChannelProcessingFilter.class);
+
+	}
+
+	
+	@Configuration
+	protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
+		
+		@Value("${ldap.urls}")
+		private String ldapUrls;
+
+		@Value("${ldap.username}")
+		private String ldapSecurityPrincipal;
+
+		@Value("${ldap.password}")
+		private String ldapPrincipalPassword;
+		
+		@Override
+		public void init(AuthenticationManagerBuilder auth) throws Exception {
+
+			DefaultSpringSecurityContextSource contextSource = new DefaultSpringSecurityContextSource(ldapUrls);
+			contextSource.setUserDn(ldapSecurityPrincipal);
+			contextSource.setPassword(ldapPrincipalPassword);
+			contextSource.afterPropertiesSet();
+
+			LdapAuthenticationProviderConfigurer<AuthenticationManagerBuilder> ldapAuthenticationProviderConfigurer = auth
+					.ldapAuthentication().userDetailsContextMapper(new LdapUserDetailsContextMapper());
+
+			ldapAuthenticationProviderConfigurer.userSearchFilter("(&(uid={0}))")
+					.userSearchBase("").contextSource(contextSource);
+
+		}
+	}
+	
+	
+	
+	
+	
+	
+//	@Override
+//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//			auth
+//			.ldapAuthentication()
+//			.contextSource()
+//			.url(ldapUrls + ldapBaseDn)
+//			.managerDn(ldapSecurityPrincipal)
+//			.managerPassword(ldapPrincipalPassword)
+//			.and()
+//			.userDnPatterns(ldapUserDnPattern);
+//
+//	}
+	protected class WebSecurityCorsFilter implements Filter {
+	  
+	    @Override
+	    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	        HttpServletResponse res = (HttpServletResponse) response;
+	        res.setHeader("Access-Control-Allow-Origin", "*");
+	        res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+	        res.setHeader("Access-Control-Max-Age", "3600");
+	        res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept, x-requested-with, Cache-Control");
+	        chain.doFilter(request, res);
+	    }
+	    @Override
+	    public void destroy() {
+	    }
+	}
+}
+
+                            </a>
+                        </li>
+                      
+                    </ul>
+                </li>
+                <li class="active" routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem4.class}} nav-item">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"¨class="nav-link" [routerLink]="[menuItem4.path]">Tutorias</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+                
+            </ul>
+        </nav>
+    
+    </div>
+</ul>
+    <!-- <ul class="nav">
+    <li class="nav-item dropdown" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+        <a class="nav-link dropdown-toggle" routerLinkActive="active"  id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Solicitudes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item" class="nav-link dropdown-item text-sub-menu"  [routerLink]="[menuItem.path]"  routerLinkActive="nav-activo"><i class="material-icons">{{menuItem.icon}}</i><p>{{menuItem.title}}</p></a>
+        </div>
+        </li>
+    </ul> -->
+    <!-- <ul class="nav" >
+    <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item nav-item dropdown">
+        <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">notifications</i>
+            <span class="notification">Solicitudes</span>
+            
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link" [routerLink]="[menuItem.path]" class="dropdown-item"><i class="material-icons">{{menuItem.icon}}</i><p>{{menuItem.title}}</p></a>
+         
+        </div>
+    </li>
+</ul> -->
+</div>
