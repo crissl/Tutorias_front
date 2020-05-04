@@ -158,19 +158,19 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('pidm', upidm);
     // localStorage.getItem('pidm') 
   }
-  // tipoUsuario() {
+  tipoUsuario() {
 
-  //   this.restService.findDataById("tipoPersona/", this.spidem).subscribe(
-  //     data => {
-  //       this.usuario = data;
-  //       console.log("El usuario",this.usuario)
-  //       if (this.usuario == undefined) {
-  //         console.log("El usuario no tiene permisos")
-  //       }
+    this.restService.findDataById("tipoPersona/", this.spidem).subscribe(
+      data => {
+        this.usuario = data;
+        console.log("El usuario",this.usuario)
+        if (this.usuario == undefined) {
+          console.log("El usuario no tiene permisos")
+        }
 
-  //     }
-  //   )
-  // }  
+      }
+    )
+  }  
 
   
   }

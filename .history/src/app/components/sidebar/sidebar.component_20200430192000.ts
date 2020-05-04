@@ -2,16 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/services/auth.service';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { Router } from '@angular/router';
-import { RestService } from 'app/service/rest.service';
 
 declare const $: any;
-
 declare interface RouteInfo {
   path: string;
   title: string;
   icon: string;
   class: string;
-
 }
 export const ROUTES: RouteInfo[] = [
   // { path: '/hojaSalida', title: 'Hoja de Salida', icon: 'dashboard', class: '' },
@@ -88,17 +85,15 @@ export class SidebarComponent implements OnInit {
   usuarioData: any=[];
   pidm;
   id;
-  usuario: any;
-  spidem;
 
-  constructor(private authService:AuthService, private personaldataService:PersonalDataService,private router: Router,private restService: RestService) { }
+  constructor(private authService:AuthService, private personaldataService:PersonalDataService,private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
         this.userName = this.authService.getUserName();
        
-        this.personaldataService.findDataUser('https://servicios.espe.edu.ec:8443/UPBannerWS-0.0.1-SNAPSHOT/UPBannerWS/user/' + this.userName).subscribe((data: {}) => {
+        this.personaldataService('https://servicios.espe.edu.ec:8443/UPBannerWS-0.0.1-SNAPSHOT/UPBannerWS/user/' + this.userName).subscribe((data: {}) => {
           this.persona = data[0];
           console.log('USUARIO', this.persona.pidm);
           this.initialiseInvites(this.persona.pidm);
@@ -158,19 +153,6 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('pidm', upidm);
     // localStorage.getItem('pidm') 
   }
-  // tipoUsuario() {
-
-  //   this.restService.findDataById("tipoPersona/", this.spidem).subscribe(
-  //     data => {
-  //       this.usuario = data;
-  //       console.log("El usuario",this.usuario)
-  //       if (this.usuario == undefined) {
-  //         console.log("El usuario no tiene permisos")
-  //       }
-
-  //     }
-  //   )
-  // }  
 
   
   }

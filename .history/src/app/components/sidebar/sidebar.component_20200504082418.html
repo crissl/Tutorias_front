@@ -90,6 +90,7 @@
                     <ul class="collapse list-unstyled nav" id="pageSubmenu2">
                         <li  routerLinkActive="active" *ngFor="let menuItem of menuItems4" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                               
                                 <i class="material-icons">{{menuItem.icon}}</i>
                                 <p>{{menuItem.title}}</p>
                             </a>

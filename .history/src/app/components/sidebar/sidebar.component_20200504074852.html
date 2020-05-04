@@ -59,10 +59,11 @@
     </ul> -->
 
         <!-- Sidebar -->
+        <nav id="sidebar">
             <ul class="nav">
                 <li  routerLinkActive="active" class="active" >
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">account_circle&nbsp;</span>Acompañamiento</a>
-                    <ul class="collapse list-unstyled nav" id="homeSubmenu">
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li  routerLinkActive="active" *ngFor="let menuItem of menuItems2" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">   
                             <i class="material-icons">{{menuItem.icon}}</i>             
@@ -75,9 +76,10 @@
                
                 <li  routerLinkActive="active" class="active" >
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">assignment_ind&nbsp;</span>Reforzamiento</a>
-                    <ul class="collapse list-unstyled nav" id="pageSubmenu">
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
                      <li  routerLinkActive="active" *ngFor="let menuItem of menuItems3" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                               
                                 <i class="material-icons">{{menuItem.icon}}</i>
                                 <p>{{menuItem.title}}</p>
                             </a>
@@ -87,9 +89,10 @@
                 </li>
                 <li  routerLinkActive="active" class="active">
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">menu_book&nbsp;</span>Tutorias</a>
-                    <ul class="collapse list-unstyled nav" id="pageSubmenu2">
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
                         <li  routerLinkActive="active" *ngFor="let menuItem of menuItems4" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                               
                                 <i class="material-icons">{{menuItem.icon}}</i>
                                 <p>{{menuItem.title}}</p>
                             </a>
@@ -99,6 +102,7 @@
                 </li>
                 
             </ul>
+        </nav>
     
     <!-- <ul class="nav">
     <li class="nav-item dropdown" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">

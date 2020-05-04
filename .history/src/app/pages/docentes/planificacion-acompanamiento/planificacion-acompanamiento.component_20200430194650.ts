@@ -126,6 +126,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   ngOnInit() {
     this.listarCamp();
     //this.listarHorario();
+    this.tipoUsuario();
 
   }
   procesaPropagar(data) {

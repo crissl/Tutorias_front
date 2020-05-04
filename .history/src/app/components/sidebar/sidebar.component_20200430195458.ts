@@ -89,7 +89,6 @@ export class SidebarComponent implements OnInit {
   pidm;
   id;
   usuario: any;
-  spidem;
 
   constructor(private authService:AuthService, private personaldataService:PersonalDataService,private router: Router,private restService: RestService) { }
 
@@ -158,19 +157,19 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem('pidm', upidm);
     // localStorage.getItem('pidm') 
   }
-  // tipoUsuario() {
+  tipoUsuario() {
 
-  //   this.restService.findDataById("tipoPersona/", this.spidem).subscribe(
-  //     data => {
-  //       this.usuario = data;
-  //       console.log("El usuario",this.usuario)
-  //       if (this.usuario == undefined) {
-  //         console.log("El usuario no tiene permisos")
-  //       }
+    this.restService.findDataById("tipoPersona/", this.spidem).subscribe(
+      data => {
+        this.usuario = data;
+        console.log("El usuario",this.usuario)
+        if (this.usuario == undefined) {
+          console.log("El usuario no tiene permisos")
+        }
 
-  //     }
-  //   )
-  // }  
+      }
+    )
+  }  
 
   
   }

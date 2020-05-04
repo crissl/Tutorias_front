@@ -62,7 +62,9 @@
             <ul class="nav">
                 <li  routerLinkActive="active" class="active" >
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">account_circle&nbsp;</span>Acompañamiento</a>
+                </ul>      
                     <ul class="collapse list-unstyled nav" id="homeSubmenu">
+                       
                         <li  routerLinkActive="active" *ngFor="let menuItem of menuItems2" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">   
                             <i class="material-icons">{{menuItem.icon}}</i>             
@@ -78,6 +80,7 @@
                     <ul class="collapse list-unstyled nav" id="pageSubmenu">
                      <li  routerLinkActive="active" *ngFor="let menuItem of menuItems3" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                               
                                 <i class="material-icons">{{menuItem.icon}}</i>
                                 <p>{{menuItem.title}}</p>
                             </a>
@@ -90,6 +93,7 @@
                     <ul class="collapse list-unstyled nav" id="pageSubmenu2">
                         <li  routerLinkActive="active" *ngFor="let menuItem of menuItems4" class="{{menuItem.class}} nav-item">
                             <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                               
                                 <i class="material-icons">{{menuItem.icon}}</i>
                                 <p>{{menuItem.title}}</p>
                             </a>
@@ -98,7 +102,7 @@
                     </ul>
                 </li>
                 
-            </ul>
+            
     
     <!-- <ul class="nav">
     <li class="nav-item dropdown" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
