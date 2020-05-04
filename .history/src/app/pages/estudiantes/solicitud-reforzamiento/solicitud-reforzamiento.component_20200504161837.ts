@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { TutoriaConstants } from 'app/constants/constants';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -21,7 +20,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   form: FormGroup;
   submitted= false;
-  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router, public route: Router) { }
+  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router) { }
 
   options: any = {
     toastLife: 3000,

@@ -3,7 +3,6 @@ import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-tutorias-planificadas',
@@ -14,7 +13,7 @@ export class ListaTutoriasPlanificadasComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
 
-  constructor(private service: PersonalDataService, private restService: RestService, public route: Router) { }
+  constructor(private service: PersonalDataService, private restService: RestService) { }
   // cedula = "1722340138";
   tutoria: any
   id: any
@@ -66,19 +65,16 @@ export class ListaTutoriasPlanificadasComponent implements OnInit {
           console.log('PER', this.persona);
           // this.router.navigate(['personal']);
           if (this.persona === undefined) {
-            console.log('tiene acceso')
+              this.route.navigateByUrl('/');
           } else {
             // //console.log('JSON', JSON.stringify(this.aux));
             if (data[0] == undefined) {
               //this.router.navigate(['/error']);
-              console.log('tiene acceso')
-
             }
             if (this.persona.tipo_EMPLEADO == ('DO')) {
              // this.router.navigate(['/error']);
             
              this.route.navigateByUrl('/');
-
             }
     
           }

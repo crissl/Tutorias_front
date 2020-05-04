@@ -11,7 +11,6 @@ const formattedDate = formatDate(myDate, format, locale);
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, Validators, FormBuilder, ValidationErrors,  ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-solicitud-acompanamientos',
@@ -27,7 +26,7 @@ export class SolicitudAcompanamientosComponent implements OnInit {
  titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   submitted= false;
 
-  constructor(private router: Router, private fb: FormBuilder, private service: PersonalDataService, private restService: RestService, public toast: ToastrService, public route: Router) { }
+  constructor(private router: Router, private fb: FormBuilder, private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
   
   options: any = {
     toastLife: 3000,

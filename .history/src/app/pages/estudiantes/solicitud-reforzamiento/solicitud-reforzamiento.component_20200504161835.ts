@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { TutoriaConstants } from 'app/constants/constants';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 const format = 'dd/MM/yyyy';
 const myDate = Date.now();
 const locale = 'en-US';
@@ -21,7 +20,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   form: FormGroup;
   submitted= false;
-  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router, public route: Router) { }
+  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router) { }
 
   options: any = {
     toastLife: 3000,
@@ -142,40 +141,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
       }
     )
   }
-  persona:any =[];
-  access() {
-    this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
-      this.persona = data[0];
-      console.log('PER', this.persona);
-      // this.router.navigate(['personal']);
-      if (this.persona === undefined) {
-        console.log('tiene acceso')
-      } else {
-        // //console.log('JSON', JSON.stringify(this.aux));
-        if (data[0] == undefined) {
-          //this.router.navigate(['/error']);
-          console.log('tiene acceso')
-
-        }
-        if (this.persona.tipo_EMPLEADO == ('DO')) {
-         // this.router.navigate(['/error']);
-        
-         this.route.navigateByUrl('/');
-
-        }
-
-      }
-    }, (err) => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 500) {
-          // //console.log('ERROR');
-          this.route.navigate(['/']);
-        }
-      }
-    }
-    )
-
-  }
+  
 
 
 

@@ -2,34 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
-import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-lista-tutorias-solicitadas',
-  templateUrl: './lista-tutorias-solicitadas.component.html',
-  styleUrls: ['./lista-tutorias-solicitadas.component.scss']
+  selector: 'app-lista-tutorias-planificadas',
+  templateUrl: './lista-tutorias-planificadas.component.html',
+  styleUrls: ['./lista-tutorias-planificadas.component.scss']
 })
-
-export class ListaTutoriasSolicitadasComponent implements OnInit {
+export class ListaTutoriasPlanificadasComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
+  titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
 
-  constructor(private service: PersonalDataService, private restService: RestService, public route: Router) { }
-  // cedula = "1710802925";
-  acompanamiento: any
-  reforzamiento: any
-
+  constructor(private service: PersonalDataService, private restService: RestService) { }
+  // cedula = "1722340138";
+  tutoria: any
   id: any
   tema: any
   asignatura: any
-  tutoria: any
   fecha: any
-  // spidem = 14159 ;
+  aula: any
+  // spidem = 350957 ;
   spidem;
   cedula;
-  ids: any
-  nombres: any
-  observacion: any
+  hora: any
+  fechaCrea: any
   procesaPropagar(data) {
     this.id = data[0].pidm
   }
@@ -37,57 +32,32 @@ export class ListaTutoriasSolicitadasComponent implements OnInit {
   ngOnInit() {
     this.spidem= localStorage.getItem('pidm');
     this.cedula= localStorage.getItem('cedula');
-    this.listarSolicitudAcompanamiento()
-    this.listarSolicitudReforzamiento()
-    
+    this.listarTutorias()
   }
-
-
-  listSolicitudAcompanamiento (ids, tutoria, nombres, tema, observacion,fecha) {
-    this.ids = ids
+  
+  
+  listTutorias (tutoria, tema, asignatura,fecha, aula, hora, fechaCrea) {
     this.tutoria = tutoria;
-    this.nombres = nombres;
     this.tema = tema;
-    this.observacion = observacion; 
+    this.asignatura = asignatura;
     this.fecha = fecha;
-    
+    this.aula = aula;
+    this.hora = hora;
+    this.fechaCrea = fechaCrea;
 
   
 
   }
 
-    listarSolicitudAcompanamiento() {
-      this.restService.findDataById("SolicitadasAcompanamiento/", this.spidem).subscribe(
+    listarTutorias() {
+      this.restService.findDataById("TutoriasPlanificadas/", this.spidem).subscribe(
         data => {
-          this.acompanamiento = data
-          console.log(this.acompanamiento)
+          this.tutoria = data
+          console.log(this.tutoria)
         }
       )
     }
-
-    listSolicitudReforzamiento (ids, tutoria, nombres, asignatura, tema,fecha) {
-      this.ids = ids;
-      this.tutoria = tutoria;
-      this.nombres =nombres;
-      this.asignatura = asignatura;
-      this.tema = tema;
-      this.fecha = fecha;
-     
-  
-    
-  
-    }
-  
-      listarSolicitudReforzamiento() {
-        this.restService.findDataById("SolicitadasReforzamiento/", this.spidem).subscribe(
-          data => {
-            this.reforzamiento = data
-            console.log(this.reforzamiento)
-          }
-        )
-      }
-
-      persona:any =[];
+    persona:any =[];
       access() {
         this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
           this.persona = data[0];
@@ -121,6 +91,6 @@ export class ListaTutoriasSolicitadasComponent implements OnInit {
       }
 
 
-
 }
+
 

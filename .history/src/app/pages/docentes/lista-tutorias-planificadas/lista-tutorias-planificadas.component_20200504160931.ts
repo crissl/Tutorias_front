@@ -3,7 +3,6 @@ import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-tutorias-planificadas',
@@ -14,7 +13,7 @@ export class ListaTutoriasPlanificadasComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
 
-  constructor(private service: PersonalDataService, private restService: RestService, public route: Router) { }
+  constructor(private service: PersonalDataService, private restService: RestService,,public route: Router) { }
   // cedula = "1722340138";
   tutoria: any
   id: any

@@ -6,7 +6,6 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { ToastrService } from 'ngx-toastr';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-asistencias',

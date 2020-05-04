@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TutoriaConstants } from 'app/constants/constants';
 import { RestService } from 'app/service/rest.service';
 import { PersonalDataService } from 'app/services/personal-data.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-alumnos-acompanamiento',
@@ -14,7 +12,7 @@ export class ListaAlumnosAcompanamientoComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
 
 
-  constructor(private service: PersonalDataService, private restService: RestService,public route: Router) { }
+  constructor(private service: PersonalDataService, private restService: RestService) { }
   // cedula = "1710802925";
   id: any
   alumno: any

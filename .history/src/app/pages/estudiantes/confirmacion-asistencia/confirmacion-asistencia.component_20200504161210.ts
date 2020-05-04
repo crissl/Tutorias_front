@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmarComponent } from './confirmar/confirmar.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 export interface DialogData {
   animal: string;
   name: string;
@@ -19,7 +18,7 @@ export interface DialogData {
 
 export class ConfirmacionAsistenciaComponent implements OnInit {
 
-  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog, public route: Router) { }
+  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog) { }
 
   codA1: any = {
     id: ""}

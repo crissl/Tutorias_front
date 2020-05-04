@@ -358,12 +358,12 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       console.log('PER', this.persona);
       // this.router.navigate(['personal']);
       if (this.persona === undefined) {
-        this.route.navigateByUrl('/');
+        this.route.navigateByUrl('/dashboard');
       } else {
         // //console.log('JSON', JSON.stringify(this.aux));
         if (data[0] == undefined) {
           //this.router.navigate(['/error']);
-          this.route.navigateByUrl('/');
+          this.route.navigateByUrl('/dashboard');
         }
         if (this.persona.tipo_EMPLEADO == ('DO')) {
          // this.router.navigate(['/error']);
@@ -376,7 +376,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 500) {
           // //console.log('ERROR');
-          this.route.navigate(['/']);
+          this.router.navigate(['/error']);
         }
       }
     }

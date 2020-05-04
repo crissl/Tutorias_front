@@ -16,7 +16,6 @@ import { DatePipe } from '@angular/common';
 //import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../../Formatos/format-datepicker';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 
 const format = 'dd/MM/yyyy';
@@ -65,9 +64,9 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
   titleTutoria = TutoriaConstants.DATOSTUTORIA;
   titleRegistro = TutoriaConstants.DATOSREGISTRO;
   usuario: any;
-  //router: any;
+  router: any;
 
-  constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService,public route: Router) { }
+  constructor(private service: PersonalDataService, private restService: RestService, public toast: ToastrService) { }
 
   lugarTutoria: any;
   datosGuardar: any;
@@ -358,12 +357,12 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       console.log('PER', this.persona);
       // this.router.navigate(['personal']);
       if (this.persona === undefined) {
-        this.route.navigateByUrl('/');
+        this.router.navigateByUrl('/dashboard');
       } else {
         // //console.log('JSON', JSON.stringify(this.aux));
         if (data[0] == undefined) {
           //this.router.navigate(['/error']);
-          this.route.navigateByUrl('/');
+          this.router.navigateByUrl('/dashboard');
         }
         if (this.persona.tipo_EMPLEADO == ('DO')) {
          // this.router.navigate(['/error']);
@@ -376,7 +375,7 @@ export class PlanificacionAcompanamientoComponent implements OnInit {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 500) {
           // //console.log('ERROR');
-          this.route.navigate(['/']);
+          this.router.navigate(['/error']);
         }
       }
     }

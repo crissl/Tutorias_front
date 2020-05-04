@@ -3,8 +3,6 @@ import { RestService } from 'app/service/rest.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmarComponent } from './confirmar/confirmar.component';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 export interface DialogData {
   animal: string;
   name: string;
@@ -19,7 +17,7 @@ export interface DialogData {
 
 export class ConfirmacionAsistenciaComponent implements OnInit {
 
-  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog, public route: Router) { }
+  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog) { }
 
   codA1: any = {
     id: ""}
@@ -76,40 +74,7 @@ export class ConfirmacionAsistenciaComponent implements OnInit {
 
 
     }
-    persona:any =[];
-      access() {
-        this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
-          this.persona = data[0];
-          console.log('PER', this.persona);
-          // this.router.navigate(['personal']);
-          if (this.persona === undefined) {
-            console.log('tiene acceso')
-          } else {
-            // //console.log('JSON', JSON.stringify(this.aux));
-            if (data[0] == undefined) {
-              //this.router.navigate(['/error']);
-              console.log('tiene acceso')
-
-            }
-            if (this.persona.tipo_EMPLEADO == ('DO')) {
-             // this.router.navigate(['/error']);
-            
-             this.route.navigateByUrl('/');
-
-            }
     
-          }
-        }, (err) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status === 500) {
-              // //console.log('ERROR');
-              this.route.navigate(['/']);
-            }
-          }
-        }
-        )
-    
-      }
   
   }
 

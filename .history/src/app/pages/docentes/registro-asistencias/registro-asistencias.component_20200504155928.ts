@@ -72,13 +72,7 @@ export class RegistroAsistenciasComponent implements OnInit {
         }
       )  
     }
-    persona:any =[];
-  access() {
-    this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
-      this.persona = data[0];
-      console.log('PER', this.persona);
-      // this.router.navigate(['personal']);
-      if (this.persona === undefined) {
+   f (this.persona === undefined) {
         this.route.navigateByUrl('/');
       } else {
         // //console.log('JSON', JSON.stringify(this.aux));
@@ -96,7 +90,13 @@ export class RegistroAsistenciasComponent implements OnInit {
     }, (err) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 500) {
-          // //console.log('ERROR');
+       persona:any =[];
+  access() {
+    this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
+      this.persona = data[0];
+      console.log('PER', this.persona);
+      // this.router.navigate(['personal']);
+      i    // //console.log('ERROR');
           this.route.navigate(['/']);
         }
       }

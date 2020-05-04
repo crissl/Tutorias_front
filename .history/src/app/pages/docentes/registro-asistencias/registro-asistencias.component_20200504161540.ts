@@ -18,8 +18,8 @@ export class RegistroAsistenciasComponent implements OnInit {
   titleTutoria= TutoriaConstants.DATOSTUTORIA;
   titleRegistro= TutoriaConstants.DATOSREGISTRO;
   titleLista=    TutoriaConstants.LISTAESTUDIANTE;
-  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog, public route: Router) { }
-  codA1: any = {
+  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog) { }
+  codA1: any = {, public route: Router
     id: ""}
   codA: any
   // spidem = 14159 ;

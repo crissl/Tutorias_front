@@ -3,7 +3,6 @@ import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-lista-tutorias-solicitadas',

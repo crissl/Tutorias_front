@@ -21,7 +21,7 @@ export class SolicitudReforzamientoComponent implements OnInit {
   titleEstudiante = TutoriaConstants.DATOSESTUDIANTE;
   form: FormGroup;
   submitted= false;
-  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router, public route: Router) { }
+  constructor(private fb: FormBuilder, private restService: RestService, public toast: ToastrService, private router: Router) { }
 
   options: any = {
     toastLife: 3000,

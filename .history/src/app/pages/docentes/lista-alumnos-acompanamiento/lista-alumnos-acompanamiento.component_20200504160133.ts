@@ -3,7 +3,6 @@ import { TutoriaConstants } from 'app/constants/constants';
 import { RestService } from 'app/service/rest.service';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-alumnos-acompanamiento',

@@ -12,7 +12,6 @@ import * as moment from 'moment';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'app/pages/Formatos/format-datepicker';
 import { THIS_EXPR, ThrowStmt } from '@angular/compiler/src/output/output_ast';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 // const format = 'dd/MM/yyyy';
 // const myDate = Date.now();

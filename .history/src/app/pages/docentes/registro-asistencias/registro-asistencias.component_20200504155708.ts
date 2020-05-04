@@ -6,7 +6,6 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { ToastrService } from 'ngx-toastr';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-asistencias',
@@ -18,7 +17,7 @@ export class RegistroAsistenciasComponent implements OnInit {
   titleTutoria= TutoriaConstants.DATOSTUTORIA;
   titleRegistro= TutoriaConstants.DATOSREGISTRO;
   titleLista=    TutoriaConstants.LISTAESTUDIANTE;
-  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog, public route: Router) { }
+  constructor(private restService: RestService, public toast: ToastrService, public dialog: MatDialog) { }
   codA1: any = {
     id: ""}
   codA: any

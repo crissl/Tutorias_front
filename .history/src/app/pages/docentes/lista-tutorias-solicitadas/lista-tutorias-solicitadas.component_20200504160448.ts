@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TutoriaConstants } from 'app/constants/constants';
 import { PersonalDataService } from 'app/services/personal-data.service';
 import { RestService } from 'app/service/rest.service';
-import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-lista-tutorias-solicitadas',
@@ -14,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ListaTutoriasSolicitadasComponent implements OnInit {
   titleDocente = TutoriaConstants.DATOSDOCENTE;
 
-  constructor(private service: PersonalDataService, private restService: RestService, public route: Router) { }
+  constructor(private service: PersonalDataService, private restService: RestService) { }
   // cedula = "1710802925";
   acompanamiento: any
   reforzamiento: any
@@ -86,39 +84,7 @@ export class ListaTutoriasSolicitadasComponent implements OnInit {
           }
         )
       }
-
-      persona:any =[];
-      access() {
-        this.restService.get('tipoPersona/' + localStorage.getItem('pidm')).subscribe((data: {}) => {
-          this.persona = data[0];
-          console.log('PER', this.persona);
-          // this.router.navigate(['personal']);
-          if (this.persona === undefined) {
-            this.route.navigateByUrl('/');
-          } else {
-            // //console.log('JSON', JSON.stringify(this.aux));
-            if (data[0] == undefined) {
-              //this.router.navigate(['/error']);
-              this.route.navigateByUrl('/');
-            }
-            if (this.persona.tipo_EMPLEADO == ('DO')) {
-             // this.router.navigate(['/error']);
-            
-              console.log('si puedes entrar')
-            }
-    
-          }
-        }, (err) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status === 500) {
-              // //console.log('ERROR');
-              this.route.navigate(['/']);
-            }
-          }
-        }
-        )
-    
-      }
+      
 
 
 
