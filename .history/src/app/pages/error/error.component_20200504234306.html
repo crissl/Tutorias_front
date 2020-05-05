@@ -1,0 +1,51 @@
+<div class="main-content" *ngIf="!datos"></div>
+  <div class="container-fluid">
+      <div class="card">
+          <div class="card-header card-header-danger">
+              <h4 class="card-title">Espemático</h4>
+              <p class="card-category">Sistema de Documentos ESPE.</p>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-6">
+                      <h2>DATOS NO ENCONTRADOS:</h2>
+                      <div class="alert alert-primary">
+                          <button mat-button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <i class="material-icons">close</i>
+                          </button>
+                          <span>
+                              <b> PRIMERO - </b>.Usted es un estudiante antiguo </span>
+                      </div>
+                      <div class="alert alert-primary">
+                          <button mat-button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <i class="material-icons">close</i>
+                          </button>
+                          <span>
+                              <b> SEGUNDO - </b> No se migro la informacio a la Base de datos.</span>
+                      </div>
+                      <div class="alert alert-primary">
+                          <button mat-button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <i class="material-icons">close</i>
+                          </button>
+                          <span>
+                              <b> TERCERO - </b> Se eliminaron datos o no se encuentra registrado en el sistema
+                              .</span>
+                      </div>
+
+                  </div>
+                  <div class="col-6">
+                      <img src="../../assets/img/mensajes/imformacion.png" alt=""
+                          class="img img-responsive pull-center" width="400px">
+                  </div>
+                  <div _ngcontent-c11="" class="container-fluid fixed-bottom pb-5">
+                      <button _ngcontent-c11="" class="btn btn-fab btn-primary btn-round float-right btn-xs"
+                          ptooltip="Atrás" type="button" (click)="backto()">
+                          <i _ngcontent-c11="" class="material-icons">keyboard_backspace</i>
+                      </button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
