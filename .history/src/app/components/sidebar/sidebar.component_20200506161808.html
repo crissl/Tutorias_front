@@ -1,0 +1,106 @@
+<div class="logo">
+    <img class="mx-auto d-block" src="/assets/img/Espe-Angular-Logo.png" alt="Logo - ESPE" />
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    
+    
+  </div>
+    <!-- <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a data-toggle="collapse" class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul> -->
+
+        <!-- Sidebar -->
+            <ul class="nav">
+                <li  routerLinkActive="active" class="active" >
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">account_circle&nbsp;</span>Acompañamiento</a>
+                    <ul class="collapse list-unstyled nav" id="homeSubmenu">
+                        <li  routerLinkActive="active" *ngFor="let menuItem of menuItems2" class="{{menuItem.class}} nav-item">
+                            <a href="#" class="nav-link" [routerLink]="[menuItem.path]">   
+                            <i class="material-icons">{{menuItem.icon}}</i>             
+                                <p>{{menuItem.title}}</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+               
+                <li  routerLinkActive="active" class="active" >
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">assignment_ind&nbsp;</span>Reforzamiento</a>
+                    <ul class="collapse list-unstyled nav" id="pageSubmenu">
+                     <li  routerLinkActive="active" *ngFor="let menuItem of menuItems3" class="{{menuItem.class}} nav-item">
+                            <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                                <i class="material-icons">{{menuItem.icon}}</i>
+                                <p>{{menuItem.title}}</p>
+                            </a>
+                        </li>
+                      
+                    </ul>
+                </li>
+                <li  routerLinkActive="active" class="active">
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="material-icons">menu_book&nbsp;</span>Tutorias</a>
+                    <ul class="collapse list-unstyled nav" id="pageSubmenu2">
+                        <li  routerLinkActive="active" *ngFor="let menuItem of menuItems4" class="{{menuItem.class}} nav-item">
+                            <a href="#" class="nav-link" [routerLink]="[menuItem.path]">                
+                                <i class="material-icons">{{menuItem.icon}}</i>
+                                <p>{{menuItem.title}}</p>
+                            </a>
+                        </li>
+                      
+                    </ul>
+                </li>
+                
+            </ul>
+            <div class="container">
+                <ul class="nav">
+                    <li routerLinkActive="active" *ngFor="let m of menuItems" class="{{m.clase}} nav-item">
+                        <a class="nav-link" [routerLink]="[m.url]">
+                            <i class="material-icons">{{m.icono}}</i>
+                            <p>{{m.opcion}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        
+    
+    <!-- <ul class="nav">
+    <li class="nav-item dropdown" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+        <a class="nav-link dropdown-toggle" routerLinkActive="active"  id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Solicitudes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item" class="nav-link dropdown-item text-sub-menu"  [routerLink]="[menuItem.path]"  routerLinkActive="nav-activo"><i class="material-icons">{{menuItem.icon}}</i><p>{{menuItem.title}}</p></a>
+        </div>
+        </li>
+    </ul> -->
+    <!-- <ul class="nav" >
+    <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item nav-item dropdown">
+        <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">notifications</i>
+            <span class="notification">Solicitudes</span>
+            
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link" [routerLink]="[menuItem.path]" class="dropdown-item"><i class="material-icons">{{menuItem.icon}}</i><p>{{menuItem.title}}</p></a>
+         
+        </div>
+    </li>
+</ul> -->
+ <div _ngcontent-c11="" class="container-fluid fixed-bottom pb-5">
+                      <button _ngcontent-c11="" class="btn btn-fab btn-primary btn-round float-right btn-xs"
+                          ptooltip="Atrás" type="button" (click)="cerrarSession()">
+                          <!--  -->
+                          <i _ngcontent-c11="" class="material-icons">keyboard_backspace</i>
+                      </button>
+</div>
+                  <div class="col-md-12 centerbtn">
+                    <button class="btn btn-primary mr-1" >
+                        <a ng-href="https://srvcas.espe.edu.ec"></a>
+                    </button>
+                  </div>
+</div>
