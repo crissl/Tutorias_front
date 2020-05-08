@@ -1,0 +1,95 @@
+<br><br><br><br>
+    <div _ngcontent-ecr-c5="" class="container-fluid">
+      <div _ngcontent-ecr-c5="" class="row">
+        <div _ngcontent-ecr-c5="" class="col-md-12">
+          <div _ngcontent-ecr-c5="" class="card">
+            <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+              <h4 _ngcontent-ecr-c5="" class="card-title">
+                Solicitudes de Acompañamiento
+              </h4>
+              <p _ngcontent-ecr-c5="" class="card-category">
+                listado de las solicitudes de acompañamiento 
+              </p>
+            </div>
+            
+              <div _ngcontent-ecr-c5="" class="table-responsive">
+                <table _ngcontent-ecr-c5="" class="table" >
+                  <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+                    <th _ngcontent-ecr-c5=""  width="10%">Id</th>
+                    <th _ngcontent-ecr-c5=""  width="20%">Tutorias</th>
+                    <th _ngcontent-ecr-c5=""  width="20%">Nombres</th>
+                    <th _ngcontent-ecr-c5=""  width="20%">tema</th>
+                    <th _ngcontent-ecr-c5=""  width="20%">Observacion</th>
+                    <th _ngcontent-ecr-c5=""  width="10%">fecha</th>
+                   
+
+
+                  </thead>
+                  
+                  <tbody _ngcontent-ecr-c5="" class="table-default  text-center" style="text-align: center" >
+                    <tr _ngcontent-ecr-c5="" *ngFor= "let acompanamientos of acompanamiento">
+                      <td _ngcontent-ecr-c5="" width="10%">{{acompanamientos.id}}</td>
+                      <td _ngcontent-ecr-c5="" width="20%">{{acompanamientos.tutoria}}</td>
+                      <td _ngcontent-ecr-c5="" width="20%">{{acompanamientos.nombres}}</td>
+                      <td _ngcontent-ecr-c5="" width="20%">{{acompanamientos.tema}}</td>
+                      <td _ngcontent-ecr-c5="" width="10%">{{acompanamientos.observacion}}</td>
+                      <td _ngcontent-ecr-c5="" width="10%">{{acompanamientos.fecha}}</td>
+
+
+                     
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div _ngcontent-ecr-c5="" class="container-fluid">
+        <div _ngcontent-ecr-c5="" class="row">
+          <div _ngcontent-ecr-c5="" class="col-md-12">
+            <div _ngcontent-ecr-c5="" class="card">
+              <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+                <h4 _ngcontent-ecr-c5="" class="card-title">
+                  Solicitudes de reforzamiento 
+                </h4>
+                <p _ngcontent-ecr-c5="" class="card-category">
+                  listado de las solicitudes de reforzamiento
+                </p>
+              </div>
+              
+                <div _ngcontent-ecr-c5="" class="table-responsive">
+                  <table _ngcontent-ecr-c5="" class="table" >
+                    <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+                      <th _ngcontent-ecr-c5=""  width="10%">Id</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">Tutorias</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">Nombres</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">Asignaturas</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">tema</th>
+                      <th _ngcontent-ecr-c5=""  width="10%">fecha</th>
+  
+  
+                    </thead>
+                    
+                    <tbody _ngcontent-ecr-c5="" class="table-default  text-center" style="text-align: center" >
+                      <tr _ngcontent-ecr-c5="" *ngFor= "let reforzamientos of reforzamiento">
+                        <td _ngcontent-ecr-c5="" width="10%">{{reforzamientos.id}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{reforzamientos.tutoria}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{reforzamientos.nombres}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{reforzamientos.asignatura}}</td>
+                        <td _ngcontent-ecr-c5="" width="10%">{{reforzamientos.tema}}</td>
+                        <td _ngcontent-ecr-c5="" width="10%">{{reforzamientos.fecha}}</td>
+  
+  
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+  

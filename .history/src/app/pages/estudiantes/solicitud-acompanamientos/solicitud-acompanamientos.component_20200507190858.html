@@ -1,0 +1,45 @@
+<br><br><br>
+<!-- <app-alert></app-alert> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+<div class="container">
+  
+  <app-datos-estudiante [datos]="cedula" [nombres]="estudiante" ></app-datos-estudiante>
+</div>
+  <br>
+  
+  <div class="container">
+    <div class="alert alert-secondary text-center"></div>role="alert"><ul class="alert-link text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>
+      *INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span>
+    </h6>
+      
+    </legend>
+    
+    
+    <div class="form-group">
+      
+      <div class="col-md-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>TEMA A TRATAR</mat-label>
+          <input matInput placeholder="" class="text-uppercase" id="Input" formControlName="tema" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" name="tema" type="text"  [(ngModel)]=" tema.tema" >
+          <mat-error *ngIf="submitted && f.tema.errors" class="invalid-feedback">
+            <mat-error class="mat-error" *ngIf="submitted && f.tema.errors.required">*Ingrese tema</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+    </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="form-group">
+    <app-datos-registro [registro]="observaciones"></app-datos-registro>
+  </div>
+</div>
+  <div class="col-md-12 centerbtn">
+    <button class="btn btn-primary mr-1" >
+      Enviar
+    </button>
+  </div>
+ 
+</form>

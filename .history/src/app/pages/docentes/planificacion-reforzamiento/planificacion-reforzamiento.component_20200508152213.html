@@ -1,0 +1,301 @@
+<br><br><br><br>
+<div class="container">
+<h6>
+  *PLANIFICACIÓN DE LA TUTORÍA DE REFORZAMIENTO ACADÉMICO.<span class="label label-default"></span>
+</h6>
+
+
+<div class="panel panel-info panel-body text-center"><ul class="text-primary"><h4>{{titleDocente}}</h4></ul></div>
+<h6>
+  DATOS GENERALES DEL TUTOR DE REFORZAMIENTO ACADÉMICO.<span class="label label-default"></span>
+</h6>
+</div>
+<br>
+<div class="container">
+  <app-datos-docente [datos]="cedula" [nombres]="estudiante"></app-datos-docente>
+</div>
+
+  <div class="container">
+    <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>
+      *INGRESE LA INFORMACIÓN REFERENTE A LA TUTORÍA DE REFORZAMIENTO ACADÉMICO<span class="label label-default"></span>
+    </h6>
+    <div class="row">    
+  
+      <div class="col-md-6">
+        <mat-form-field for="Input" class="example-full-width">
+          <mat-label>TEMA A TRATAR</mat-label>
+          <textarea matInput placeholder="" class="text-uppercase" id="Input33" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
+        </mat-form-field>
+        <!-- <input class="form-control text-uppercase" name="tema" id="Input33" type="text" [(ngModel)]=" tema.tema" /> -->
+      </div>
+  
+
+    <div class="col-md-6">
+      <label for="Input" class="control-label">DESEA EL HORARIO ESTABLECIDO EN LA TUTORIA?</label>
+
+      <!-- <mat-label for="Input21" class="example-full-width" >DESEA EL HORARIO ESTABLECIDO EN LA TUTORIA?</mat-label> -->
+
+        <mat-radio-group [(ngModel)]="expressType">
+          <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress" [value]="te" style="margin-left: 16px;">
+            {{ te }}
+          </mat-radio-button>
+        </mat-radio-group>
+        <ng-container *ngIf="expressType === 'Si'">
+          <!-- <label for="Input" class="col-sm-8 control-label">NRC DEL QUE REQUIERE LA TUTORIA/ HORARIO ESTABLECIDO</label> -->
+          <div class="row">
+
+          <div class="col-md-6">
+
+          <mat-form-field>
+            <mat-label>Seleccione una Asignatura</mat-label>
+          <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
+            
+            <mat-option  *ngFor="let nrc of nrcs" value="{{nrc.nrc}}" (click)="nrcSeleccionadoOption(nrc)">
+              {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+              {{nrc.periodo}} {{nrc.inicio}} {{nrc.fin}}
+             </mat-option>
+             </mat-select>
+             <mat-error *ngIf="select1.hasError('required')">Selecciona una Asiganatura</mat-error>
+             </mat-form-field>
+            </div>
+          </div>
+
+        </ng-container>
+        <ng-container  *ngIf="expressType === 'No'">
+          <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia" type="text" value="" [(ngModel)]="horaIN" >
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hfin" type="text" value="" [(ngModel)]="horaIF" >
+            </mat-form-field>
+          </div>
+        </div>
+  
+
+        </ng-container>
+
+      
+      <br/>
+
+      
+    </div><br><br><br>
+    <ng-container *ngIf="expressType === 'Si'">
+
+    
+      <label for="Input" class="col-sm-6 control-label">A QUIÉN DARÁ LA TUTORÍA</label>
+      <label for="Input" class="col-sm-6 control-label">FECHA DE TUTORIA</label>
+      
+      
+      <div class="col-md-6">
+         
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="publico">
+          <mat-radio-button value="T">TODOS</mat-radio-button>
+          <mat-radio-button value="M">ALUMNOS NOTAS < 14</mat-radio-button>
+          <mat-radio-button value="S">SOLICITADOS POR EL ESTUDIANTE</mat-radio-button>
+        </mat-radio-group>
+  
+      </div>
+  
+      <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Escoga la fecha para hacer la tutoria</mat-label>
+            <input matInput [matDatepicker]="dp" [formControl]="date"  (dateChange)="FechaDeTutoria($event)">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+          </mat-form-field>
+        </div> 
+    <label for="Input" class="col-sm-12 control-label">AULA/LUGAR EN LA QUE SE DARÁ LA TUTORÍA </label>
+    <div class="col-md-12">
+        <mat-radio-group [(ngModel)]="expressType1">
+          <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress1" [value]="te" style="margin-left: 16px;">
+            {{ te }}
+          </mat-radio-button>
+        </mat-radio-group>
+        
+        <ng-container *ngIf="expressType1 === 'AULA'">
+          <div class="row">
+              <div class="col-md-6">
+                <mat-form-field > 
+                  <mat-label>Seleccione un Aula</mat-label>
+                <mat-select style="width:500px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
+                  
+                  <mat-option  *ngFor="let aula of aulas" value="aula" (click)="guardarAula(aula)" >
+                    Bloque: {{aula.nivel}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aula:  {{aula.aula}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Horario:{{aula.horario}}
+                </mat-option>
+                </mat-select>
+                <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input5" name="hinicia" type="text" [(ngModel)]="horaFormatoI"  disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input6" name="hfin" type="text" [(ngModel)]="horaFormatoF"   disabled>
+                </mat-form-field>
+              </div>
+            </div>
+ 
+        </ng-container>
+        <ng-container  *ngIf="expressType1 === 'LUGAR'">
+          <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="INGRESE LUGAR" id="Input45" name="lugar2" type="text" [(ngModel)]="SiLugar" ></textarea>
+            </mat-form-field>
+          </div>          
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input10" name="hinicia" type="text" value="" [(ngModel)]="SiLugarHorarioI" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input11" name="hfin" type="text" value="" [(ngModel)]="NoLugarHorarioF" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+        
+        </ng-container>
+   
+    </div>
+  </ng-container>
+  <ng-container  *ngIf="expressType === 'No'">
+
+    <label for="Input" class="col-sm-6 control-label">A QUIÉN DARÁ LA TUTORÍA</label>
+    <label for="Input" class="col-sm-6 control-label">FECHA DE TUTORIA</label>
+    
+    
+    <div class="col-md-6">
+       
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="publico">
+        <mat-radio-button value="T">TODOS</mat-radio-button>
+        <mat-radio-button value="M">ALUMNOS NOTAS < 14</mat-radio-button>
+        <mat-radio-button value="S">SOLICITADOS POR EL ESTUDIANTE</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+
+    <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Escoga la fecha para hacer la tutoria</mat-label>
+          <input matInput [matDatepicker]="dp" [formControl]="date"  (dateChange)="FechaDeTutoria($event)">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+      </div> 
+
+    <label for="Input" class="col-sm-12 control-label">AULA/LUGAR EN LA QUE SE DARÁ LA TUTORÍA </label>
+    <div class="col-md-12">
+        <mat-radio-group [(ngModel)]="expressType2">
+          <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress2" [value]="te" style="margin-left: 16px;">
+            {{ te }}
+          </mat-radio-button>
+        </mat-radio-group>
+        
+        <ng-container *ngIf="expressType2 === 'AULA'">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <mat-form-field>
+                <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select1="ngModel" required> 
+                  <mat-option  *ngFor="let nrc of nrcNo" value="" (click)="guardarAulaNo(nrc)">
+                    {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+                   </mat-option>
+                   </mat-select>
+                   <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
+                   </mat-form-field>
+
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                <mat-form-field > 
+                  <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="horariosSelected" name="horario" #select2="ngModel" required> 
+                 <mat-option  *ngFor="let aula of aulas2" value="aula" (click)="guardarAsignaturaNo(aula)">
+                  Bloque: {{aula.nivel}} &nbsp;&nbsp;&nbsp; Aula: {{aula.aula}} &nbsp;&nbsp;&nbsp;
+                  </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
+                  </mat-form-field>
+              </div>
+
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input41" name="hinicia" type="text" value="" [(ngModel)]="horarioInNo" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input78" name="hfin" type="text" value="" [(ngModel)]="horarioFiNo" disabled>
+                </mat-form-field>
+              </div>
+            </div>
+
+        </ng-container>
+
+        <ng-container  *ngIf="expressType2 === 'LUGAR'">
+          <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <mat-form-field>
+              <mat-select style="width:200px; font-size: 12px;" [(ngModel)]="nrc1.id" name="nrcS" #select3="ngModel" required> 
+                <mat-option  *ngFor="let nrc of nrcs3" value="{{nrc.nrc}}"  (click)="SelectNrcnrLugar(nrc)" >
+                  {{nrc.nrc}} - {{nrc.asignatura}} {{nrc.campus}} 
+                 </mat-option>
+                 </mat-select>
+                 <mat-error *ngIf="select3.hasError('required')">Selecciona un Campus</mat-error>
+                 </mat-form-field>
+            </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Ingrese lugar" id="Input12" name="lugar" type="text" [(ngModel)]="NoLugar" ></textarea>
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input14" name="inicio" type="text" value="" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input15" name="fin" type="text" value="" disabled>
+            </mat-form-field>
+          </div> -->
+       
+        </div>
+        </ng-container>
+   
+    </div>
+  
+
+
+  </ng-container>
+
+   
+  
+  <div class="container">
+    <br><div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary"><h4>{{titleRegistro}}</h4></ul></div>
+    <h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>
+    <div class="form-group">
+        <div class="col-md-12">
+          <mat-form-field class="example-full-width">
+            <mat-label>OBSERVACIONES GENERALES</mat-label>
+            <textarea matInput placeholder="" id="Input11" class="text-uppercase" name="observaciones" type="text" [(ngModel)]="observaciones"></textarea>
+          </mat-form-field>
+        </div>
+    </div>
+    
+    <div class="col-md-12 centerbtn" >
+      <button class="btn btn-success" type="submit" name="Submit" (click)="guardarTutoria()">Enviar</button>
+    </div>
+  </div>
+
+</div>
