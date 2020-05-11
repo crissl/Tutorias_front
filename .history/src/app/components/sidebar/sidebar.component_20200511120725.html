@@ -1,0 +1,157 @@
+<div class="logo">
+  <img
+    class="mx-auto d-block"
+    src="/assets/img/Espe-Angular-Logo.png"
+    alt="Logo - ESPE"
+  />
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()"></div>
+  <!-- <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a data-toggle="collapse" class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul> -->
+
+  <!-- Sidebar -->
+  <ul class="nav">
+    <li routerLinkActive="active" class="active">
+      <a
+        href="#homeSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        ><span class="material-icons">account_circle&nbsp;</span
+        >Acompañamiento</a
+      >
+      <ul class="collapse list-unstyled nav" id="homeSubmenu">
+        <li
+          routerLinkActive="active"
+          *ngFor="let menuItem of menuItems2"
+          class="{{ menuItem.class }} nav-item"
+        >
+          <a href="#" class="nav-link" [routerLink]="[menuItem.path]">
+            <i class="material-icons">{{ menuItem.icon }}</i>
+            <p>{{ menuItem.title }}</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li routerLinkActive="active" class="active">
+      <a
+        href="#pageSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        ><span class="material-icons">assignment_ind&nbsp;</span
+        >Reforzamiento</a
+      >
+      <ul class="collapse list-unstyled nav" id="pageSubmenu">
+        <li
+          routerLinkActive="active"
+          *ngFor="let menuItem of menuItems3"
+          class="{{ menuItem.class }} nav-item"
+        >
+          <a href="#" class="nav-link" [routerLink]="[menuItem.path]">
+            <i class="material-icons">{{ menuItem.icon }}</i>
+            <p>{{ menuItem.title }}</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li routerLinkActive="active" class="active">
+      <a
+        href="#pageSubmenu2"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        ><span class="material-icons">menu_book&nbsp;</span>Tutorias</a
+      >
+      <ul class="collapse list-unstyled nav" id="pageSubmenu2">
+        <li
+          routerLinkActive="active"
+          *ngFor="let menuItem of menuItems4"
+          class="{{ menuItem.class }} nav-item"
+        >
+          <a href="#" class="nav-link" [routerLink]="[menuItem.path]">
+            <i class="material-icons">{{ menuItem.icon }}</i>
+            <p>{{ menuItem.title }}</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="container">
+    <ul class="nav">
+      <li
+        routerLinkActive="active"
+        *ngFor="let m of menuItems"
+        class="{{ m.clase }} nav-item"
+      >
+        <a class="nav-link" [routerLink]="[m.url]">
+          <i class="material-icons">{{ m.icono }}</i>
+          <p>{{ m.opcion }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+ <ul class="nav">          
+  <a
+    data-toggle="collapse"
+    class="nav-link collapsed"
+    href="#pages1"
+    aria-expanded="false"><i class="material-icons">account_circle</i>
+    <p>Acompañamiento<b class="caret"></b></p>
+  </a>
+  <div class="collapse show" id="pages1" style="">
+    <ul class="nav">
+      <li routerLinkActive="active" class="active" class="nav-item"  *ngFor="let menuItem of menuItems2"
+      class="{{ menuItem.class }} nav-item">
+        <a class="nav-link"  [routerLink]="[menuItem.path]">
+            <span class="sidebar-mini"><p><i class="material-icons">{{ menuItem.icon }}</i></p></span>
+            <span class="sidebar-normal"><p>{{ menuItem.title }}</p></span></a>
+      </li>
+    </ul>
+  </div>
+  <a
+  data-toggle="collapse"
+  class="nav-link collapsed"
+  href="#pages1"
+  aria-expanded="false"><i class="material-icons">account_circle</i>
+  <p>Acompañamiento<b class="caret"></b></p>
+</a>
+<div class="collapse show" id="pages1" style="">
+  <ul class="nav">
+    <li routerLinkActive="active" class="active" class="nav-item"  *ngFor="let menuItem of menuItems2"
+    class="{{ menuItem.class }} nav-item">
+      <a class="nav-link"  [routerLink]="[menuItem.path]">
+          <span class="sidebar-mini"><p><i class="material-icons">{{ menuItem.icon }}</i></p></span>
+          <span class="sidebar-normal"><p>{{ menuItem.title }}</p></span></a>
+    </li>
+  </ul>
+</div>
+<a
+data-toggle="collapse"
+class="nav-link collapsed"
+href="#pages1"
+aria-expanded="false"><i class="material-icons">account_circle</i>
+<p>Acompañamiento<b class="caret"></b></p>
+</a>
+<div class="collapse show" id="pages1" style="">
+<ul class="nav">
+  <li routerLinkActive="active" class="active" class="nav-item"  *ngFor="let menuItem of menuItems2"
+  class="{{ menuItem.class }} nav-item">
+    <a class="nav-link"  [routerLink]="[menuItem.path]">
+        <span class="sidebar-mini"><p><i class="material-icons">{{ menuItem.icon }}</i></p></span>
+        <span class="sidebar-normal"><p>{{ menuItem.title }}</p></span></a>
+  </li>
+</ul>
+</div>
+</ul>
+</div>

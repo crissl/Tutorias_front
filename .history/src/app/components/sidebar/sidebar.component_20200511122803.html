@@ -1,0 +1,39 @@
+<div class="logo">
+  <img
+    class="mx-auto d-block"
+    src="/assets/img/Espe-Angular-Logo.png"
+    alt="Logo - ESPE"
+  />
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()"></div>
+  <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a data-toggle="collapse" class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+
+  <!-- Sidebar -->
+ 
+  <div class="container">
+    <ul class="nav">
+      <li
+        routerLinkActive="active"
+        *ngFor="let m of menuItems"
+        class="{{ m.clase }} nav-item"
+      >
+        <a class="nav-link" [routerLink]="[m.url]">
+          <i class="material-icons">{{ m.icono }}</i>
+          <p>{{ m.opcion }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+ 
+</ul>
+</div>
