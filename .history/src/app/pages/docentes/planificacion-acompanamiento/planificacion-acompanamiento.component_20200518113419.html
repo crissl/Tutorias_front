@@ -1,0 +1,168 @@
+<br /><br /><br /><br />
+<div class="container">
+  <h5>
+    *PLANIFICACIÓN DE LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO<span class="label label-default"></span>
+  </h5>
+
+  <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary">
+      <h4>{{ titleDocente }}</h4>
+    </ul>
+  </div>
+  <h6>
+    *DATOS GENERALES DEL TUTOR DE ACOMPAÑAMIENTO ACADÉMICO.<span class="label label-default"></span>
+  </h6>
+</div>
+<div class="container">
+  <app-datos-docente [datos]="cedula" [nombres]="estudiante"></app-datos-docente>
+</div>
+
+<div class="container">
+  <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary">
+      <h4>{{ titleTutoria }}</h4>
+    </ul>
+  </div>
+  <h6>
+    *INGRESE LA INFORMACIÓN REFERENTE A LA TUTORÍA DE ACOMPAÑAMIENTO ACADÉMICO
+    <span class="label label-default"></span>
+  </h6>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>TEMA A TRATAR</mat-label>
+        <textarea matInput placeholder=""  class="text-uppercase" id="Input9" name="tema" type="text" [(ngModel)]="tema.tema"></textarea>
+      </mat-form-field>
+    </div>
+  
+
+    <div class="col-12 col-sm-12 col-md-5 col-lg-4">
+      <!-- <mat-form-field> -->
+      <!-- <mat-label>SELECCIONE</mat-label> -->
+      <mat-radio-group aria-label="Selecione " [(ngModel)]="publico">
+        <mat-radio-button value="T" >TODOS</mat-radio-button><br />
+        <mat-radio-button value="S">SOLICITADOS POR EL ESTUDIANTE</mat-radio-button>
+      </mat-radio-group>
+      <!-- </mat-form-field> -->
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+      <mat-form-field>
+        <mat-label>Selecione fecha</mat-label>
+        <input matInput [matDatepicker]="dp" [formControl]="date" (dateChange)="yourFunctionName($event)" />
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp ></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <label for="Input" class="col-sm-12 control-label">AULA/LUGAR EN LA QUE SE DARÁ LA TUTORÍA
+      </label>
+      <mat-radio-group [(ngModel)]="expressType">
+        <mat-radio-button class="example-radio-button" *ngFor="let te of typeExpress" [value]="te" 
+          style="margin-left: 16px;">
+          {{ te }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <ng-container *ngIf="expressType === 'AULA'">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <mat-form-field>
+              <mat-label>Seleccione primero campus</mat-label>
+              <mat-select [(ngModel)]="campusSelected" name="campus" #select1="ngModel" required>
+                <mat-option *ngFor="let codigo of codigos" value="{{ codigo.codigo }}"
+                  (click)="guardar(codigo.codigo, codigo.campus);listarHorario(codigo.codigo)">
+                  {{ codigo.codigo }}-{{ codigo.campus }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="select1.hasError('required')">Selecciona un Campus</mat-error>
+            </mat-form-field>
+          </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <mat-form-field>
+              <mat-label>Seleccione ahora horario</mat-label>
+              <mat-select class="select" [(ngModel)]="horarioSelected" name="horario" #select2="ngModel" required>
+                <mat-option *ngFor="let aula of aulas" value="{{ aula.aula }}" (click)="selectHour(aula)">
+                  {{aula.nivel}} - {{ aula.aula }} - {{ aula.horario }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="select2.hasError('required')">Selecciona un Horario</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-2">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input18" name="hinicia" type="text" disabled
+                [(ngModel)]="horaFormatoI" />
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-2">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input2" name="hinicia1" type="text" disabled
+                [(ngModel)]="horaFormatoF" />
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container &nbsp;&nbsp; *ngIf="expressType === 'LUGAR'">
+        <label class="col-sm-6 control-label">INGRESE EL LUGAR EN LA QUE SE DARÁ LA TUTORÍA</label>
+        <div class="row">
+          <div class="col-md-6">
+            
+            <input type="text" class="form-control" name="" placeholder="Ingrese el Lugar"  [(ngModel)]="lLugar"/>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA INICIO DE LA TUTORÍA:" matInput id="Input3" name="hinicia4" type="text" value="" [(ngModel)]="lHorarioInicio" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input placeholder="HORA FIN DE LA TUTORÍA:" matInput id="Input4" name="hinicia11" type="text" value="" [(ngModel)]="lHorarioFin"/>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <br />
+  <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary">
+      <h4>{{ titleRegistro }}</h4>
+    </ul>
+  </div>
+  <h6>
+    *DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span>
+  </h6>
+
+  <div class="form-group">
+    <label for="Input" class="col-sm-12 control-label">OBSERVACIONES GENERALES</label><br />
+    <div class="col-md-12">
+      <mat-form-field class="example-full-width">
+        <mat-label>OBSERVACIONES GENERALES</mat-label>
+        <textarea matInput placeholder="" id="Input0" class="text-uppercase" name="observaciones" type="text" [(ngModel)]="observaciones"></textarea>
+
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-12 centerbtn">
+    <button class="btn btn-success" type="submit" name="Submit" (click)="guardarAcompanamiento()">
+      Enviar
+    </button>
+  </div> -->
+  <div class="col-md-12 centerbtn">
+
+    <button
+      mat-raised-button=""
+      class="btn btn-success btn-round mat-raised-button mat-button-base"
+      type="submit" name="Submit" (click)="guardarAcompanamiento()"
+    >
+    Enviar&nbsp;<span class="mat-button-wrapper" class="material-icons"> 
+      send</span>
+      <div matripple="" class="mat-ripple mat-button-ripple"></div>
+      <div class="mat-button-focus-overlay"></div>
+    </button>
+  </div>
+</div>
+
