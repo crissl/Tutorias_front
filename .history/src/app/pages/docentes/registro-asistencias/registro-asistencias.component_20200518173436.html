@@ -1,0 +1,56 @@
+
+<div _ngcontent-ecr-c5="" class="main-content">
+  <div _ngcontent-ecr-c5="" class="container-fluid">
+    <div _ngcontent-ecr-c5="" class="row">
+      <div _ngcontent-ecr-c5="" class="col-md-12">
+        <div _ngcontent-ecr-c5="" class="card">
+          <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+            <h4 _ngcontent-ecr-c5="" class="card-title">
+              Registro de  Asistencias
+            </h4>
+            <p _ngcontent-ecr-c5="" class="card-category">
+              Listado de las tutotias de acompañamiento y reforzamiento por confirmar
+            </p>
+          </div>
+          
+          <div _ngcontent-ecr-c5="" class="card-body-form-control text-uppercase">
+            <div _ngcontent-ecr-c5="" class="table-responsive">
+            <table _ngcontent-ecr-c5="" class="table" >
+                <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+                  <th _ngcontent-ecr-c5=""  width="15%">Tipo de Tutoría</th>
+                  <th _ngcontent-ecr-c5=""  width="40%">Tema</th>
+                  <th _ngcontent-ecr-c5=""  width="10%">Opciones</th>
+                </thead>
+                
+                <tbody _ngcontent-ecr-c5="" class="table-default  text-center" style="text-align: center" >
+                  <tr _ngcontent-ecr-c5="" *ngFor= "let formulario of codA">
+                    <td _ngcontent-ecr-c5="" width="15%">{{formulario.uztplanif_TITOTUTORIA}}</td>
+                    <td _ngcontent-ecr-c5="" width="40%">{{formulario.uztplanif_TEMA}}</td>
+                    <td _ngcontent-ecr-c5="" width="10%">
+                      <ol >
+                        
+                          <button  type="button" class="btn btn-outline-primary"  (click)="openDialog(formulario)"><span class="mat-button-wrapper"><i class="material-icons "> verified_user</i></span></button>
+                          <div
+                          class="mat-button-ripple mat-ripple"
+                          matripple=""
+                          ng-reflect-centered="false"
+                          ng-reflect-disabled="false"
+                          ng-reflect-trigger="[object HTMLButtonElement]">
+                        </div>
+                        <div class="mat-button-focus-overlay"></div>
+                        <li *ngIf="animal">
+                          You chose: <i>{{animal}}</i>
+                        
+                      </ol>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <br>
+ 
