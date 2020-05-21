@@ -44,8 +44,6 @@ export class ConfirmarComponent implements OnInit {
   datosGuardar: any;
   ncr: any;
   fecha = Date.now();
-  spidem;
-
   // cedula = "1724079445";
   cedula;
   confirmar: string;
@@ -53,7 +51,6 @@ export class ConfirmarComponent implements OnInit {
 
   ngOnInit() {
     // this.cedula= localStorage.getItem('cedula');
-    this.spidem= localStorage.getItem('pidm');
 
     console.log(this.data)
     //this.traersolicitud();
@@ -97,7 +94,7 @@ export class ConfirmarComponent implements OnInit {
   }
 
  ConfirmarAsistencia(){
-   this.data.asistencia.fechaRegistroAsi = Date.now();
+   this.data.asistencia.fechaRegistroAsi =this.fechaActual;
    this.data.asistencia.usuarioModica = this.spidem;
    this.restService.UpData(this.data.asistencia, "actualizarAsistencia").subscribe(
       data => {

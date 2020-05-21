@@ -106,7 +106,7 @@ export class RegistroComponent implements OnInit {
     for (let numero of this.data.asistentes){
       numero.usuarioModica = this.spidem;
       numero.fechaModica = Date.now();
-      numero.fechaRegistroAsi = this.fechaActual;
+      numero.fechaRegistroAsi = this.;
       numero.observacionAsi = this.observacion.observacion.toUpperCase()
     }
     console.log(this.data.asistentes);

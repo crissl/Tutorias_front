@@ -68,9 +68,9 @@ export class RegistroComponent implements OnInit {
     tema: ""
   }
 
-  observacion: any = {
-    observacion: ""
-
+  public observaciones: any = {
+    observacion: "",
+    fecha: Date.now(),
   }
 
   listaAsistentes(codigoPlanificacion: number, idAsistentes, estudiante, email, cedula1, estado) {
@@ -106,8 +106,7 @@ export class RegistroComponent implements OnInit {
     for (let numero of this.data.asistentes){
       numero.usuarioModica = this.spidem;
       numero.fechaModica = Date.now();
-      numero.fechaRegistroAsi = this.fechaActual;
-      numero.observacionAsi = this.observacion.observacion.toUpperCase()
+      numero.observacionAsi = this.observaciones.observacion.toUpperCase()
     }
     console.log(this.data.asistentes);
     this.restService.UpData(this.data.asistentes,'editarAsistenciaLista').subscribe(
@@ -134,7 +133,7 @@ export class RegistroComponent implements OnInit {
     )
   }
   mayus(){
-    this.observacion.observacion.toUpperCase();
+    this.observaciones.observacion.toUpperCase();
 
     // console.log(this.tema.tema.toUpperCase());
     
@@ -151,7 +150,7 @@ export class RegistroComponent implements OnInit {
           this.toast.success(data.mensaje, "El Formulario", this.options);
           // console.log(data);
            this.dialogRef.close(data);
-           this.router.navigate(['/registroAsistencia']);
+           this.router.navigate(['/']);
           }else{
             this.toast.error("No se creo");
             this.dialogRef.close();

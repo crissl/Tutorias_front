@@ -106,7 +106,7 @@ export class RegistroComponent implements OnInit {
     for (let numero of this.data.asistentes){
       numero.usuarioModica = this.spidem;
       numero.fechaModica = Date.now();
-      numero.fechaRegistroAsi = this.fechaActual;
+      nuemero
       numero.observacionAsi = this.observacion.observacion.toUpperCase()
     }
     console.log(this.data.asistentes);
@@ -151,7 +151,7 @@ export class RegistroComponent implements OnInit {
           this.toast.success(data.mensaje, "El Formulario", this.options);
           // console.log(data);
            this.dialogRef.close(data);
-           this.router.navigate(['/registroAsistencia']);
+           this.router.navigate(['/']);
           }else{
             this.toast.error("No se creo");
             this.dialogRef.close();
