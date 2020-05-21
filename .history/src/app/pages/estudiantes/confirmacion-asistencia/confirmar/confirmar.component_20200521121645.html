@@ -1,0 +1,56 @@
+
+
+<div class="container-responsive">
+  <app-datos-estudiante [datos]="cedula" [nombres]="estudiante"></app-datos-estudiante>
+</div>
+<div class="container-responsive">
+    <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <legend class="text-default"><h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA<span class="label label-default"></span></h6>  
+    </legend>  
+  <div class="col-md-6">
+    <label id="example-radio-group-label">RECIBIÓ LA TUTORÍA DEL TEMA:{{data.info.uztplanif_TEMA}} ?</label><br>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="recibioT">
+      <mat-radio-button  name="opcradio"   value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
+      <mat-radio-button  name="opcradio1"   value="N">No</mat-radio-button>
+    </mat-radio-group>  
+  </div>
+  <div class="col-md-6">
+    <mat-form-field class="example-full-width">
+      <mat-label>COMENTARIOS DE LA TUTORIA</mat-label>
+      <input matInput placeholder=""  class="text-uppercase" id="Input" name="tema" type="text" [(ngModel)]="comentario.comentario" >
+    </mat-form-field> 
+  </div>
+</div><br><br><br><br>
+ <div class="container-responsive">
+  <br/>
+  <div class="alert alert-light text-center border border-primary" role="alert"><ul class="alert-link text-primary"><h4>{{titleRegistro}}</h4></ul></div>
+  <legend class="text-default"><h6>*DATOS GENERALES DEL REGISTRO DE LA TUTORÍA<span class="label label-default"></span></h6>
+    
+   </legend>
+  <div class="row">
+    <div class="col-md-9">
+        <mat-form-field class="example-full-width">
+          <mat-label>OBSERVACIONES GENERALES</mat-label>
+          <textarea matInput placeholder="" class="text-uppercase" id="Input" name="observaciones" type="text" [(ngModel)]="observacion.observacion" ></textarea>
+        </mat-form-field>
+    </div>
+   <!-- <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>FECHA DE REGISTRO</mat-label>
+          <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" ></textarea>
+        </mat-form-field>
+    </div> -->
+  </div>
+  <br><br>
+<div class="row text-center">
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="actualizar()">Enviar</button>
+  <!-- [mat-dialog-close]="data.animal" cdkFocusInitial -->
+</div>
+</div>
+
+
+
+
+

@@ -1,0 +1,146 @@
+<br><br><br>
+<app-alert></app-alert>
+<div class="container-responsive">
+<br>
+<div class="container-responsive">
+    <div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleTutoria}}</h4></ul></div>
+    <h6>*INGRESE LOS DATOS CON LA INFORMACIÓN DE LA TUTORÍA <span class="label label-default" ></span></h6>
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">TEMA TRATADO</label><br>
+        <div class="col-md-12">
+            <input class="form-control" name="tematratado" id="Input" type="text" value=""readonly [(ngModel)]="data.planificacion.uztplanif_TEMA"><br>
+        </div>
+       
+     </div>
+<div class="container-responsive">
+    <div class="row">
+    <label for="Input" class="col-sm-3 control-label" >FECHA DE LA TUTORÍA</label>
+    <label for="Input" class="col-md-3 control-label">HORA INICIO DE LA TUTORÍA:</label>
+    <label for="Input" class="col-md-6 control-label">HORA FIN DE LA TUTORÍA:</label>
+
+
+    <div class="col-md-3">
+        <input class="form-control" name="fechatutoria" id="Input" type="text" value="" [(ngModel)]="fechaFormato" readonly>   
+    </div>
+    <div class="col-md-3">
+        <input id = "timepicker1" type = "text" name="hinicia" class = "form-control input-small" [(ngModel)]="fechaInicio" readonly>   
+    
+    </div>
+    <div class="col-md-3">
+    <input id = "timepicker2" type = "text" name="hfin" class="form-control input-small" [(ngModel)]="fechaFin" readonly>   
+     </div>
+     </div>
+</div>   
+</div>  
+<div class="container-responsive">
+    <br><div class="panel panel-info panel-body text-center" role="alert"><ul class="text-primary"><h4>{{titleLista}}</h4></ul></div>
+    <h6>*REGISTRO DEL ID O CÉDULA DE LOS ESTUDIANTES QUE ASISTIERON A LA TUTORÍA<span class="label label-default"></span></h6>
+    <!-- <div _ngcontent-ecr-c5="" class="container-fluid">
+        <div _ngcontent-ecr-c5="" class="row">
+          <div _ngcontent-ecr-c5="" class="col-md-12">
+            <div _ngcontent-ecr-c5="" class="card">
+              <div _ngcontent-ecr-c5="" class="card-header card-header-success">
+                <h4 _ngcontent-ecr-c5="" class="card-title">
+                  Aumnos de Acompañamiento
+                </h4>
+                <p _ngcontent-ecr-c5="" class="card-category">
+                  listado de las alumnos de acompañamiento 
+                </p>
+              </div>
+              
+                <div _ngcontent-ecr-c5="" class="table-responsive">
+                  <table _ngcontent-ecr-c5="" class="table" >
+                    <thead _ngcontent-ecr-c5="" class="table-default text-center text-primary">
+                      <th _ngcontent-ecr-c5=""  width="5%">CÉDULA</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">ID</th>
+                      <th _ngcontent-ecr-c5=""  width="20%">ESTUDIANTES</th>
+                      <th _ngcontent-ecr-c5=""  width="10%">EMAIL</th>
+                      <th _ngcontent-ecr-c5=""  width="10%">PRESENTES</th>
+  
+  
+                    </thead>
+                    
+                    <tbody _ngcontent-ecr-c5="" class="table-default  text-center" style="text-align: center" >
+                      <tr _ngcontent-ecr-c5="" *ngFor= "let alumnos of alumno">
+                        <td _ngcontent-ecr-c5="" width="5%">{{alumnos.uztasistentes_CEDULA}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{alumnos.uztasistentes_ID}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{alumnos.uztasistentes_ESTUDIANTE}}</td>
+                        <td _ngcontent-ecr-c5="" width="20%">{{alumnos.uztasistentes_EMAIL}}</td>
+                        <td _ngcontent-ecr-c5="" width="10%">{{alumnos.uztasistentes_ESTADO</td>
+  
+  
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div> -->
+    <div class="form-group">
+        <label for="Input" class="col-sm-6 control-label">ID O CÉDULA DELOS ESTUDIANTES</label><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="text-center"><b>CÉDULA</b></td>
+                    <td class="text-center"><b>ID</b></td>
+                    <td class="text-center"><b>ESTUDIANTE</b></td>
+                    <td class="text-center"><b>EMAIL</b></td>
+                    <td class="text-center"><b>ASISTIÓ</b></td>
+                    <!-- <td class="text-center"><b>PRESENTES</b></td> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let alumnos of data.asistentes">
+                    <td class="text-center">{{alumnos.ci}}</td>
+                    <td class="text-center">{{alumnos.idAsistentes}} </td>
+                    <td class="text-center">{{alumnos.estudiante}} </td>
+                    <td class="text-center">{{alumnos.email}}</td>
+                    <!-- <td class="text-center">{{alumnos.uztasistentes_ESTADO}} </td> -->
+                    <td> 
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="alumnos.asistentes">
+                            <mat-radio-button  name="opcradio"  value="S" [checked]="true">Si&nbsp;&nbsp;</mat-radio-button>
+                            <mat-radio-button  name="opcradio"  value="N">No</mat-radio-button>
+                          </mat-radio-group> 
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+</div>
+<div class="form-control" style="display:none">
+    <input name="var" value="">>
+</div>
+
+  <div class="container-responsive">
+    <div class="col-md-9">
+      <mat-form-field class="example-full-width">
+        <mat-label>OBSERVACIONES GENERALES</mat-label>
+        <textarea matInput placeholder="" class="text-uppercase" id="Input" name="observaciones" type="text" [(ngModel)]="observacion.observacion" ></textarea>
+      </mat-form-field>
+  </div>
+ <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>FECHA DE REGISTRO</mat-label>
+        <textarea matInput placeholder="" id="Input" name="fecharegistro" disabled type="date" ></textarea>
+      </mat-form-field>
+  </div>
+
+  </div>
+  <!-- <div class="col-md-12 centerbtn">
+    <button class="btn btn-success"  (click)="guardar()">
+      Enviar
+    </button>
+  </div>       -->
+  <br>
+  <div class="row text-center">
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button (click)="actualizar()">Enviar</button>
+      <!-- [mat-dialog-close]="data.animal" cdkFocusInitial -->
+    </div>
+    </div>
+          
+
